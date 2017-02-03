@@ -1,0 +1,23 @@
+{"collection": [
+    {
+    "type": "album",
+    "artist": "Unearth",
+    "title": "Darkness in the Light",
+    "publication": 2011,
+    "rating": 5
+  },
+    {
+    "type": "album",
+    "artist": "Iron Maiden",
+    "title": "Brave New World",
+    "publication": 2000,
+    "rating": 5
+  },
+    {
+    "type": "album",
+    "artist": "Three Days Grace",
+    "title": "One X",
+    "publication": 2006,
+    "rating": 5
+  }
+]}
