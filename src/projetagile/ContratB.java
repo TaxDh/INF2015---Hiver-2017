@@ -41,6 +41,19 @@ public class ContratB extends InterfaceContrat{
         return convertirDoubleEnString(montantDouble);
     }
     
+    //numero 150
+    public String kinesitherapie (String montant){
+        double montantDouble = convertirStringEnDouble(montant);
+        montantDouble = montantDouble * 0.0;
+        return convertirDoubleEnString(montantDouble);
+    }
+    
+    //numero 175
+    public String medecin_generalistep (String montant){
+        double montantDouble = convertirStringEnDouble(montant);
+        montantDouble = montantDouble * 0.75;
+        return convertirDoubleEnString(montantDouble);
+    
     //numero 200
     public String psychologie_individuelle(String montant){
         double montantDouble = convertirStringEnDouble(montant);
