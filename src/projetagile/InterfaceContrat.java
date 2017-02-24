@@ -71,11 +71,31 @@ public abstract class InterfaceContrat {
     public static double convertirStringEnDouble(String strMontant){
         double montant;
         String stringSansDollar = strMontant.replace("$", "");
+        
+        if(contientVirgule(stringSansDollar)){
+            stringSansDollar = stringSansDollar.replace(",", ".");
+        }
+        
         montant = Double.parseDouble(stringSansDollar);
         
         return montant;
     }
     
+    
+    //methode pour savoir s'il faut remplacer la virgule par un point
+    //dans le montant
+    public static boolean contientVirgule(String montant){
+        boolean reponse = false;
+        for(int i = 0; i < montant.length(); i++){
+            if(montant.charAt(i) == ','){
+                reponse = true;
+            } 
+        }
+        
+        return reponse;
+    }
+            
+            
     public static String convertirDoubleEnString(double dblMontant){
         String montant;
         
