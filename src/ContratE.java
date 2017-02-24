@@ -26,7 +26,7 @@ public class ContratE extends InterfaceContrat {
     //numero 0
     public String massotherapie(String montant){
         double montantDouble = convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 0.25;
+        montantDouble = montantDouble * 0.15;
         return convertirDoubleEnString(montantDouble);
     }
     
@@ -40,41 +40,49 @@ public class ContratE extends InterfaceContrat {
     //numero 200
     public String psychologie_individuelle(String montant){
         double montantDouble = convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 0.25;
+        montantDouble = montantDouble * 0.12;
         return convertirDoubleEnString(montantDouble);
     }
     
     //numero 300 a 399
     public String soin_dentaire(String montant){
         double montantDouble = convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 0.0;
+        montantDouble = montantDouble * 0.6;
         return convertirDoubleEnString(montantDouble);
     }
     
     //numero 400   
     public String naturo_acup(String montant){
         double montantDouble = convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 0.0;
+        if(montantDouble <= 15){
+            montantDouble = montantDouble * 0.25;
+        } else {
+            montantDouble = 15;
+        }
         return convertirDoubleEnString(montantDouble);
     }
     
     //numero 500
     public String chiropratie(String montant){
         double montantDouble = convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 0.25;
+        if(montantDouble <= 20){
+            montantDouble = montantDouble * 0.30;
+        } else {
+            montantDouble = 20;
+        }
         return convertirDoubleEnString(montantDouble);
     }
     
     //numero 600
     public String physiotherapie(String montant){
         double montantDouble = convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 0.40;
+        montantDouble = montantDouble * 0.15;
         return convertirDoubleEnString(montantDouble);
     }
     //numero 700
     public String ortho_ergo(String montant){
         double montantDouble = convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 0.0;
+        montantDouble = montantDouble * 0.22;
         return convertirDoubleEnString(montantDouble);
     }
 }
