@@ -89,6 +89,12 @@ public abstract class InterfaceContrat {
     //numero 100
     public abstract String osteopathie(String montant);
     
+    //numero 150
+    public abstract String kinésithérapie (String montant);
+    
+    //numero 175
+    public abstract String medecin_generalistep (String montant);
+    
     //numero 200
     public abstract String psychologie_individuelle(String montant);
     
@@ -106,5 +112,7 @@ public abstract class InterfaceContrat {
     
     //numero 700
     public abstract String ortho_ergo(String montant);
+    
+    
     
 }

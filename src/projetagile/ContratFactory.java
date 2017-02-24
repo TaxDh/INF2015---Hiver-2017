@@ -28,6 +28,9 @@ public class ContratFactory {
             case 'D':
                 contractHolder = new ContratD(modele);
                 break;
+            case 'E' :
+                contractHolder = new ContratE(modele);
+                break;
         }
         return contractHolder;
     }
