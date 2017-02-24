@@ -53,6 +53,7 @@ public class ContratB extends InterfaceContrat{
         double montantDouble = convertirStringEnDouble(montant);
         montantDouble = montantDouble * 0.75;
         return convertirDoubleEnString(montantDouble);
+    }
     
     //numero 200
     public String psychologie_individuelle(String montant){
