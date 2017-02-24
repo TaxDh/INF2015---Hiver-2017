@@ -40,7 +40,7 @@ public abstract class InterfaceContrat {
             if(reclamation.getSoins() == 0){
                 strRemboursement =  massotherapie(strMontant);
             } else if(reclamation.getSoins() == 100){
-                strRemboursement = kinésithérapie(strMontant);
+                strRemboursement = kinesitherapie(strMontant);
             } else if(reclamation.getSoins() == 150){
                 strRemboursement = medecin_generalistep(strMontant);
              } else if(reclamation.getSoins() == 175){
