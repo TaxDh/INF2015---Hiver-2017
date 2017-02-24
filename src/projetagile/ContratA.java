@@ -40,14 +40,14 @@ public class ContratA extends InterfaceContrat{
     //numero 150
     public String kinesitherapie (String montant){
         double montantDouble = convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 0.25;
+        montantDouble = montantDouble * 0.0;
         return convertirDoubleEnString(montantDouble);
     }
     
     //numero 175
     public String medecin_generalistep (String montant){
         double montantDouble = convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 0.25;
+        montantDouble = montantDouble * 0.5;
         return convertirDoubleEnString(montantDouble);
     }
     
