@@ -40,6 +40,10 @@ public abstract class InterfaceContrat {
             if(reclamation.getSoins() == 0){
                 strRemboursement =  massotherapie(strMontant);
             } else if(reclamation.getSoins() == 100){
+                strRemboursement = kinésithérapie(strMontant);
+            } else if(reclamation.getSoins() == 150){
+                strRemboursement = medecin_generalistep(strMontant);
+             } else if(reclamation.getSoins() == 175){
                 strRemboursement = osteopathie(strMontant);
             } else if(reclamation.getSoins() == 200){
                 strRemboursement = psychologie_individuelle(strMontant);
@@ -90,7 +94,7 @@ public abstract class InterfaceContrat {
     public abstract String osteopathie(String montant);
     
     //numero 150
-    public abstract String kinésithérapie (String montant);
+    public abstract String kinesitherapie (String montant);
     
     //numero 175
     public abstract String medecin_generalistep (String montant);
