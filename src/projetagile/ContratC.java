@@ -35,15 +35,13 @@ public class ContratC extends InterfaceContrat{
     
         //numero 150
     public String kinesitherapie (String montant){
-    public String psychologie_individuelle(String montant){
         double montantDouble = convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 0.90;
+        montantDouble = montantDouble * 0.85;
         return convertirDoubleEnString(montantDouble);
     }
     
     //numero 175
     public String medecin_generalistep (String montant){
-    public String psychologie_individuelle(String montant){
         double montantDouble = convertirStringEnDouble(montant);
         montantDouble = montantDouble * 0.90;
         return convertirDoubleEnString(montantDouble);
