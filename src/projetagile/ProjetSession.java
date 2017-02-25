@@ -11,6 +11,7 @@ import net.sf.json.JSONSerializer;
 import projetagile.jsonmodels.ModeleJsonIn;
 import projetagile.jsonmodels.ModeleJsonOut;
 
+
 /**
  *
  * @author kf891141
@@ -22,24 +23,24 @@ public class ProjetSession {
      */
     public static void main(String[] args) {
         
-        String inputFilePath = args[0];
-        String outputFilePath = args[1];
-        
-        try{
-            ModeleJsonIn reclamation = JsonFileHandler.ouvrireFichier(inputFilePath);
-            InterfaceContrat nouveauContrat = ContratFactory.instancieContrat(reclamation);
-            ModeleJsonOut test = nouveauContrat.calculRemboursement();
-            JsonFileHandler.ecrireFichier(outputFilePath, test);
-        } catch (InvalidArgumentException e) {
-            //TODO WRITE TO ERROR FILE
-            JsonFileHandler.ecrireFichierErreur(outputFilePath);
-            System.exit(0);
-        }
-                
-        
+        if(args.length == 2){
 
-        //pour l'instant je fais tout ici...
-        
+            String inputFilePath = args[0];
+            String outputFilePath = args[1];
+
+            try{
+                ModeleJsonIn reclamation = JsonFileHandler.ouvrireFichier(inputFilePath);
+                InterfaceContrat nouveauContrat = ContratFactory.instancieContrat(reclamation);
+                ModeleJsonOut test = nouveauContrat.calculRemboursement();
+                JsonFileHandler.ecrireFichier(outputFilePath, test);
+            } catch (InvalidArgumentException e) {
+                //TODO WRITE TO ERROR FILE
+                JsonFileHandler.ecrireFichierErreur(outputFilePath);
+                System.exit(0);
+            }
+        } else {
+            System.out.println("Il y a une erreur avec les arguments");
+        }       
         
     }
     
