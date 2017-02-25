@@ -103,6 +103,8 @@ public abstract class InterfaceContrat {
         
         montant = montant + "$";
         
+        montant = montant.replace(",", ".");
+        
         return montant;
     }
     
