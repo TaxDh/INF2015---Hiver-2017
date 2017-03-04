@@ -18,7 +18,10 @@ import projetagile.jsonmodels.Remboursement;
  * @author rene
  */
 public class JsonFileHandler {
-    
+    public  static  JSONObject root;
+    public  static JSONArray reclamations = root.getJSONArray("reclamations");
+    private static ModeleJsonIn modele;
+   
     public static ModeleJsonIn ouvrireFichier(String filePath) throws InvalidArgumentException {
         ModeleJsonIn modele = new ModeleJsonIn();
         String jsonText = "";
@@ -27,7 +30,7 @@ public class JsonFileHandler {
             System.out.println("Erreur lors de la lecture du fichier JSON. " + e.getLocalizedMessage());
             System.exit(1);
         }
-        JSONObject root;
+       
         try{ root = (JSONObject) JSONSerializer.toJSON(jsonText);            
         } catch(net.sf.json.JSONException e){
             throw new InvalidArgumentException("Arguments invalides");         
@@ -45,8 +48,8 @@ public class JsonFileHandler {
         String mois = root.getString("mois");
         modele.setMois(mois);
         
-        JSONArray reclamations = root.getJSONArray("reclamations");
         
+        /*
         for(int i = 0; i < reclamations.size(); i++){
             //cree reclamation
             Reclamation nouvelleReclamation = new Reclamation();
@@ -72,10 +75,45 @@ public class JsonFileHandler {
             nouvelleReclamation.setMontant(montant);
             modele.addReclamation(nouvelleReclamation);
         }
-        
+        */
+        forMethode(reclamations);
         return modele;
     }//fin ouvrireFichier
 
+    public static void forMethode(JSONArray reclamations) throws InvalidArgumentException {
+    
+           for(int i = 0; i < reclamations.size(); i++){
+            //cree reclamation
+            Reclamation nouvelleReclamation = new Reclamation();
+            JSONObject reclamationCourrante = reclamations.getJSONObject(i);
+            int soin = reclamationCourrante.getInt("soin");
+            //test soin
+            if(estNumeroSoinValide(soin)){
+                nouvelleReclamation.setSoins(soin);
+            } else {
+                throw new InvalidArgumentException("Arguments invalides");
+            }
+            //get and test date
+            
+            String date = reclamationCourrante.getString("date");
+            
+            if(estDateValide(date, modele.getMois())){
+                nouvelleReclamation.setDate(date);
+            } else {
+                throw new InvalidArgumentException("Arguments invalides");
+            }
+            
+            String montant = reclamationCourrante.getString("montant");
+            nouvelleReclamation.setMontant(montant);
+            modele.addReclamation(nouvelleReclamation);
+        }
+    
+    
+    
+    
+    
+    }
+    
     public static void ecrireFichier(String filePath, ModeleJsonOut modeleOut) {
         JSONObject remboursement = new JSONObject();
         remboursement.accumulate("client", modeleOut.getClient());
