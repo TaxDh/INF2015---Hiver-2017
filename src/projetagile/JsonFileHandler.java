@@ -132,36 +132,22 @@ public class JsonFileHandler {
     
     /*methode pour traiter les erreurs*/
     private static boolean estNumeroClientValide(String numeroClient) {
-        if(numeroClient.matches("[0-9]+") && numeroClient.length() == 6){
-            return true;
-        }
-        return false;    
+        return numeroClient.matches("[0-9]+") && numeroClient.length() == 6;    
     }
     
     private static boolean estNumeroContratValide(char numeroContrat){
-        if(numeroContrat == 'A' || numeroContrat == 'B' || numeroContrat == 'C'
-                || numeroContrat == 'D'){
-            return true;
-        }
-        return false;
+        return numeroContrat == 'A' || numeroContrat == 'B' || numeroContrat == 'C'
+                || numeroContrat == 'D';
     }
     
     private static boolean estNumeroSoinValide(int soin){
-        if(soin == 0 || soin == 100 || soin == 200 || (soin >= 300 && soin <= 400)
-                || soin == 500 || soin == 600 || soin == 700){
-            return true;            
-        } else {
-            return false;
-        }
+        return soin == 0 || soin == 100 || soin == 200 || (soin >= 300 && soin <= 400)
+                || soin == 500 || soin == 600 || soin == 700;
     }
     
     private static boolean estDateValide(String date, String mois){
         String test = date.substring(0, 7);
-        if(test.equals(mois)){
-            return true;            
-        } else {
-            return false;
-        }
+        return test.equals(mois);
     }
         
     
