@@ -18,83 +18,73 @@ import projetagile.jsonmodels.Remboursement;
  * @author rene
  */
 public class JsonFileHandler {
-    public  static  JSONObject root;
+    public  static  JSONObject root,remboursement,objetCourant;
     public  static JSONArray reclamations = root.getJSONArray("reclamations");
     public static ModeleJsonIn modele;
     public static String jsonText = "";
     public static String dossier = root.getString("client");
     public static String mois = root.getString("mois");
+    public static Reclamation nouvelleReclamation ;
+    
     public static ModeleJsonIn ouvrireFichier(String filePath) throws InvalidArgumentException {
-        try {      jsonText = Utf8File.loadFileIntoString(filePath);
-        }catch(IOException e) {
-            System.out.println("Erreur lors de la lecture du fichier JSON. " + e.getLocalizedMessage());
-            System.exit(1);
-        }
-        try{ root = (JSONObject) JSONSerializer.toJSON(jsonText);            
-        } catch(net.sf.json.JSONException e){
-            throw new InvalidArgumentException("Arguments invalides");         
-        }
-        if(estNumeroDossierValide(dossier)){
-            modele.setClient(dossier.substring(1));    modele.setTypeContrat(dossier.substring(0,1).charAt(0));
-        } else {            throw new InvalidArgumentException("Arguments invalides");        }
-        modele.setMois(mois);
-        forMethode(reclamations);
-        return modele;
+            try {      jsonText = Utf8File.loadFileIntoString(filePath);
+            }catch(IOException e) {
+                System.out.println("Erreur lors de la lecture du fichier JSON. " + e.getLocalizedMessage());
+                System.exit(1);
+            }
+            try{ root = (JSONObject) JSONSerializer.toJSON(jsonText);            
+            } catch(net.sf.json.JSONException e){
+                throw new InvalidArgumentException("Arguments invalides");         
+            }
+            if(estNumeroDossierValide(dossier)){
+                modele.setClient(dossier.substring(1));    modele.setTypeContrat(dossier.substring(0,1).charAt(0));
+            } else {            throw new InvalidArgumentException("Arguments invalides");        }
+            modele.setMois(mois);
+            forMethode(reclamations);
+            return modele;
     }//fin ouvrireFichier
+    
+    
 
     public static void forMethode(JSONArray reclamations) throws InvalidArgumentException {
     
            for(int i = 0; i < reclamations.size(); i++){
             //cree reclamation
-            Reclamation nouvelleReclamation = new Reclamation();
-            JSONObject reclamationCourrante = reclamations.getJSONObject(i);
-            int soin = reclamationCourrante.getInt("soin");
-            //test soin
-            if(estNumeroSoinValide(soin)){
-                nouvelleReclamation.setSoins(soin);
-            } else {
-                throw new InvalidArgumentException("Arguments invalides");
-            }
-            //get and test date
-            
-            String date = reclamationCourrante.getString("date");
-            
-            if(estDateValide(date, modele.getMois())){
-                nouvelleReclamation.setDate(date);
-            } else {
-                throw new InvalidArgumentException("Arguments invalides");
-            }
-            
-            String montant = reclamationCourrante.getString("montant");
-            nouvelleReclamation.setMontant(montant);
-            modele.addReclamation(nouvelleReclamation);
+                    JSONObject reclamationCourrante = reclamations.getJSONObject(i);
+                    int soin = reclamationCourrante.getInt("soin");
+                    //test soin
+                    if(estNumeroSoinValide(soin))   nouvelleReclamation.setSoins(soin);
+                   else    throw new InvalidArgumentException("Arguments invalides");
+                    //get and test date
+                    String date = reclamationCourrante.getString("date");
+                    if(estDateValide(date, modele.getMois()))    nouvelleReclamation.setDate(date);
+                     else   throw new InvalidArgumentException("Arguments invalides");
+                    
+                    String montant = reclamationCourrante.getString("montant");
+                    nouvelleReclamation.setMontant(montant);
+                    modele.addReclamation(nouvelleReclamation);
         }
-    
-    
-    
-    
-    
+        
     }
     
     public static void ecrireFichier(String filePath, ModeleJsonOut modeleOut) {
-        JSONObject remboursement = new JSONObject();
-        remboursement.accumulate("client", modeleOut.getClient());
-        remboursement.accumulate("mois", modeleOut.getMois());
-        JSONArray remboursementTab = new JSONArray();//tableau de remboursement
-        for(int i = 0; i < modeleOut.getRemboursement().size(); i++){
-            JSONObject objetCourant = new JSONObject();
-            Remboursement remboursementCourant = modeleOut.getRemboursement().get(i); 
-            objetCourant.accumulate("soin", remboursementCourant.getSoins());
-            objetCourant.accumulate("date", remboursementCourant.getDate());
-            objetCourant.accumulate("montant", remboursementCourant.getMontant());
-            remboursementTab.add(objetCourant);
-        } 
-        remboursement.accumulate("remboursements", remboursementTab);   
-        try {
-            Utf8File.saveStringIntoFile(filePath, remboursement.toString(4));
-        } catch (IOException ex) {
-            System.out.println("Erreur avec le fichier de sortie : " + ex.getLocalizedMessage());
-        }
+        
+            remboursement.accumulate("client", modeleOut.getClient());
+            remboursement.accumulate("mois", modeleOut.getMois());
+            JSONArray remboursementTab = new JSONArray();//tableau de remboursement
+            for(int i = 0; i < modeleOut.getRemboursement().size(); i++){
+                Remboursement remboursementCourant = modeleOut.getRemboursement().get(i); 
+                objetCourant.accumulate("soin", remboursementCourant.getSoins());
+                objetCourant.accumulate("date", remboursementCourant.getDate());
+                objetCourant.accumulate("montant", remboursementCourant.getMontant());
+                remboursementTab.add(objetCourant);
+            } 
+            remboursement.accumulate("remboursements", remboursementTab);   
+            try {
+                Utf8File.saveStringIntoFile(filePath, remboursement.toString(4));
+            } catch (IOException ex) {
+                System.out.println("Erreur avec le fichier de sortie : " + ex.getLocalizedMessage());
+            }
 
     }
 
