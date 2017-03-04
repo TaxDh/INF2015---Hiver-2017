@@ -22,38 +22,26 @@ public class JsonFileHandler {
     public static ModeleJsonIn ouvrireFichier(String filePath) throws InvalidArgumentException {
         ModeleJsonIn modele = new ModeleJsonIn();
         String jsonText = "";
-        try {
-            jsonText = Utf8File.loadFileIntoString(filePath);
+        try {      jsonText = Utf8File.loadFileIntoString(filePath);
         }catch(IOException e) {
             System.out.println("Erreur lors de la lecture du fichier JSON. " + e.getLocalizedMessage());
             System.exit(1);
         }
         JSONObject root;
-        try{
-                   root = (JSONObject) JSONSerializer.toJSON(jsonText);
-
-            
+        try{ root = (JSONObject) JSONSerializer.toJSON(jsonText);            
         } catch(net.sf.json.JSONException e){
-            throw new InvalidArgumentException("Arguments invalides");
-            
+            throw new InvalidArgumentException("Arguments invalides");         
         }
         
-        String numeroClient = root.getString("client");
+        String dossier = root.getString("client");
         
-        if(estNumeroClientValide(numeroClient)){
-            modele.setClient(numeroClient);
+        if(estNumeroDossierValide(dossier)){
+            modele.setClient(dossier.substring(1));
+            modele.setTypeContrat(dossier.substring(0,1).charAt(0));
         } else {
             throw new InvalidArgumentException("Arguments invalides");
         }
-                
-        char numeroContrat = root.getString("contrat").charAt(0);
-        
-        if(estNumeroContratValide(numeroContrat)){
-            modele.setTypeContrat(numeroContrat);
-        } else {
-            throw new InvalidArgumentException("Arguments invalides"); 
-        }
-            
+           
         String mois = root.getString("mois");
         modele.setMois(mois);
         
@@ -89,27 +77,19 @@ public class JsonFileHandler {
     }//fin ouvrireFichier
 
     public static void ecrireFichier(String filePath, ModeleJsonOut modeleOut) {
-       
         JSONObject remboursement = new JSONObject();
-       
         remboursement.accumulate("client", modeleOut.getClient());
         remboursement.accumulate("mois", modeleOut.getMois());
-        
         JSONArray remboursementTab = new JSONArray();//tableau de remboursement
-        
         for(int i = 0; i < modeleOut.getRemboursement().size(); i++){
             JSONObject objetCourant = new JSONObject();
-            Remboursement remboursementCourant = modeleOut.getRemboursement().get(i);
-            
+            Remboursement remboursementCourant = modeleOut.getRemboursement().get(i); 
             objetCourant.accumulate("soin", remboursementCourant.getSoins());
             objetCourant.accumulate("date", remboursementCourant.getDate());
             objetCourant.accumulate("montant", remboursementCourant.getMontant());
             remboursementTab.add(objetCourant);
-        }
-        
-        remboursement.accumulate("remboursements", remboursementTab);
-        
-        
+        } 
+        remboursement.accumulate("remboursements", remboursementTab);   
         try {
             Utf8File.saveStringIntoFile(filePath, remboursement.toString(4));
         } catch (IOException ex) {
@@ -131,15 +111,11 @@ public class JsonFileHandler {
     }
     
     /*methode pour traiter les erreurs*/
-    private static boolean estNumeroClientValide(String numeroClient) {
-        return numeroClient.matches("[0-9]+") && numeroClient.length() == 6;    
+    private static boolean estNumeroDossierValide(String dossier) {
+        return dossier.substring(0,1).matches("[A-E]+") && dossier.length() == 7 && dossier.substring(1).matches("[09]+");    
     }
     
-    private static boolean estNumeroContratValide(char numeroContrat){
-        return numeroContrat == 'A' || numeroContrat == 'B' || numeroContrat == 'C'
-                || numeroContrat == 'D';
-    }
-    
+
     private static boolean estNumeroSoinValide(int soin){
         return soin == 0 || soin == 100 || soin == 200 || (soin >= 300 && soin <= 400)
                 || soin == 500 || soin == 600 || soin == 700;
