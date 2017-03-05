@@ -51,7 +51,7 @@ public class JsonFileHandler {
         if(estNumeroDossierValide(dossier)){
             modele = new ModeleJsonIn(dossier.substring(1), dossier.substring(0,1).charAt(0), mois);
         } else {
-            throw new InvalidArgumentException("Arguments invalides");
+            throw new InvalidArgumentException("Le numero de dossier est invalide.");
         }
         createReclamations(reclamations);
     }
@@ -89,16 +89,24 @@ public class JsonFileHandler {
     private static void traiterDateReclamation(JSONObject reclamationCourrante, Reclamation nouvelleReclamation)
             throws InvalidArgumentException {
         String date = reclamationCourrante.getString("date");
-        if(estDateValide(date, modele.getMois())) nouvelleReclamation.setDate(date);
-        else throw new InvalidArgumentException("Arguments invalides");
+        if(estDateValide(date, modele.getMois())){
+            nouvelleReclamation.setDate(date);
+        }
+        else {
+            throw new InvalidArgumentException("La date est invalide");
+        }
     }
 
     private static void traiterSoinsReclamation(JSONObject reclamationCourrante, Reclamation nouvelleReclamation)
             throws InvalidArgumentException {
         int soin = reclamationCourrante.getInt("soin");
         //test soin
-        if(estNumeroSoinValide(soin)) nouvelleReclamation.setSoins(soin);
-        else throw new InvalidArgumentException("Arguments invalides");
+        if(estNumeroSoinValide(soin)){
+            nouvelleReclamation.setSoins(soin);
+        }
+        else {
+            throw new InvalidArgumentException("Le numero de soin est invalide");
+        }
     }
     
     
