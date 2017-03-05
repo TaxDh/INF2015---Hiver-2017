@@ -1,19 +1,14 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *  l'objet que deviendra le fichier json
  */
 package projetagile.jsonmodels;
 
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- *
- * l'objet que deviendra le fichier json
- */
+
 public class ModeleJsonOut {
-    private String client;
+    private String dossier;
     private String mois;
     private List<Remboursement> remboursement;//c'est le meme objet que jsonIn
 
@@ -23,12 +18,12 @@ public class ModeleJsonOut {
     }
 
  
-    public String getClient() {
-        return client;
+    public String getDossier() {
+        return dossier;
     }
 
-    public void setClient(String client) {
-        this.client = client;
+    public void setDossier(String client) {
+        this.dossier = client;
     }
 
     public String getMois() {

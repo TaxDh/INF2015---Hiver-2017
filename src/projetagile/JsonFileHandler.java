@@ -88,7 +88,7 @@ public class JsonFileHandler {
         
         JSONObject remboursement = new JSONObject();
         
-        remboursement.accumulate("client", modeleOut.getClient());
+        remboursement.accumulate("dossier", modeleOut.getDossier());
         remboursement.accumulate("mois", modeleOut.getMois());
         JSONArray remboursementTab = new JSONArray();//tableau de remboursement
         for(Remboursement remboursementCourant : modeleOut.getRemboursement()){
@@ -126,7 +126,7 @@ public class JsonFileHandler {
     
 
     private static boolean estNumeroSoinValide(int soin){
-        return soin == 0 || soin == 100 || 
+        return soin == 0 || soin == 100 || soin == 150 || soin == 175 ||
                 soin == 200 || (soin >= 300 && soin <= 400)|| 
                 soin == 500 || soin == 600 || soin == 700;
     }

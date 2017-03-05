@@ -26,7 +26,7 @@ public abstract class InterfaceContrat {
     //parametre un int pour le numero et le cout, je pense
     public ModeleJsonOut calculRemboursement(){
         ModeleJsonOut sortie = new ModeleJsonOut();
-        sortie.setClient(modele.getClient());
+        sortie.setDossier(modele.getTypeContrat() + modele.getClient());
         sortie.setMois(modele.getMois());
         
         for(Reclamation reclamation : modele.getReclamations()){
