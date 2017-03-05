@@ -36,7 +36,7 @@ public abstract class InterfaceContrat {
             } else if(reclamation.getSoins() == 100){
                 strRemboursement = kinesitherapie(strMontant);
             } else if(reclamation.getSoins() == 150){
-                strRemboursement = medecin_generalistep(strMontant);
+                strRemboursement = medecin_generaliste_prive(strMontant);
              } else if(reclamation.getSoins() == 175){
                 strRemboursement = osteopathie(strMontant);
             } else if(reclamation.getSoins() == 200){
@@ -44,13 +44,13 @@ public abstract class InterfaceContrat {
             } else if(reclamation.getSoins() >= 300 && reclamation.getSoins() < 400){
                 strRemboursement = soin_dentaire(strMontant);
             } else if(reclamation.getSoins() == 400){
-                strRemboursement = naturo_acup(strMontant);
+                strRemboursement = naturo_acuponcture(strMontant);
             } else if(reclamation.getSoins() == 500){
                 strRemboursement = chiropratie(strMontant);
             } else if(reclamation.getSoins() == 600){
                 strRemboursement = physiotherapie(strMontant);
             } else if(reclamation.getSoins() == 700){
-                strRemboursement = ortho_ergo(strMontant);
+                strRemboursement = orthophonie_ergotherapie(strMontant);
             }
             
             nouveauRemboursement.setMontant(strRemboursement);
@@ -111,7 +111,7 @@ public abstract class InterfaceContrat {
     public abstract String kinesitherapie (String montant);
     
     //numero 175
-    public abstract String medecin_generalistep (String montant);
+    public abstract String medecin_generaliste_prive (String montant);
     
     //numero 200
     public abstract String psychologie_individuelle(String montant);
@@ -120,7 +120,7 @@ public abstract class InterfaceContrat {
     public abstract String soin_dentaire(String montant);
     
    //numero 400    
-    public abstract String naturo_acup(String montant);
+    public abstract String naturo_acuponcture(String montant);
     
    //numero 500
     public abstract String chiropratie(String montant);
@@ -129,7 +129,7 @@ public abstract class InterfaceContrat {
     public abstract String physiotherapie(String montant);
     
     //numero 700
-    public abstract String ortho_ergo(String montant);
+    public abstract String orthophonie_ergotherapie(String montant);
     
     
     

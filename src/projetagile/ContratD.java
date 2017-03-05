@@ -52,7 +52,7 @@ public class ContratD extends InterfaceContrat{
     }
     
     //numero 175
-    public String medecin_generalistep (String montant){
+    public String medecin_generaliste_prive (String montant){
         double montantDouble = convertirStringEnDouble(montant);
         montantDouble = montantDouble * 0.95;
         return convertirDoubleEnString(montantDouble);
@@ -77,7 +77,7 @@ public class ContratD extends InterfaceContrat{
     }
     
     //numero 400   
-    public String naturo_acup(String montant){
+    public String naturo_acuponcture(String montant){
         double montantDouble = convertirStringEnDouble(montant);
         if(montantDouble <= 65){
             montantDouble = montantDouble * 1.0;
@@ -109,7 +109,7 @@ public class ContratD extends InterfaceContrat{
         return convertirDoubleEnString(montantDouble);
     }
     //numero 700
-    public String ortho_ergo(String montant){
+    public String orthophonie_ergotherapie(String montant){
         double montantDouble = convertirStringEnDouble(montant);
         if(montantDouble <= 90){
             montantDouble = montantDouble * 1.0;
