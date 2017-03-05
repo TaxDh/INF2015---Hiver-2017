@@ -34,11 +34,11 @@ public abstract class InterfaceContrat {
             if(reclamation.getSoins() == 0){
                 strRemboursement =  massotherapie(strMontant);
             } else if(reclamation.getSoins() == 100){
-                strRemboursement = kinesitherapie(strMontant);
-            } else if(reclamation.getSoins() == 150){
-                strRemboursement = medecin_generaliste_prive(strMontant);
-             } else if(reclamation.getSoins() == 175){
                 strRemboursement = osteopathie(strMontant);
+            } else if(reclamation.getSoins() == 150){
+                strRemboursement = kinesitherapie(strMontant);
+             } else if(reclamation.getSoins() == 175){
+                strRemboursement = medecin_generaliste_prive(strMontant);
             } else if(reclamation.getSoins() == 200){
                 strRemboursement = psychologie_individuelle(strMontant);
             } else if(reclamation.getSoins() >= 300 && reclamation.getSoins() < 400){
