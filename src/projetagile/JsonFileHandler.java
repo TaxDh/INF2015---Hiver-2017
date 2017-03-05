@@ -79,7 +79,6 @@ public class JsonFileHandler {
 
     private static void traiterSoinsReclamation(JSONObject reclamationCourrante, Reclamation nouvelleReclamation) throws InvalidArgumentException {
         int soin = reclamationCourrante.getInt("soin");
-        System.out.println(soin);
         //test soin
         if(estNumeroSoinValide(soin)) nouvelleReclamation.setSoins(soin);
         else throw new InvalidArgumentException("Arguments invalides");
