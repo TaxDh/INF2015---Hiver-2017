@@ -22,20 +22,15 @@ public class ContratB extends InterfaceContrat{
     //numero 0
     public String massotherapie(String montant){
         double montantDouble = convertirStringEnDouble(montant);
-        if(montantDouble <= 40){
-            montantDouble = montantDouble * 0.50;
-        } else {
-            montantDouble = 40;
-        }
+        
         return convertirDoubleEnString(montantDouble);
     }
     
     //numero 100
     public String osteopathie(String montant){
         double montantDouble = convertirStringEnDouble(montant);
-         if(montantDouble <= 50){
-            montantDouble = montantDouble * 0.50;
-        } else {
+        montantDouble = montantDouble * 0.50;
+        if(montantDouble > 50){
             montantDouble = 50;
         }
         return convertirDoubleEnString(montantDouble);
@@ -58,9 +53,10 @@ public class ContratB extends InterfaceContrat{
     //numero 200
     public String psychologie_individuelle(String montant){
         double montantDouble = convertirStringEnDouble(montant);
-         if(montantDouble > 70){
+         montantDouble = montantDouble * 1.0;
+        if(montantDouble > 70){
             montantDouble = 70;
-         }
+        }
         return convertirDoubleEnString(montantDouble);
     }
     
@@ -81,9 +77,8 @@ public class ContratB extends InterfaceContrat{
     //numero 500
     public String chiropratie(String montant){
         double montantDouble = convertirStringEnDouble(montant);
-         if(montantDouble <= 50){
-            montantDouble = montantDouble * 0.50;
-        } else {
+         montantDouble = montantDouble * 0.50;
+        if(montantDouble > 50){
             montantDouble = 50;
         }
         return convertirDoubleEnString(montantDouble);
