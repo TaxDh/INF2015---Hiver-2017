@@ -18,103 +18,73 @@ import projetagile.jsonmodels.Remboursement;
  * @author rene
  */
 public class JsonFileHandler {
+    public  static  JSONObject root,remboursement,objetCourant;
+    public  static JSONArray reclamations = root.getJSONArray("reclamations");
+    public static ModeleJsonIn modele;
+    public static String jsonText = "";
+    public static String dossier = root.getString("client");
+    public static String mois = root.getString("mois");
+    public static Reclamation nouvelleReclamation ;
     
     public static ModeleJsonIn ouvrireFichier(String filePath) throws InvalidArgumentException {
-        ModeleJsonIn modele = new ModeleJsonIn();
-        String jsonText = "";
-        try {
-            jsonText = Utf8File.loadFileIntoString(filePath);
-        }catch(IOException e) {
-            System.out.println("Erreur lors de la lecture du fichier JSON. " + e.getLocalizedMessage());
-            System.exit(1);
-        }
-        JSONObject root;
-        try{
-                   root = (JSONObject) JSONSerializer.toJSON(jsonText);
-
-            
-        } catch(net.sf.json.JSONException e){
-            throw new InvalidArgumentException("Arguments invalides");
-            
-        }
-        
-        String numeroClient = root.getString("client");
-        
-        if(estNumeroClientValide(numeroClient)){
-            modele.setClient(numeroClient);
-        } else {
-            throw new InvalidArgumentException("Arguments invalides");
-        }
-                
-        char numeroContrat = root.getString("contrat").charAt(0);
-        
-        if(estNumeroContratValide(numeroContrat)){
-            modele.setTypeContrat(numeroContrat);
-        } else {
-            throw new InvalidArgumentException("Arguments invalides"); 
-        }
-            
-        String mois = root.getString("mois");
-        modele.setMois(mois);
-        
-        JSONArray reclamations = root.getJSONArray("reclamations");
-        
-        for(int i = 0; i < reclamations.size(); i++){
-            //cree reclamation
-            Reclamation nouvelleReclamation = new Reclamation();
-            JSONObject reclamationCourrante = reclamations.getJSONObject(i);
-            int soin = reclamationCourrante.getInt("soin");
-            //test soin
-            if(estNumeroSoinValide(soin)){
-                nouvelleReclamation.setSoins(soin);
-            } else {
-                throw new InvalidArgumentException("Arguments invalides");
+            try {      jsonText = Utf8File.loadFileIntoString(filePath);
+            }catch(IOException e) {
+                System.out.println("Erreur lors de la lecture du fichier JSON. " + e.getLocalizedMessage());
+                System.exit(1);
             }
-            //get and test date
-            
-            String date = reclamationCourrante.getString("date");
-            
-            if(estDateValide(date, modele.getMois())){
-                nouvelleReclamation.setDate(date);
-            } else {
-                throw new InvalidArgumentException("Arguments invalides");
+            try{ root = (JSONObject) JSONSerializer.toJSON(jsonText);            
+            } catch(net.sf.json.JSONException e){
+                throw new InvalidArgumentException("Arguments invalides");         
             }
-            
-            String montant = reclamationCourrante.getString("montant");
-            nouvelleReclamation.setMontant(montant);
-            modele.addReclamation(nouvelleReclamation);
-        }
-        
-        return modele;
+            if(estNumeroDossierValide(dossier)){
+                modele.setClient(dossier.substring(1));    modele.setTypeContrat(dossier.substring(0,1).charAt(0));
+            } else {            throw new InvalidArgumentException("Arguments invalides");        }
+            modele.setMois(mois);
+            forMethode(reclamations);
+            return modele;
     }//fin ouvrireFichier
+    
+    
 
+    public static void forMethode(JSONArray reclamations) throws InvalidArgumentException {
+    
+           for(int i = 0; i < reclamations.size(); i++){
+            //cree reclamation
+                    JSONObject reclamationCourrante = reclamations.getJSONObject(i);
+                    int soin = reclamationCourrante.getInt("soin");
+                    //test soin
+                    if(estNumeroSoinValide(soin))   nouvelleReclamation.setSoins(soin);
+                   else    throw new InvalidArgumentException("Arguments invalides");
+                    //get and test date
+                    String date = reclamationCourrante.getString("date");
+                    if(estDateValide(date, modele.getMois()))    nouvelleReclamation.setDate(date);
+                     else   throw new InvalidArgumentException("Arguments invalides");
+                    
+                    String montant = reclamationCourrante.getString("montant");
+                    nouvelleReclamation.setMontant(montant);
+                    modele.addReclamation(nouvelleReclamation);
+        }
+        
+    }
+    
     public static void ecrireFichier(String filePath, ModeleJsonOut modeleOut) {
-       
-        JSONObject remboursement = new JSONObject();
-       
-        remboursement.accumulate("client", modeleOut.getClient());
-        remboursement.accumulate("mois", modeleOut.getMois());
         
-        JSONArray remboursementTab = new JSONArray();//tableau de remboursement
-        
-        for(int i = 0; i < modeleOut.getRemboursement().size(); i++){
-            JSONObject objetCourant = new JSONObject();
-            Remboursement remboursementCourant = modeleOut.getRemboursement().get(i);
-            
-            objetCourant.accumulate("soin", remboursementCourant.getSoins());
-            objetCourant.accumulate("date", remboursementCourant.getDate());
-            objetCourant.accumulate("montant", remboursementCourant.getMontant());
-            remboursementTab.add(objetCourant);
-        }
-        
-        remboursement.accumulate("remboursements", remboursementTab);
-        
-        
-        try {
-            Utf8File.saveStringIntoFile(filePath, remboursement.toString(4));
-        } catch (IOException ex) {
-            System.out.println("Erreur avec le fichier de sortie : " + ex.getLocalizedMessage());
-        }
+            remboursement.accumulate("client", modeleOut.getClient());
+            remboursement.accumulate("mois", modeleOut.getMois());
+            JSONArray remboursementTab = new JSONArray();//tableau de remboursement
+            for(int i = 0; i < modeleOut.getRemboursement().size(); i++){
+                Remboursement remboursementCourant = modeleOut.getRemboursement().get(i); 
+                objetCourant.accumulate("soin", remboursementCourant.getSoins());
+                objetCourant.accumulate("date", remboursementCourant.getDate());
+                objetCourant.accumulate("montant", remboursementCourant.getMontant());
+                remboursementTab.add(objetCourant);
+            } 
+            remboursement.accumulate("remboursements", remboursementTab);   
+            try {
+                Utf8File.saveStringIntoFile(filePath, remboursement.toString(4));
+            } catch (IOException ex) {
+                System.out.println("Erreur avec le fichier de sortie : " + ex.getLocalizedMessage());
+            }
 
     }
 
@@ -131,37 +101,19 @@ public class JsonFileHandler {
     }
     
     /*methode pour traiter les erreurs*/
-    private static boolean estNumeroClientValide(String numeroClient) {
-        if(numeroClient.matches("[0-9]+") && numeroClient.length() == 6){
-            return true;
-        }
-        return false;    
+    private static boolean estNumeroDossierValide(String dossier) {
+        return dossier.substring(0,1).matches("[A-E]+") && dossier.length() == 7 && dossier.substring(1).matches("[09]+");    
     }
     
-    private static boolean estNumeroContratValide(char numeroContrat){
-        if(numeroContrat == 'A' || numeroContrat == 'B' || numeroContrat == 'C'
-                || numeroContrat == 'D'){
-            return true;
-        }
-        return false;
-    }
-    
+
     private static boolean estNumeroSoinValide(int soin){
-        if(soin == 0 || soin == 100 || soin == 200 || (soin >= 300 && soin <= 400)
-                || soin == 500 || soin == 600 || soin == 700){
-            return true;            
-        } else {
-            return false;
-        }
+        return soin == 0 || soin == 100 || soin == 200 || (soin >= 300 && soin <= 400)
+                || soin == 500 || soin == 600 || soin == 700;
     }
     
     private static boolean estDateValide(String date, String mois){
         String test = date.substring(0, 7);
-        if(test.equals(mois)){
-            return true;            
-        } else {
-            return false;
-        }
+        return test.equals(mois);
     }
         
     
