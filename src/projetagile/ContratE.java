@@ -1,3 +1,6 @@
+/*
+ * Objet contrat E, avec les méthodes type de soins associées
+ */
 package projetagile;
 
 
