@@ -1,16 +1,16 @@
 {
-    "dossier": "C100323",
+    "dossier": "D100323",
     "mois": "2017-01",
-    "reclamations":     [
+    "remboursements":     [
                 {
             "soin": 0,
             "date": "2017-01-11",
-            "montant": "100.00$"
+            "montant": "85.00$"
         },
                 {
             "soin": 100,
             "date": "2017-01-11",
-            "montant": "100.00$"
+            "montant": "75.00$"
         },
                 {
             "soin": 150,
@@ -20,7 +20,7 @@
                 {
             "soin": 175,
             "date": "2017-01-11",
-            "montant": "100.00$"
+            "montant": "95.00$"
         },
                 {
             "soin": 200,
@@ -35,12 +35,12 @@
                 {
             "soin": 400,
             "date": "2017-01-23",
-            "montant": "100.00$"
+            "montant": "65.00$"
         },
                 {
             "soin": 500,
             "date": "2017-01-23",
-            "montant": "100.00$"
+            "montant": "75.00$"
         },
                 {
             "soin": 600,
@@ -50,7 +50,7 @@
                 {
             "soin": 700,
             "date": "2017-01-23",
-            "montant": "100.00$"
+            "montant": "90.00$"
         }
     ]
 }
