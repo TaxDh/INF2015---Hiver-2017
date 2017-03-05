@@ -22,9 +22,8 @@ public class ContratD extends InterfaceContrat{
     //numero 0
     public String massotherapie(String montant){
         double montantDouble = convertirStringEnDouble(montant);
-        if(montantDouble <= 85){
-            montantDouble = montantDouble * 1.0;
-        } else {
+        montantDouble = montantDouble * 1.0;
+        if(montantDouble > 85){
             montantDouble = 85;
         }
         return convertirDoubleEnString(montantDouble);
@@ -33,9 +32,8 @@ public class ContratD extends InterfaceContrat{
     //numero 100
     public String osteopathie(String montant){
         double montantDouble = convertirStringEnDouble(montant);
-       if(montantDouble <= 75){
-            montantDouble = montantDouble * 1.0;
-        } else {
+       montantDouble = montantDouble * 1.0;
+        if(montantDouble > 75){
             montantDouble = 75;
         }
         return convertirDoubleEnString(montantDouble);
@@ -43,9 +41,8 @@ public class ContratD extends InterfaceContrat{
         //numero 150
     public String kinesitherapie (String montant){
         double montantDouble = convertirStringEnDouble(montant);
-       if(montantDouble <= 150){
-            montantDouble = montantDouble * 1.0;
-        } else {
+        montantDouble = montantDouble * 1.0;
+        if(montantDouble > 150){
             montantDouble = 150;
         }
         return convertirDoubleEnString(montantDouble);
@@ -61,9 +58,8 @@ public class ContratD extends InterfaceContrat{
     //numero 200
     public String psychologie_individuelle(String montant){
         double montantDouble = convertirStringEnDouble(montant);
-        if(montantDouble <= 100){
-            montantDouble = montantDouble * 1.0;
-        } else {
+        montantDouble = montantDouble * 1.0;
+        if(montantDouble > 100){
             montantDouble = 100;
         }
         return convertirDoubleEnString(montantDouble);
@@ -79,9 +75,8 @@ public class ContratD extends InterfaceContrat{
     //numero 400   
     public String naturo_acuponcture(String montant){
         double montantDouble = convertirStringEnDouble(montant);
-        if(montantDouble <= 65){
-            montantDouble = montantDouble * 1.0;
-        } else {
+        montantDouble = montantDouble * 1.0;
+        if(montantDouble > 65){
             montantDouble = 65;
         }
         return convertirDoubleEnString(montantDouble);
@@ -90,9 +85,8 @@ public class ContratD extends InterfaceContrat{
     //numero 500
     public String chiropratie(String montant){
         double montantDouble = convertirStringEnDouble(montant);
-        if(montantDouble <= 75){
-            montantDouble = montantDouble * 1.0;
-        } else {
+        montantDouble = montantDouble * 1.0;
+        if(montantDouble > 75){
             montantDouble = 75;
         }
         return convertirDoubleEnString(montantDouble);
@@ -101,9 +95,8 @@ public class ContratD extends InterfaceContrat{
     //numero 600
     public String physiotherapie(String montant){
         double montantDouble = convertirStringEnDouble(montant);
-        if(montantDouble <= 100){
-            montantDouble = montantDouble * 1.0;
-        } else {
+        montantDouble = montantDouble * 1.0;
+        if(montantDouble > 100){
             montantDouble = 100;
         }
         return convertirDoubleEnString(montantDouble);
@@ -111,9 +104,8 @@ public class ContratD extends InterfaceContrat{
     //numero 700
     public String orthophonie_ergotherapie(String montant){
         double montantDouble = convertirStringEnDouble(montant);
-        if(montantDouble <= 90){
-            montantDouble = montantDouble * 1.0;
-        } else {
+        montantDouble = montantDouble * 1.0;
+        if(montantDouble > 90){
             montantDouble = 90;
         }
         return convertirDoubleEnString(montantDouble);
