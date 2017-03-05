@@ -50,9 +50,8 @@ public class ContratE extends InterfaceContrat {
     //numero 175
     public String medecin_generaliste_prive (String montant){
         double montantDouble = convertirStringEnDouble(montant);
-        if(montantDouble <= 20){
-            montantDouble = montantDouble * 0.25;
-        } else {
+        montantDouble = montantDouble * 0.25;
+        if(montantDouble > 20){
             montantDouble = 20;
         }
         return convertirDoubleEnString(montantDouble);
@@ -75,9 +74,8 @@ public class ContratE extends InterfaceContrat {
     //numero 400   
     public String naturo_acuponcture(String montant){
         double montantDouble = convertirStringEnDouble(montant);
-        if(montantDouble <= 15){
-            montantDouble = montantDouble * 0.25;
-        } else {
+        montantDouble = montantDouble * 0.25;
+        if(montantDouble > 15){
             montantDouble = 15;
         }
         return convertirDoubleEnString(montantDouble);
@@ -86,9 +84,8 @@ public class ContratE extends InterfaceContrat {
     //numero 500
     public String chiropratie(String montant){
         double montantDouble = convertirStringEnDouble(montant);
-        if(montantDouble <= 20){
-            montantDouble = montantDouble * 0.30;
-        } else {
+        montantDouble = montantDouble * 0.30;
+        if(montantDouble > 20){
             montantDouble = 20;
         }
         return convertirDoubleEnString(montantDouble);
