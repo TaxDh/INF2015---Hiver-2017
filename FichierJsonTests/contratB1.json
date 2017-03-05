@@ -1,7 +1,7 @@
 {
     "dossier": "B100323",
     "mois": "2017-01",
-    "remboursements":     [
+    "reclamations":     [
                 {
             "soin": 0,
             "date": "2017-01-11",
