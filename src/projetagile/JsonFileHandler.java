@@ -24,6 +24,7 @@ public class JsonFileHandler {
     private static String jsonText;
     private static String dossier;
     private static String mois;
+   
     
     public static ModeleJsonIn ouvrireFichier(String filePath) throws InvalidArgumentException {
             try {
@@ -32,13 +33,27 @@ public class JsonFileHandler {
                 System.out.println("Erreur lors de la lecture du fichier JSON. " + e.getLocalizedMessage());
                 System.exit(1);
             }
-            if(estNumeroDossierValide(dossier)){
-                modele = new ModeleJsonIn(dossier.substring(1), dossier.substring(0,1).charAt(0), mois);
-            } else {
-                throw new InvalidArgumentException("Arguments invalides");
-            }
-            createReclamations(reclamations);
+            creationModeleJsonIn();
             return modele;
+    }
+    
+    public static void ecrireFichier(String filePath, ModeleJsonOut modeleOut) {
+        
+        JSONObject remboursement = EcritureJsonObjetSortie(modeleOut);   
+        try {
+            Utf8File.saveStringIntoFile(filePath, remboursement.toString(4));
+        } catch (IOException ex) {
+            System.out.println("Erreur avec le fichier de sortie : " + ex.getLocalizedMessage());
+        }
+    }
+    
+    private static void creationModeleJsonIn() throws InvalidArgumentException {
+        if(estNumeroDossierValide(dossier)){
+            modele = new ModeleJsonIn(dossier.substring(1), dossier.substring(0,1).charAt(0), mois);
+        } else {
+            throw new InvalidArgumentException("Arguments invalides");
+        }
+        createReclamations(reclamations);
     }
 
     private static void initialiserObjetsJSON(String filePath) throws IOException {
@@ -71,40 +86,46 @@ public class JsonFileHandler {
         modele.addReclamation(nouvelleReclamation);
     }
 
-    private static void traiterDateReclamation(JSONObject reclamationCourrante, Reclamation nouvelleReclamation) throws InvalidArgumentException {
+    private static void traiterDateReclamation(JSONObject reclamationCourrante, Reclamation nouvelleReclamation)
+            throws InvalidArgumentException {
         String date = reclamationCourrante.getString("date");
         if(estDateValide(date, modele.getMois())) nouvelleReclamation.setDate(date);
         else throw new InvalidArgumentException("Arguments invalides");
     }
 
-    private static void traiterSoinsReclamation(JSONObject reclamationCourrante, Reclamation nouvelleReclamation) throws InvalidArgumentException {
+    private static void traiterSoinsReclamation(JSONObject reclamationCourrante, Reclamation nouvelleReclamation)
+            throws InvalidArgumentException {
         int soin = reclamationCourrante.getInt("soin");
         //test soin
         if(estNumeroSoinValide(soin)) nouvelleReclamation.setSoins(soin);
         else throw new InvalidArgumentException("Arguments invalides");
     }
     
-    public static void ecrireFichier(String filePath, ModeleJsonOut modeleOut) {
-        
+    
+
+    private static JSONObject EcritureJsonObjetSortie(ModeleJsonOut modeleOut) {
         JSONObject remboursement = new JSONObject();
-        
+        JSONArray remboursementTab = EcritureEnTeteSortieJson(remboursement, modeleOut);
+        for(Remboursement remboursementCourant : modeleOut.getRemboursement()){
+            EcritureReclamationSortieJson(remboursementCourant, remboursementTab);
+        }
+        remboursement.accumulate("remboursements", remboursementTab);
+        return remboursement;
+    }
+
+    private static void EcritureReclamationSortieJson(Remboursement remboursementCourant, JSONArray remboursementTab) {
+        JSONObject objetCourant = new JSONObject();
+        objetCourant.accumulate("soin", remboursementCourant.getSoins());
+        objetCourant.accumulate("date", remboursementCourant.getDate());
+        objetCourant.accumulate("montant", remboursementCourant.getMontant());
+        remboursementTab.add(objetCourant);
+    }
+
+    private static JSONArray EcritureEnTeteSortieJson(JSONObject remboursement, ModeleJsonOut modeleOut) {
         remboursement.accumulate("dossier", modeleOut.getDossier());
         remboursement.accumulate("mois", modeleOut.getMois());
         JSONArray remboursementTab = new JSONArray();//tableau de remboursement
-        for(Remboursement remboursementCourant : modeleOut.getRemboursement()){
-            JSONObject objetCourant = new JSONObject();
-            objetCourant.accumulate("soin", remboursementCourant.getSoins());
-            objetCourant.accumulate("date", remboursementCourant.getDate());
-            objetCourant.accumulate("montant", remboursementCourant.getMontant());
-            remboursementTab.add(objetCourant);
-        } 
-        remboursement.accumulate("remboursements", remboursementTab);   
-        try {
-            Utf8File.saveStringIntoFile(filePath, remboursement.toString(4));
-        } catch (IOException ex) {
-            System.out.println("Erreur avec le fichier de sortie : " + ex.getLocalizedMessage());
-        }
-
+        return remboursementTab;
     }
 
     public static void ecrireFichierErreur(String filePath){
