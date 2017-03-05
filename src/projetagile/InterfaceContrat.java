@@ -1,6 +1,4 @@
-/* chaque soin est considéré comme une méthode
-elle différe pour chaque objet (contrat), donc on utilise une classe
-abstraite.
+/* classe pour lier la reclamation pour un soin donné au bon type de contrat.
  */
 package projetagile;
 
@@ -9,13 +7,8 @@ import projetagile.jsonmodels.ModeleJsonOut;
 import projetagile.jsonmodels.Reclamation;
 import projetagile.jsonmodels.Remboursement;
 
-/**
- *
- * @author kf891141
- */
+
 public abstract class InterfaceContrat {
-    /*méthode pour chaque type de soin défini de manière générale pour 
-    chaque contrat*/
     
     private ModeleJsonIn modele;
     
@@ -23,7 +16,8 @@ public abstract class InterfaceContrat {
         
         this.modele = modele;
     }
-    //parametre un int pour le numero et le cout, je pense
+
+    
     public ModeleJsonOut calculRemboursement(){
         ModeleJsonOut sortie = new ModeleJsonOut();
         sortie.setDossier(modele.getTypeContrat() + modele.getClient());
@@ -67,7 +61,6 @@ public abstract class InterfaceContrat {
         return sortie;
     }
     
-    //Methode pour transformer un montant en double
     public static double convertirStringEnDouble(String strMontant){
         double montant;
         String stringSansDollar = strMontant.replace("$", "");
@@ -82,8 +75,7 @@ public abstract class InterfaceContrat {
     }
     
     
-    //methode pour savoir s'il faut remplacer la virgule par un point
-    //dans le montant
+    
     public static boolean contientVirgule(String montant){
         boolean reponse = false;
         for(int i = 0; i < montant.length(); i++){
