@@ -33,7 +33,7 @@ public class ContratA extends InterfaceContrat{
     //numero 100
     public String osteopathie(String montant){
         double montantDouble = convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 0.25;
+        montantDouble = montantDouble * 0.35;
         return convertirDoubleEnString(montantDouble);
     }
     

@@ -54,9 +54,7 @@ public class ContratB extends InterfaceContrat{
     public String psychologie_individuelle(String montant){
         double montantDouble = convertirStringEnDouble(montant);
          montantDouble = montantDouble * 1.0;
-        if(montantDouble > 70){
-            montantDouble = 70;
-        }
+        
         return convertirDoubleEnString(montantDouble);
     }
     

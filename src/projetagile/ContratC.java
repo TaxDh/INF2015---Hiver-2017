@@ -29,7 +29,7 @@ public class ContratC extends InterfaceContrat{
     //numero 100
     public String osteopathie(String montant){
         double montantDouble = convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 0.90;
+        montantDouble = montantDouble * 0.95;
         return convertirDoubleEnString(montantDouble);
     }
     
@@ -78,7 +78,7 @@ public class ContratC extends InterfaceContrat{
     //numero 600
     public String physiotherapie(String montant){
         double montantDouble = convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 0.90;
+        montantDouble = montantDouble * 0.75;
         return convertirDoubleEnString(montantDouble);
     }
     //numero 700

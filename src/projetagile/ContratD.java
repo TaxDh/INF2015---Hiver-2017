@@ -86,9 +86,6 @@ public class ContratD extends InterfaceContrat{
     public String chiropratie(String montant){
         double montantDouble = convertirStringEnDouble(montant);
         montantDouble = montantDouble * 1.0;
-        if(montantDouble > 75){
-            montantDouble = 75;
-        }
         return convertirDoubleEnString(montantDouble);
     }
     
