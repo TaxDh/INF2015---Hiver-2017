@@ -7,6 +7,6 @@
 * Les noms de classe ou fonction ou de variable sont écrit en franglais. C'est*à*dire qu'on privilégie le français
 sauf si le nom en français apparait trop long ou vide de sens. Par exemple ContratFactory au lieu de UsineAContrat.
 * L'indentation est la même que netbean par défaut.
-* Les commentaires pour décrire les classes ou les fonctions sont entre /**/ en haut de celle*ci.
+* Les commentaires pour décrire les classes ou les fonctions sont entre /* */ en haut de celle*ci.
 * Si les lignes dépassent 120 caractères, on fait un retour de ligne.
 * On place les fonctions principales en haut, elle sont suivie par les fonctions secondaires (celle pour faciliter la lecture ou faire des validations).
