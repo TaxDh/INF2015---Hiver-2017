@@ -19,7 +19,7 @@ import projetagile.InvalidArgumentException;
  * @author rene
  */
 public class JsonFileHandler {
-    private static  JSONObject root;
+    private static  JSONObject racine;
     private static JSONArray reclamations;
     private static ModeleJsonIn modele;
     private static String jsonText;
@@ -49,20 +49,34 @@ public class JsonFileHandler {
     }
     
     private static void creationModeleJsonIn() throws InvalidArgumentException {
+        
         if(estNumeroDossierValide(dossier)){
-            modele = new ModeleJsonIn(dossier.substring(1), dossier.substring(0,1).charAt(0), mois);
+        modele = new ModeleJsonIn(dossier.substring(1), dossier.substring(0,1).charAt(0), mois);
         } else {
-            throw new InvalidArgumentException("Le numero de dossier est invalide.");
+            throw new InvalidArgumentException("Erreur! Le numero de dossier est invalide.");
         }
+        
         createReclamations(reclamations);
     }
 
-    private static void initialiserObjetsJSON(String filePath) throws IOException {
+    private static void initialiserObjetsJSON(String filePath) throws IOException, InvalidArgumentException {
         jsonText = Utf8File.loadFileIntoString(filePath);
-        root = (JSONObject) JSONSerializer.toJSON(jsonText);
-        reclamations = root.getJSONArray("reclamations");
-        dossier = root.getString("dossier");
-        mois = root.getString("mois");
+        racine = (JSONObject) JSONSerializer.toJSON(jsonText);
+        try{
+            reclamations = racine.getJSONArray("reclamations");
+        } catch(net.sf.json.JSONException e){
+            throw new InvalidArgumentException("Erreur! Il n'y a pas de réclamations.");
+        }
+        try{
+            dossier = racine.getString("dossier");
+        } catch(net.sf.json.JSONException e){
+            throw new InvalidArgumentException("Erreur! Le dossier n'est pas présent.");
+        }
+        try{
+            mois = racine.getString("mois");
+        } catch(net.sf.json.JSONException e){
+            throw new InvalidArgumentException("Erreur! Le mois n'est pas présent.");
+        }
     }
     
     
@@ -87,7 +101,7 @@ public class JsonFileHandler {
         try {
             montant = reclamationCourrante.getString("montant");
         } catch (net.sf.json.JSONException e){
-            throw new InvalidArgumentException("Le montant n'est pas present");
+            throw new InvalidArgumentException("Erreur! Le montant n'est pas présent.");
         }
         nouvelleReclamation.setMontant(montant);
         modele.addReclamation(nouvelleReclamation);
@@ -95,24 +109,32 @@ public class JsonFileHandler {
 
     private static void traiterDateReclamation(JSONObject reclamationCourrante, Reclamation nouvelleReclamation)
             throws InvalidArgumentException {
-        String date = reclamationCourrante.getString("date");
-        if(estDateValide(date, modele.getMois())){
-            nouvelleReclamation.setDate(date);
-        }
-        else {
-            throw new InvalidArgumentException("La date est invalide");
+        try {
+            String date = reclamationCourrante.getString("date");
+            if(estDateValide(date, modele.getMois())){
+                nouvelleReclamation.setDate(date);
+            }
+            else {
+                throw new InvalidArgumentException("Erreur! La date est invalide");
+            }
+        } catch (net.sf.json.JSONException e){
+            throw new InvalidArgumentException("Erreur! La date n'est pas présente.");
         }
     }
 
     private static void traiterSoinsReclamation(JSONObject reclamationCourrante, Reclamation nouvelleReclamation)
             throws InvalidArgumentException {
-        int soin = reclamationCourrante.getInt("soin");
-        //test soin
-        if(estNumeroSoinValide(soin)){
-            nouvelleReclamation.setSoins(soin);
-        }
-        else {
-            throw new InvalidArgumentException("Le numero de soin est invalide");
+        try{
+            int soin = reclamationCourrante.getInt("soin");
+            //test soin
+            if(estNumeroSoinValide(soin)){
+                nouvelleReclamation.setSoins(soin);
+            }
+            else {
+                throw new InvalidArgumentException("Erreur! Le numero de soin est invalide");
+            }
+        } catch (net.sf.json.JSONException e){
+            throw new InvalidArgumentException("Erreur! Le numéro de soin n'est pas présent.");
         }
     }
     
