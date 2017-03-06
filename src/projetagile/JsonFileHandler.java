@@ -13,6 +13,7 @@ import projetagile.jsonmodels.ModeleJsonIn;
 import projetagile.jsonmodels.Reclamation;
 import projetagile.jsonmodels.ModeleJsonOut;
 import projetagile.jsonmodels.Remboursement;
+import projetagile.InvalidArgumentException;
 /**
  *
  * @author rene
@@ -80,8 +81,14 @@ public class JsonFileHandler {
         
     }
 
-    private static void traiterMontantReclamation(JSONObject reclamationCourrante, Reclamation nouvelleReclamation) {
-        String montant = reclamationCourrante.getString("montant");
+    private static void traiterMontantReclamation(JSONObject reclamationCourrante, Reclamation nouvelleReclamation)
+            throws InvalidArgumentException {
+        String montant = "";
+        try {
+            montant = reclamationCourrante.getString("montant");
+        } catch (net.sf.json.JSONException e){
+            throw new InvalidArgumentException("Le montant n'est pas present");
+        }
         nouvelleReclamation.setMontant(montant);
         modele.addReclamation(nouvelleReclamation);
     }
@@ -112,21 +119,54 @@ public class JsonFileHandler {
     
 
     private static JSONObject EcritureJsonObjetSortie(ModeleJsonOut modeleOut) {
+        double montantCourant, montantTotal = 0;
+        String montant = "";
+        
         JSONObject remboursement = new JSONObject();
         JSONArray remboursementTab = EcritureEnTeteSortieJson(remboursement, modeleOut);
-        for(Remboursement remboursementCourant : modeleOut.getRemboursement()){
-            EcritureReclamationSortieJson(remboursementCourant, remboursementTab);
-        }
-        remboursement.accumulate("remboursements", remboursementTab);
+        
+        montantTotal = parcoursDeToutLesRemboursement(modeleOut, remboursementTab, montantTotal);
+        
+        montant = totalDevienString(modeleOut, montantTotal);
+        
+        ajoutJsonRemboursementEtTotal(remboursement, remboursementTab, montant);
         return remboursement;
     }
 
-    private static void EcritureReclamationSortieJson(Remboursement remboursementCourant, JSONArray remboursementTab) {
-        JSONObject objetCourant = new JSONObject();
+    private static String totalDevienString(ModeleJsonOut modeleOut, double montantTotal) {
+        String montant;
+        modeleOut.setTotal(montantTotal);
+        montant = modeleOut.totalEnString(modeleOut.getTotal());
+        return montant;
+    }
+
+    private static void ajoutJsonRemboursementEtTotal(JSONObject remboursement, JSONArray remboursementTab, String montant) {
+        remboursement.accumulate("remboursements", remboursementTab);
+        remboursement.accumulate("total", montant);
+    }
+
+    private static double parcoursDeToutLesRemboursement(ModeleJsonOut modeleOut, JSONArray remboursementTab, double montantTotal) {
+        double montantCourant;
+        for(Remboursement remboursementCourant : modeleOut.getRemboursement()){
+            JSONObject objetCourant = new JSONObject();
+            ajoutSoinDateMontantAJson(objetCourant, remboursementCourant);
+            remboursementTab.add(objetCourant);
+            montantTotal = calculMontantTotal(remboursementCourant, montantTotal);
+        }
+        return montantTotal;
+    }
+
+    private static void ajoutSoinDateMontantAJson(JSONObject objetCourant, Remboursement remboursementCourant) {
         objetCourant.accumulate("soin", remboursementCourant.getSoins());
         objetCourant.accumulate("date", remboursementCourant.getDate());
         objetCourant.accumulate("montant", remboursementCourant.getMontant());
-        remboursementTab.add(objetCourant);
+    }
+
+    private static double calculMontantTotal(Remboursement remboursementCourant, double montantTotal) {
+        double montantCourant;
+        montantCourant = InterfaceContrat.convertirStringEnDouble(remboursementCourant.getMontant());
+        montantTotal += montantCourant;
+        return montantTotal;
     }
 
     private static JSONArray EcritureEnTeteSortieJson(JSONObject remboursement, ModeleJsonOut modeleOut) {
@@ -136,9 +176,9 @@ public class JsonFileHandler {
         return remboursementTab;
     }
 
-    public static void ecrireFichierErreur(String filePath){
+    public static void ecrireFichierErreur(String filePath, Exception e){
         JSONObject erreur = new JSONObject();
-        erreur.accumulate("message", "Données invalides");
+        erreur.accumulate("message", e.getLocalizedMessage());
         
         try {
             Utf8File.saveStringIntoFile(filePath, erreur.toString(4));

@@ -5,16 +5,18 @@ package projetagile.jsonmodels;
 
 import java.util.ArrayList;
 import java.util.List;
+import projetagile.InterfaceContrat;
 
 
 public class ModeleJsonOut {
     private String dossier;
     private String mois;
-    private List<Remboursement> remboursement;//c'est le meme objet que jsonIn
+    private List<Remboursement> remboursements;//c'est le meme objet que jsonIn
+    private double total = 0;
 
     //ne sert a rien de construire l'objet avec parametre
     public ModeleJsonOut() {
-        this.remboursement = new ArrayList<>();
+        this.remboursements = new ArrayList<>();
     }
 
  
@@ -35,14 +37,26 @@ public class ModeleJsonOut {
     }
     
     public List<Remboursement> getRemboursement() {
-        return remboursement;
+        return remboursements;
     }
 
-    public void setRemboursement(List<Remboursement> emboursement) {
-        this.remboursement = remboursement;
+    public void setRemboursement(List<Remboursement> remboursements) {
+        this.remboursements = remboursements;
     }
     
     public void addRemboursement(Remboursement nouveauRemboursement) {
-        remboursement.add(nouveauRemboursement);
+        remboursements.add(nouveauRemboursement);
+    }
+    
+    public double getTotal(){
+        return total;
+    }
+    
+    public void setTotal(double total){
+        this.total = total;
+    }
+    
+    public String totalEnString(double total){
+        return InterfaceContrat.convertirDoubleEnString(total);
     }
 }
