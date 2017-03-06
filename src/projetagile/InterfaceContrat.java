@@ -23,42 +23,55 @@ public abstract class InterfaceContrat {
         sortie.setDossier(modele.getTypeContrat() + modele.getClient());
         sortie.setMois(modele.getMois());
         
+        parcoursLesReclamations(sortie);
+        //modele.addReclamation(nouvelleReclamation);
+        return sortie;
+    }
+
+    private void parcoursLesReclamations(ModeleJsonOut sortie) {
         for(Reclamation reclamation : modele.getReclamations()){
             String strMontant = reclamation.getMontant();
             String strRemboursement = "";
             
-            Remboursement nouveauRemboursement = new Remboursement();
-            nouveauRemboursement.setSoins(reclamation.getSoins());
-            nouveauRemboursement.setDate(reclamation.getDate());
+            Remboursement nouveauRemboursement = setLeNouveauRemboursement(reclamation);
             
-            if(reclamation.getSoins() == 0){
-                strRemboursement =  massotherapie(strMontant);
-            } else if(reclamation.getSoins() == 100){
-                strRemboursement = osteopathie(strMontant);
-            } else if(reclamation.getSoins() == 150){
-                strRemboursement = kinesitherapie(strMontant);
-             } else if(reclamation.getSoins() == 175){
-                strRemboursement = medecin_generaliste_prive(strMontant);
-            } else if(reclamation.getSoins() == 200){
-                strRemboursement = psychologie_individuelle(strMontant);
-            } else if(reclamation.getSoins() >= 300 && reclamation.getSoins() < 400){
-                strRemboursement = soin_dentaire(strMontant);
-            } else if(reclamation.getSoins() == 400){
-                strRemboursement = naturo_acuponcture(strMontant);
-            } else if(reclamation.getSoins() == 500){
-                strRemboursement = chiropratie(strMontant);
-            } else if(reclamation.getSoins() == 600){
-                strRemboursement = physiotherapie(strMontant);
-            } else if(reclamation.getSoins() == 700){
-                strRemboursement = orthophonie_ergotherapie(strMontant);
-            }
-            
+            strRemboursement = choixDuSoinATraiter(reclamation, strRemboursement, strMontant);
             nouveauRemboursement.setMontant(strRemboursement);
             
             sortie.addRemboursement(nouveauRemboursement);
         }
-        //modele.addReclamation(nouvelleReclamation);
-        return sortie;
+    }
+
+    private Remboursement setLeNouveauRemboursement(Reclamation reclamation) {
+        Remboursement nouveauRemboursement = new Remboursement();
+        nouveauRemboursement.setSoins(reclamation.getSoins());
+        nouveauRemboursement.setDate(reclamation.getDate());
+        return nouveauRemboursement;
+    }
+
+    private String choixDuSoinATraiter(Reclamation reclamation, String strRemboursement, String strMontant) {
+        if(reclamation.getSoins() == 0){
+            strRemboursement =  massotherapie(strMontant);
+        } else if(reclamation.getSoins() == 100){
+            strRemboursement = osteopathie(strMontant);
+        } else if(reclamation.getSoins() == 150){
+            strRemboursement = kinesitherapie(strMontant);
+        } else if(reclamation.getSoins() == 175){
+            strRemboursement = medecin_generaliste_prive(strMontant);
+        } else if(reclamation.getSoins() == 200){
+            strRemboursement = psychologie_individuelle(strMontant);
+        } else if(reclamation.getSoins() >= 300 && reclamation.getSoins() < 400){
+            strRemboursement = soin_dentaire(strMontant);
+        } else if(reclamation.getSoins() == 400){
+            strRemboursement = naturo_acuponcture(strMontant);
+        } else if(reclamation.getSoins() == 500){
+            strRemboursement = chiropratie(strMontant);
+        } else if(reclamation.getSoins() == 600){
+            strRemboursement = physiotherapie(strMontant);
+        } else if(reclamation.getSoins() == 700){
+            strRemboursement = orthophonie_ergotherapie(strMontant);
+        }
+        return strRemboursement;
     }
     
     public static double convertirStringEnDouble(String strMontant){
@@ -68,7 +81,6 @@ public abstract class InterfaceContrat {
         if(contientVirgule(stringSansDollar)){
             stringSansDollar = stringSansDollar.replace(",", ".");
         }
-        
         montant = Double.parseDouble(stringSansDollar);
         
         return montant;
@@ -83,7 +95,6 @@ public abstract class InterfaceContrat {
                 reponse = true;
             } 
         }
-        
         return reponse;
     }
             
@@ -92,9 +103,7 @@ public abstract class InterfaceContrat {
         String montant;
         
         montant = String.format("%.2f", dblMontant);//vive le C
-        
-        montant = montant + "$";
-        
+        montant = montant + "$";        
         montant = montant.replace(",", ".");
         
         return montant;
