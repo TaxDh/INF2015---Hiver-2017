@@ -1,0 +1,4 @@
+Ceci est un fichier test qui sert à voir si on a règler le problème des commits. Actuellement seul TaxDh est visible sur Github. C'est la seule personne qui semble travailler sur github.
+Donc pour savoir si on a règler le bogue où non, servez-vous de ce fichier txt pour faire des commits (et push) pour vérifier si votre pseudonyme apparait, ou un code obscur.
+
+Écrivez n'importe quoi ici (pour qu'il y ait changement au projet et vous permetre de commit:
