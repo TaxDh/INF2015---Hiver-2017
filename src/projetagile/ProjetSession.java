@@ -18,6 +18,8 @@ import projetagile.jsonmodels.ModeleJsonOut;
  * @author kf891141
  */
 public class ProjetSession {
+    public static final String affichageStats = "-S";
+    public static final String effaceStats = "-SR";
 
     /**
      * @param args the command line arguments
@@ -25,18 +27,24 @@ public class ProjetSession {
     public static void main(String[] args) {
         
         if(args.length == 1){
-            
+            argumentStatTraitement(args);
         }
         else if(args.length == 2){
-
-            //String inputFilePath = ;
-            //String outputFilePath = ;
-
             lectureEtEcritureFichier(args[0], args[1]);
         } else {
             System.out.println("Il y a une erreur avec les arguments");
         }       
         
+    }
+
+    private static void argumentStatTraitement(String[] args) {
+        if(args[0].contentEquals(affichageStats)){
+            System.out.println("Test -S");
+        } else if(args[0].contentEquals(effaceStats)){
+            System.out.println("Test efface -SR");
+        } else{
+            System.out.println("Erreur! Il faut soit entrer -S, ou -SR ou 2 fichiers json");
+        }
     }
 
     private static void lectureEtEcritureFichier(String fichierEntree, String fichierSortie) {
