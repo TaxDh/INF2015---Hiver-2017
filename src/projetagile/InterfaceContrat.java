@@ -24,7 +24,6 @@ public abstract class InterfaceContrat {
         sortie.setMois(modele.getMois());
         
         parcoursLesReclamations(sortie);
-        //modele.addReclamation(nouvelleReclamation);
         return sortie;
     }
 

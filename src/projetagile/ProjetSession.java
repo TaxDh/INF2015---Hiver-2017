@@ -24,27 +24,30 @@ public class ProjetSession {
      */
     public static void main(String[] args) {
         
-        if(args.length == 2){
+        if(args.length == 1){
+            
+        }
+        else if(args.length == 2){
 
-            String inputFilePath = args[0];
-            String outputFilePath = args[1];
+            //String inputFilePath = ;
+            //String outputFilePath = ;
 
-            lectureEtEcritureFichier(inputFilePath, outputFilePath);
+            lectureEtEcritureFichier(args[0], args[1]);
         } else {
             System.out.println("Il y a une erreur avec les arguments");
         }       
         
     }
 
-    private static void lectureEtEcritureFichier(String inputFilePath, String outputFilePath) {
+    private static void lectureEtEcritureFichier(String fichierEntree, String fichierSortie) {
         try{
-            ModeleJsonIn reclamation = JsonFileHandler.ouvrireFichier(inputFilePath);
+            ModeleJsonIn reclamation = JsonFileHandler.ouvrireFichier(fichierEntree);
             InterfaceContrat nouveauContrat = ContratFactory.instancieContrat(reclamation);
             ModeleJsonOut test = nouveauContrat.calculRemboursement();
-            JsonFileHandler.ecrireFichier(outputFilePath, test);
+            JsonFileHandler.ecrireFichier(fichierSortie, test);
         } catch (InvalidArgumentException e) {
             //TODO WRITE TO ERROR FILE
-            JsonFileHandler.ecrireFichierErreur(outputFilePath, e);
+            JsonFileHandler.ecrireFichierErreur(fichierSortie, e);
             System.exit(0);
         }
     }
