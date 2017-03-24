@@ -10,6 +10,7 @@ public class ContratFactory {
     public static InterfaceContrat instancieContrat(ModeleJsonIn modele){
         char typeContrat = modele.getTypeContrat();
         InterfaceContrat contractHolder = null;
+        
         switch(typeContrat){
             case 'A':
                 contractHolder = new ContratA(modele);

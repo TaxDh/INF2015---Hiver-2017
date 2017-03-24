@@ -10,7 +10,19 @@ import projetagile.jsonmodels.Remboursement;
 
 public abstract class InterfaceContrat {
     
+    public final String maximumMensuelOsteopahtie = "250.00$";
+    public final String maximumMensuelMedGenPriv = "200.00$";
+    public final String maximumMensuelPsychologieInd = "250.00$";
+    public final String maximumMensuelChiropratie = "150.00$";
+    public final String maximumMensuelPhysiotherapie = "300.00$";
+            
     private ModeleJsonIn modele;
+    
+    public String compteurOsteopathie = "0";
+    public String compteurMedGenPriv = "0";
+    public String compteurPsychologieInd = "0";
+    public String compteurChiropratie = "0";
+    public String compteurPhysiotherapie = "0";
     
     public InterfaceContrat(ModeleJsonIn modele) {
         
@@ -105,6 +117,10 @@ public abstract class InterfaceContrat {
     //numero 700
     public abstract String orthophonie_ergotherapie(String montant);
     
-    
+    public static String maxMensuel (){
+        
+        return "";
+    }
+       
     
 }

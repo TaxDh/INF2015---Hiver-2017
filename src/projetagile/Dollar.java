@@ -9,8 +9,35 @@ package projetagile;
  *
  * @author kf891141
  */
-public class Dollar {
+public class Dollar {    
     
+    public static String calculMontant(String montant, double pourcentage, boolean maximum, int maximumRemboursement){
+        int intRemboursement = convertirStringEnInt(montant);
+        
+        intRemboursement *= pourcentage;
+        intRemboursement = siMaximumAtteint(maximum, intRemboursement, maximumRemboursement);
+        
+        return convertirIntEnString(intRemboursement);
+    }
+
+    private static int siMaximumAtteint(boolean maximum, int intRemboursement, int maximumRemboursement) {
+        if(maximum){
+            if(intRemboursement > maximumRemboursement*100){
+                intRemboursement = maximumRemboursement*100;
+            }
+        }
+        return intRemboursement;
+    }
+    
+    public static String additionStringDollar (String premier, String deuxieme){
+        int addition;
+        String resultat;
+        
+        addition = convertirStringEnInt(premier) + convertirStringEnInt(deuxieme);
+        resultat = convertirIntEnString(addition);
+        
+        return resultat;
+    }
     
     public static int convertirStringEnInt(String strMontant){
         double dblMontant;
@@ -74,31 +101,5 @@ public class Dollar {
         montant = intMontant/100 + (double) intMontant % 100;
         
         return montant;
-    }
-    
-    
-    
-    public static String calculMontant(String montant, double pourcentage, boolean maximum, int maximumRemboursement){
-        int intRemboursement = convertirStringEnInt(montant);
-        
-        intRemboursement *= pourcentage;
-        if(maximum){
-            if(intRemboursement > maximumRemboursement*100){
-                intRemboursement = maximumRemboursement*100;
-            }
-        }
-
-        return convertirIntEnString(intRemboursement);
-    }
-    
-    /*public String osteopathie(String montant){
-        double montantDouble = Dollar.convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 0.50;
-        if(montantDouble > 50){
-            montantDouble = 50;
-        }
-        return Dollar.convertirDoubleEnString(montantDouble);
-    }*/
-    
-    
+    }    
 }
