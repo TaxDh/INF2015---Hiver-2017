@@ -5,6 +5,7 @@ package projetagile.jsonmodels;
 
 import java.util.ArrayList;
 import java.util.List;
+import projetagile.Dollar;
 import projetagile.InterfaceContrat;
 
 
@@ -57,6 +58,6 @@ public class ModeleJsonOut {
     }
     
     public String totalEnString(double total){
-        return InterfaceContrat.convertirDoubleEnString(total);
+        return Dollar.convertirDoubleEnString(total);
     }
 }

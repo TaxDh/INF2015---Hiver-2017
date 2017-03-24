@@ -143,7 +143,7 @@ public class JsonFileHandler {
 
     private static double calculMontantTotal(Remboursement remboursementCourant, double montantTotal) {
         double montantCourant;
-        montantCourant = InterfaceContrat.convertirStringEnDouble(remboursementCourant.getMontant());
+        montantCourant = Dollar.convertirStringEnDouble(remboursementCourant.getMontant());
         montantTotal += montantCourant;
         return montantTotal;
     }

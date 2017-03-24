@@ -60,7 +60,7 @@ public class InterfaceContratTest {
         System.out.println("convertirStringEnDouble");
         String strMontant = "";
         double expResult = 0.0;
-        double result = InterfaceContrat.convertirStringEnDouble(strMontant);
+        double result = Dollar.convertirStringEnDouble(strMontant);
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -74,7 +74,7 @@ public class InterfaceContratTest {
         System.out.println("contientVirgule");
         String montant = "";
         boolean expResult = false;
-        boolean result = InterfaceContrat.contientVirgule(montant);
+        boolean result = Dollar.contientVirgule(montant);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
@@ -88,7 +88,7 @@ public class InterfaceContratTest {
         System.out.println("convertirDoubleEnString");
         double dblMontant = 0.0;
         String expResult = "";
-        String result = InterfaceContrat.convertirDoubleEnString(dblMontant);
+        String result = Dollar.convertirDoubleEnString(dblMontant);
         assertEquals(expResult, result);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");

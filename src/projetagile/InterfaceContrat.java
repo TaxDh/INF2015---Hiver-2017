@@ -73,40 +73,6 @@ public abstract class InterfaceContrat {
         return strRemboursement;
     }
     
-    public static double convertirStringEnDouble(String strMontant){
-        double montant;
-        String stringSansDollar = strMontant.replace("$", "");
-        
-        if(contientVirgule(stringSansDollar)){
-            stringSansDollar = stringSansDollar.replace(",", ".");
-        }
-        montant = Double.parseDouble(stringSansDollar);
-        
-        return montant;
-    }
-    
-    
-    
-    public static boolean contientVirgule(String montant){
-        boolean reponse = false;
-        for(int i = 0; i < montant.length(); i++){
-            if(montant.charAt(i) == ','){
-                reponse = true;
-            } 
-        }
-        return reponse;
-    }
-            
-            
-    public static String convertirDoubleEnString(double dblMontant){
-        String montant;
-        
-        montant = String.format("%.2f", dblMontant);//vive le C
-        montant = montant + "$";        
-        montant = montant.replace(",", ".");
-        
-        return montant;
-    }
     
     
     //numero 0
