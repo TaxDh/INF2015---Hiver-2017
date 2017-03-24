@@ -25,9 +25,7 @@ public class ContratA extends InterfaceContrat{
     //Type de soin
     //numero 0
     public String massotherapie(String montant){
-        double montantDouble = Dollar.convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 0.25;
-        return Dollar.convertirDoubleEnString(montantDouble);
+        return Dollar.calculMontant(montant, 0.25, false, 0);
     }
     
     //numero 100

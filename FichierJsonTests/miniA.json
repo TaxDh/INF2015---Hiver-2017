@@ -1,0 +1,9 @@
+{
+	"dossier": "A100323",
+	"mois": "2017-01",
+	"reclamations": [{
+		"soin": 0,
+		"date": "2017-01-11",
+		"montant": "100.00$"
+	}]
+}

@@ -28,12 +28,12 @@ public class ContratB extends InterfaceContrat{
     
     //numero 100
     public String osteopathie(String montant){
-        double montantDouble = Dollar.convertirStringEnDouble(montant);
+        /*double montantDouble = Dollar.convertirStringEnDouble(montant);
         montantDouble = montantDouble * 0.50;
         if(montantDouble > 50){
             montantDouble = 50;
-        }
-        return Dollar.convertirDoubleEnString(montantDouble);
+        }*/
+        return Dollar.calculMontant(montant, 0.5, true, 50);
     }
     
     //numero 150

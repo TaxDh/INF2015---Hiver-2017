@@ -24,10 +24,11 @@ public class Dollar {
     
     public static String convertirIntEnString(int intMontant){
         String montant;
-        double dblMontant = convertirDoubleEnInt(intMontant);
+        double dblMontant = convertirIntEnDouble(intMontant);
         
         montant = convertirDoubleEnString(dblMontant);
-        return "";
+        
+        return montant;
     }
 
     public static boolean contientVirgule(String montant) {
@@ -77,12 +78,18 @@ public class Dollar {
     
     
     
-    /*public static String calculMontant(String montant, int pourcentage, boolean maximum, int maximumRemboursement){
+    public static String calculMontant(String montant, double pourcentage, boolean maximum, int maximumRemboursement){
+        int intRemboursement = convertirStringEnInt(montant);
         
-        
-        
-        return "";
-    }*/
+        intRemboursement *= pourcentage;
+        if(maximum){
+            if(intRemboursement > maximumRemboursement*100){
+                intRemboursement = maximumRemboursement*100;
+            }
+        }
+
+        return convertirIntEnString(intRemboursement);
+    }
     
     /*public String osteopathie(String montant){
         double montantDouble = Dollar.convertirStringEnDouble(montant);
