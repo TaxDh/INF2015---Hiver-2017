@@ -1,0 +1,25 @@
+{
+	"reclamations valides": 0,
+	"reclamations rejetes": 0,
+	"soin": [{
+		"massotherapie": 0
+	}, {
+		"ostheopathie": 0
+	}, {
+		"kinesitherapie": 0
+	}, {
+		"medecin_generaliste_prive": 0
+	}, {
+		"psychologie_individuelle": 0
+	}, {
+		"soin_dentaire": 0
+	}, {
+		"naturopathie_acuponcture": 0
+	}, {
+		"chiropratie": 0
+	}, {
+		"physiotherapie": 0
+	}, {
+		"Orthophonie_ergotherapie": 0
+	}]
+}
