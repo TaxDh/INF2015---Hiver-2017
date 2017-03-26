@@ -21,101 +21,100 @@ public class ContratD extends InterfaceContrat{
     //Type de soin
     //numero 0
     public Dollar massotherapie(Dollar montant){
-        /*double montantDouble = Dollar.convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 1.0;
-        if(montantDouble > 85){
-            montantDouble = 85;
+        Dollar remboursement = montant.calculerRemboursement(1.0);
+        if(remboursement.getMontant() > (new Dollar("85$")).getMontant()){
+            remboursement = new Dollar("85$");
         }
-        return Dollar.convertirDoubleEnString(montantDouble);*/
-        return new Dollar();
+        return remboursement;
     }
     
     //numero 100
     public Dollar osteopathie(Dollar montant){
-       /* double montantDouble = Dollar.convertirStringEnDouble(montant);
-       montantDouble = montantDouble * 1.0;
-        if(montantDouble > 75){
-            montantDouble = 75;
+       Dollar remboursement = montant.calculerRemboursement(1.0);
+        if(remboursement.getMontant() > (new Dollar("75$")).getMontant()){
+            remboursement = new Dollar("75$");
         }
-        return Dollar.convertirDoubleEnString(montantDouble);*/
-        return new Dollar();
+        if(remboursement.getMontant() > maximumMensuelOsteopahtie.getMontant()){
+            remboursement.setMontant(maximumMensuelOsteopahtie.getMontant());
+        }
+        maximumMensuelOsteopahtie.soustractionDollar(remboursement);
+        return remboursement;
     }
         //numero 150
     public Dollar kinesitherapie (Dollar montant){
-        /*double montantDouble = Dollar.convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 1.0;
-        if(montantDouble > 150){
-            montantDouble = 150;
+        Dollar remboursement = montant.calculerRemboursement(1.0);
+        if(remboursement.getMontant() > (new Dollar("150$")).getMontant()){
+            remboursement = new Dollar("150$");
         }
-        return Dollar.convertirDoubleEnString(montantDouble);*/
-        return new Dollar();
+        return remboursement;
     }
     
     //numero 175
     public Dollar medecin_generaliste_prive (Dollar montant){
-        /*double montantDouble = Dollar.convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 0.95;
-        return Dollar.convertirDoubleEnString(montantDouble);*/
-        return new Dollar();
+        Dollar remboursement = montant.calculerRemboursement(0.95);
+        if(remboursement.getMontant() > maximumMensuelMedGenPriv.getMontant()){
+            remboursement.setMontant(maximumMensuelMedGenPriv.getMontant());
+        }
+        maximumMensuelMedGenPriv.soustractionDollar(remboursement);
+        return remboursement;
     }
     
     //numero 200
     public Dollar psychologie_individuelle(Dollar montant){
-        /*double montantDouble = Dollar.convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 1.0;
-        if(montantDouble > 100){
-            montantDouble = 100;
+        Dollar remboursement = montant.calculerRemboursement(1.0);
+        if(remboursement.getMontant() > (new Dollar("100$")).getMontant()){
+            remboursement = new Dollar("100$");
         }
-        return Dollar.convertirDoubleEnString(montantDouble);*/
-        return new Dollar();
+        if(remboursement.getMontant() > maximumMensuelPsychologieInd.getMontant()){
+            remboursement.setMontant(maximumMensuelPsychologieInd.getMontant());
+        }
+        maximumMensuelPsychologieInd.soustractionDollar(remboursement);
+        return remboursement;
     }
     
     //numero 300 a 399
     public Dollar soin_dentaire(Dollar montant){
-        /*double montantDouble = Dollar.convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 1.0;
-        return Dollar.convertirDoubleEnString(montantDouble);*/
-        return new Dollar();
+        return montant.calculerRemboursement(1.0);
     }
     
     //numero 400   
     public Dollar naturo_acuponcture(Dollar montant){
-        /*double montantDouble = Dollar.convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 1.0;
-        if(montantDouble > 65){
-            montantDouble = 65;
+        Dollar remboursement = montant.calculerRemboursement(1.0);
+        if(remboursement.getMontant() > (new Dollar("65$")).getMontant()){
+            remboursement = new Dollar("65$");
         }
-        return Dollar.convertirDoubleEnString(montantDouble);*/
-        return new Dollar();
+        return remboursement;
     }
     
     //numero 500
     public Dollar chiropratie(Dollar montant){
-        /*double montantDouble = Dollar.convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 1.0;
-        return Dollar.convertirDoubleEnString(montantDouble);*/
-        return new Dollar();
+        Dollar remboursement = montant.calculerRemboursement(1.0);
+        if(remboursement.getMontant() > maximumMensuelChiropratie.getMontant()){
+            remboursement.setMontant(maximumMensuelChiropratie.getMontant());
+        }
+        maximumMensuelChiropratie.soustractionDollar(remboursement);
+        return remboursement;
     }
     
     //numero 600
     public Dollar physiotherapie(Dollar montant){
-        /*double montantDouble = Dollar.convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 1.0;
-        if(montantDouble > 100){
-            montantDouble = 100;
+        Dollar remboursement = montant.calculerRemboursement(1.0);
+        if(remboursement.getMontant() > (new Dollar("100$")).getMontant()){
+            remboursement = new Dollar("100$");
         }
-        return Dollar.convertirDoubleEnString(montantDouble);*/
-        return new Dollar();
+        if(remboursement.getMontant() > maximumMensuelPhysiotherapie.getMontant()){
+            remboursement.setMontant(maximumMensuelPhysiotherapie.getMontant());
+        }
+        maximumMensuelPhysiotherapie.soustractionDollar(remboursement);
+        return remboursement;
     }
     //numero 700
     public Dollar orthophonie_ergotherapie(Dollar montant){
-        /*double montantDouble = Dollar.convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 1.0;
-        if(montantDouble > 90){
-            montantDouble = 90;
+        Dollar remboursement = montant.calculerRemboursement(1.0);
+        if(remboursement.getMontant() > (new Dollar("90$")).getMontant()){
+            remboursement = new Dollar("90$");
         }
-        return Dollar.convertirDoubleEnString(montantDouble);*/
-        return new Dollar();
+        return remboursement;
     }
    
 }

@@ -57,7 +57,7 @@ public class Dollar {
         this.montant += dollar.getMontant();
     }
     
-    public void soustractionDOllar(Dollar dollar){
+    public void soustractionDollar(Dollar dollar){
         this.montant -= dollar.getMontant();
     }
     
