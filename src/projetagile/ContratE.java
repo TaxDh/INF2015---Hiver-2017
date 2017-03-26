@@ -3,8 +3,6 @@ package projetagile;
 
 
 import projetagile.InterfaceContrat;
-import static projetagile.Dollar.convertirDoubleEnString;
-import static projetagile.Dollar.convertirStringEnDouble;
 import projetagile.jsonmodels.ModeleJsonIn;
 
 /*

@@ -4,9 +4,6 @@
 package projetagile;
 
 import projetagile.jsonmodels.ModeleJsonIn;
-import projetagile.jsonmodels.ModeleJsonOut;
-import projetagile.jsonmodels.Reclamation;
-import projetagile.jsonmodels.Remboursement;
 
 /**
  *

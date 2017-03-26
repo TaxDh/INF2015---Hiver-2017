@@ -1,13 +1,7 @@
 /* main du projet*/
 package projetagile;
 
-import java.io.IOException;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
-import net.sf.json.JSONArray;
-import net.sf.json.JSONObject;
-import net.sf.json.JSONSerializer;
 import projetagile.jsonmodels.ModeleJsonIn;
 import projetagile.jsonmodels.ModeleJsonOut;
 import projetagile.jsonmodels.Statistique;

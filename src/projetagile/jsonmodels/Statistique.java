@@ -3,8 +3,6 @@
  */
 package projetagile.jsonmodels;
 
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  *
