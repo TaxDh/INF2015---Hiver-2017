@@ -11,6 +11,7 @@ import net.sf.json.JSONSerializer;
 import projetagile.jsonmodels.ModeleJsonIn;
 import projetagile.jsonmodels.ModeleJsonOut;
 import projetagile.jsonmodels.Statistique;
+import projetagile.AffichageStats;
 
 
 /**
@@ -26,20 +27,19 @@ public class ProjetSession {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        Statistique stats = new Statistique();
         
-        
-        /*try{      
-           Statistique stats = JsonFileHandler.ouvrirFichierStatistique();
+        try{      
+            stats = JsonFileHandler.ouvrirFichierStatistique("statistique.json");
         } catch (InvalidArgumentException e){
             System.out.println("Erreur avec l'ouverture du fichier statistique.json");
-        }*/
+        }
 
         if(args.length == 1){
             if(args[0].contentEquals(affichageStats)){
-                System.out.println("Test -S");
-                
+               AffichageStats.afficherStatistiques(stats);
             } else if(args[0].contentEquals(effaceStats)){
-                System.out.println("Test efface -SR");
+                ReinitialiseStats.reinitialise(stats);
             } else{
                 System.out.println("Erreur! Il faut soit entrer -S, ou -SR ou 2 fichiers");
             }
@@ -55,7 +55,7 @@ public class ProjetSession {
                 JsonFileHandler.ecrireFichier(fichierSortie, test);
                 
             } catch (InvalidArgumentException e) {
-                //compteur ici
+                stats.setReclamationRejete(stats.getReclamationRejete() + 1);
                 JsonFileHandler.ecrireFichierErreur(fichierSortie, e);
             }
             finally{

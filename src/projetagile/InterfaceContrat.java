@@ -8,6 +8,7 @@ import projetagile.jsonmodels.ModeleJsonIn;
 import projetagile.jsonmodels.ModeleJsonOut;
 import projetagile.jsonmodels.Reclamation;
 import projetagile.jsonmodels.Remboursement;
+import projetagile.jsonmodels.Statistique;
 
 /**
  *
@@ -26,7 +27,7 @@ public abstract class InterfaceContrat {
         
         this.modele = modele;
     }
-    //parametre un int pour le numero et le cout, je pense
+
     public ModeleJsonOut calculRemboursement(){
         ModeleJsonOut sortie = new ModeleJsonOut();
         sortie.setClient(modele.getClient());
@@ -42,25 +43,26 @@ public abstract class InterfaceContrat {
             
             if(reclamation.getSoins() == 0){
             remboursementDollar =  massotherapie(montant);
-        } else if(reclamation.getSoins() == 100){
-            remboursementDollar = osteopathie(montant);
-        } else if(reclamation.getSoins() == 150){
-            remboursementDollar = kinesitherapie(montant);
-        } else if(reclamation.getSoins() == 175){
-            remboursementDollar = medecin_generaliste_prive(montant);
-        } else if(reclamation.getSoins() == 200){
-            remboursementDollar = psychologie_individuelle(montant);
-        } else if(reclamation.getSoins() >= 300 && reclamation.getSoins() < 400){
-            remboursementDollar = soin_dentaire(montant);
-        } else if(reclamation.getSoins() == 400){
-            remboursementDollar = naturo_acuponcture(montant);
-        } else if(reclamation.getSoins() == 500){
-            remboursementDollar = chiropratie(montant);
-        } else if(reclamation.getSoins() == 600){
-            remboursementDollar = physiotherapie(montant);
-        } else if(reclamation.getSoins() == 700){
-            remboursementDollar = orthophonie_ergotherapie(montant);
-        }
+            
+            } else if(reclamation.getSoins() == 100){
+                remboursementDollar = osteopathie(montant);
+            } else if(reclamation.getSoins() == 150){
+                remboursementDollar = kinesitherapie(montant);
+            } else if(reclamation.getSoins() == 175){
+                remboursementDollar = medecin_generaliste_prive(montant);
+            } else if(reclamation.getSoins() == 200){
+                remboursementDollar = psychologie_individuelle(montant);
+            } else if(reclamation.getSoins() >= 300 && reclamation.getSoins() < 400){
+                remboursementDollar = soin_dentaire(montant);
+            } else if(reclamation.getSoins() == 400){
+                remboursementDollar = naturo_acuponcture(montant);
+            } else if(reclamation.getSoins() == 500){
+                remboursementDollar = chiropratie(montant);
+            } else if(reclamation.getSoins() == 600){
+                remboursementDollar = physiotherapie(montant);
+            } else if(reclamation.getSoins() == 700){
+                remboursementDollar = orthophonie_ergotherapie(montant);
+            }
             
             nouveauRemboursement.setMontant(remboursementDollar);
             

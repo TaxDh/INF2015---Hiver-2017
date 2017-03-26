@@ -21,7 +21,7 @@ import projetagile.jsonmodels.Statistique;
  */
 public class JsonFileHandler {
     
-    public static ModeleJsonIn ouvrireFichier(String filePath) throws InvalidArgumentException {
+    public static ModeleJsonIn ouvrireFichier(String fichierEntree) throws InvalidArgumentException {
         ModeleJsonIn modele = new ModeleJsonIn();
         String jsonText = "";
         JSONObject racine;
@@ -30,7 +30,7 @@ public class JsonFileHandler {
         JSONArray reclamations;
          
         try {
-            jsonText = Utf8File.loadFileIntoString(filePath);
+            jsonText = Utf8File.loadFileIntoString(fichierEntree);
         }catch(IOException e) {
             System.out.println("Erreur lors de la lecture du fichier JSON. " + e.getLocalizedMessage());
             System.exit(1);
@@ -116,7 +116,7 @@ public class JsonFileHandler {
         return modele;
     }
 
-    public static void ecrireFichier(String filePath, ModeleJsonOut modeleOut) {
+    public static void ecrireFichier(String fichierSortie, ModeleJsonOut modeleOut) {
        
         JSONObject remboursement = new JSONObject();
         Dollar montantTotal = new Dollar();
@@ -142,14 +142,14 @@ public class JsonFileHandler {
         remboursement.accumulate("total", montantTotal.convertirEnString());
         
         try {
-            Utf8File.saveStringIntoFile(filePath, remboursement.toString(4));
+            Utf8File.saveStringIntoFile(fichierSortie, remboursement.toString(4));
         } catch (IOException ex) {
             System.out.println("Erreur avec le fichier de sortie : " + ex.getLocalizedMessage());
         }
 
     }
     
-    public static Statistique ouvrirFichierStatistique() throws InvalidArgumentException {
+    public static Statistique ouvrirFichierStatistique(String fichierEntree) throws InvalidArgumentException {
         Statistique stats = new Statistique();
         String jsonTxt = null;
         JSONObject racine;
@@ -167,7 +167,7 @@ public class JsonFileHandler {
         int nbSoinOrthophonie;
         
         try {
-            jsonTxt = Utf8File.loadFileIntoString("statistique.json");
+            jsonTxt = Utf8File.loadFileIntoString(fichierEntree);
         } catch (IOException ex) {
             System.out.println("Erreur lors de la lecture du fichier statistique.json. " + ex.getLocalizedMessage());
             System.exit(1);
