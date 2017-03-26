@@ -286,28 +286,29 @@ public class JsonFileHandler {
     
     private static boolean estNumeroContratValide(char numeroContrat){
         if(numeroContrat == 'A' || numeroContrat == 'B' || numeroContrat == 'C'
-                || numeroContrat == 'D'){
+                || numeroContrat == 'D' || numeroContrat == 'E'){
             return true;
         }
         return false;
     }
     
     private static boolean estNumeroSoinValide(int soin){
+        boolean resultat = false;
         if(soin == 0 || soin == 100 || soin == 150 || soin == 175 || soin == 200 || (soin >= 300 && soin <= 400)
                 || soin == 500 || soin == 600 || soin == 700){
-            return true;            
-        } else {
-            return false;
+            resultat = true;            
         }
+        return resultat;
     }
     
     private static boolean estDateValide(String date, String mois){
         String test = date.substring(0, 7);
+        boolean resultat = false;
         if(test.equals(mois)){
-            return true;            
-        } else {
-            return false;
+            resultat = true;            
         }
+        
+        return resultat;
     }
 
     

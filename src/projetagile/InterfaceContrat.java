@@ -41,9 +41,9 @@ public abstract class InterfaceContrat {
             nouveauRemboursement.setSoins(reclamation.getSoins());
             nouveauRemboursement.setDate(reclamation.getDate());
             
-            if(reclamation.getSoins() == 0){
-            remboursementDollar =  massotherapie(montant);
             
+            if(reclamation.getSoins() == 0){
+                remboursementDollar =  massotherapie(montant);
             } else if(reclamation.getSoins() == 100){
                 remboursementDollar = osteopathie(montant);
             } else if(reclamation.getSoins() == 150){
