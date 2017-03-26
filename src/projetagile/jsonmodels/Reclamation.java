@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package projetagile.jsonmodels;
+import projetagile.Dollar;
 
 /**
  *
@@ -13,12 +14,12 @@ public class Reclamation {
     
     private int soins;
     private String date;
-    private String montant;
+    private Dollar montant;
 
     public Reclamation() {
     }
 
-    public Reclamation(int soins, String date, String montant) {
+    public Reclamation(int soins, String date, Dollar montant) {
         this.soins = soins;
         this.date = date;
         this.montant = montant;
@@ -34,7 +35,7 @@ public class Reclamation {
         return date;
     }
 
-    public String getMontant() {
+    public Dollar getMontant() {
         return montant;
     }
 
@@ -46,7 +47,7 @@ public class Reclamation {
         this.date = date;
     }
 
-    public void setMontant(String montant) {
+    public void setMontant(Dollar montant) {
         this.montant = montant;
     }
 

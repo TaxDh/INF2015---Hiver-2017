@@ -24,69 +24,86 @@ public class ContratA extends InterfaceContrat{
    
     //Type de soin
     //numero 0
-    public String massotherapie(String montant){
-        return Dollar.calculMontant(montant, 0.25, false, 0);
+    public Dollar massotherapie(Dollar montant){
+        //double montantDouble = Dollar.convertirStringEnDouble(montant);
+        //montantDouble = montantDouble * 0.25;
+        //return Dollar.convertirDoubleEnString(montantDouble);
+        Dollar remboursement ;
+        remboursement = montant.calculerRemboursement(0.25);
+        return remboursement;
     }
     
     //numero 100
-    public String osteopathie(String montant){
-        double montantDouble = Dollar.convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 0.35;
-        return Dollar.convertirDoubleEnString(montantDouble);
+    public Dollar osteopathie(Dollar montant){
+        Dollar remboursement ;
+        remboursement = montant.calculerRemboursement(0.35);
+        if(remboursement.getMontant() > maximumMensuelOsteopahtie.getMontant()){
+            remboursement.setMontant(maximumMensuelOsteopahtie.getMontant());
+        }
+        maximumMensuelOsteopahtie.soustractionDOllar(remboursement);
+        return remboursement;
     }
     
     //numero 150
-    public String kinesitherapie (String montant){
-        double montantDouble = Dollar.convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 0.0;
-        return Dollar.convertirDoubleEnString(montantDouble);
+    public Dollar kinesitherapie (Dollar montant){
+        //double montantDouble = Dollar.convertirStringEnDouble(montant);
+        //montantDouble = montantDouble * 0.0;
+       // return Dollar.convertirDoubleEnString(montantDouble);
+       return new Dollar();
     }
     
     //numero 175
-    public String medecin_generaliste_prive (String montant){
-        double montantDouble = Dollar.convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 0.5;
-        return Dollar.convertirDoubleEnString(montantDouble);
+    public Dollar medecin_generaliste_prive (Dollar montant){
+       // double montantDouble = Dollar.convertirStringEnDouble(montant);
+       // montantDouble = montantDouble * 0.5;
+       // return Dollar.convertirDoubleEnString(montantDouble);
+       return new Dollar();
     }
     
     //numero 200
-    public String psychologie_individuelle(String montant){
-        double montantDouble = Dollar.convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 0.25;
-        return Dollar.convertirDoubleEnString(montantDouble);
+    public Dollar psychologie_individuelle(Dollar montant){
+       // double montantDouble = Dollar.convertirStringEnDouble(montant);
+       // montantDouble = montantDouble * 0.25;
+       // return Dollar.convertirDoubleEnString(montantDouble);
+       return new Dollar();
     }
     
     //numero 300 a 399
-    public String soin_dentaire(String montant){
-        double montantDouble = Dollar.convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 0.0;
-        return Dollar.convertirDoubleEnString(montantDouble);
+    public Dollar soin_dentaire(Dollar montant){
+       // double montantDouble = Dollar.convertirStringEnDouble(montant);
+       // montantDouble = montantDouble * 0.0;
+       // return Dollar.convertirDoubleEnString(montantDouble);
+       return new Dollar();
     }
     
     //numero 400   
-    public String naturo_acuponcture(String montant){
-        double montantDouble = Dollar.convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 0.0;
-        return Dollar.convertirDoubleEnString(montantDouble);
+    public Dollar naturo_acuponcture(Dollar montant){
+       // double montantDouble = Dollar.convertirStringEnDouble(montant);
+       // montantDouble = montantDouble * 0.0;
+       // return Dollar.convertirDoubleEnString(montantDouble);
+       return new Dollar();
     }
     
     //numero 500
-    public String chiropratie(String montant){
-        double montantDouble = Dollar.convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 0.25;
-        return Dollar.convertirDoubleEnString(montantDouble);
+    public Dollar chiropratie(Dollar montant){
+        //double montantDouble = Dollar.convertirStringEnDouble(montant);
+        //montantDouble = montantDouble * 0.25;
+        //return Dollar.convertirDoubleEnString(montantDouble);
+        return new Dollar();
     }
     
     //numero 600
-    public String physiotherapie(String montant){
-        double montantDouble = Dollar.convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 0.40;
-        return Dollar.convertirDoubleEnString(montantDouble);
+    public Dollar physiotherapie(Dollar montant){
+        //double montantDouble = Dollar.convertirStringEnDouble(montant);
+       // montantDouble = montantDouble * 0.40;
+        //return Dollar.convertirDoubleEnString(montantDouble);
+        return new Dollar();
     }
     //numero 700
-    public String orthophonie_ergotherapie(String montant){
-        double montantDouble = Dollar.convertirStringEnDouble(montant);
-        montantDouble = montantDouble * 0.0;
-        return Dollar.convertirDoubleEnString(montantDouble);
+    public Dollar orthophonie_ergotherapie(Dollar montant){
+       // double montantDouble = Dollar.convertirStringEnDouble(montant);
+       // montantDouble = montantDouble * 0.0;
+       // return Dollar.convertirDoubleEnString(montantDouble);
+        return new Dollar();
     }
 }

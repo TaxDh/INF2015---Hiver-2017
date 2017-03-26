@@ -1,31 +1,31 @@
 /*
- *  l'objet que deviendra le fichier json
- */
+    * l'objet que deviendra le fichier json
+*/
 package projetagile.jsonmodels;
 
 import java.util.ArrayList;
 import java.util.List;
-import projetagile.Dollar;
-import projetagile.InterfaceContrat;
 
 
 public class ModeleJsonOut {
     private String dossier;
     private String mois;
-    private List<Remboursement> remboursements;//c'est le meme objet que jsonIn
-    private double total = 0;
+    private List<Remboursement> remboursement;
+    private String totalStr;
 
-    //ne sert a rien de construire l'objet avec parametre
+   
+
+
     public ModeleJsonOut() {
-        this.remboursements = new ArrayList<>();
+        this.remboursement = new ArrayList<>();
     }
 
  
-    public String getDossier() {
+    public String getClient() {
         return dossier;
     }
 
-    public void setDossier(String client) {
+    public void setClient(String client) {
         this.dossier = client;
     }
 
@@ -38,26 +38,22 @@ public class ModeleJsonOut {
     }
     
     public List<Remboursement> getRemboursement() {
-        return remboursements;
+        return remboursement;
     }
 
-    public void setRemboursement(List<Remboursement> remboursements) {
-        this.remboursements = remboursements;
+    public void setRemboursement(List<Remboursement> emboursement) {
+        this.remboursement = remboursement;
     }
     
     public void addRemboursement(Remboursement nouveauRemboursement) {
-        remboursements.add(nouveauRemboursement);
+        remboursement.add(nouveauRemboursement);
     }
     
-    public double getTotal(){
-        return total;
+     public String getTotalStr() {
+        return totalStr;
     }
-    
-    public void setTotal(double total){
-        this.total = total;
-    }
-    
-    public String totalEnString(double total){
-        return Dollar.convertirDoubleEnString(total);
+
+    public void setTotalStr(String totalStr) {
+        this.totalStr = totalStr;
     }
 }

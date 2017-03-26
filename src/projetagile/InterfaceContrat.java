@@ -1,4 +1,6 @@
-/* classe pour lier la reclamation pour un soin donné au bon type de contrat.
+/* chaque soin est considéré comme une méthode
+elle différe pour chaque objet (contrat), donc on utilise une classe
+abstraite.
  */
 package projetagile;
 
@@ -7,120 +9,98 @@ import projetagile.jsonmodels.ModeleJsonOut;
 import projetagile.jsonmodels.Reclamation;
 import projetagile.jsonmodels.Remboursement;
 
-
+/**
+ *
+ * @author kf891141
+ */
 public abstract class InterfaceContrat {
-    
-    public final String maximumMensuelOsteopahtie = "250.00$";
-    public final String maximumMensuelMedGenPriv = "200.00$";
-    public final String maximumMensuelPsychologieInd = "250.00$";
-    public final String maximumMensuelChiropratie = "150.00$";
-    public final String maximumMensuelPhysiotherapie = "300.00$";
-            
+    protected Dollar maximumMensuelOsteopahtie = new Dollar("250.00$");
+    protected Dollar maximumMensuelMedGenPriv = new Dollar("200.00$");
+    protected Dollar maximumMensuelPsychologieInd = new Dollar("250.00$");
+    protected Dollar maximumMensuelChiropratie = new Dollar("150.00$");
+    protected Dollar maximumMensuelPhysiotherapie = new Dollar("300.00$");
+   
     private ModeleJsonIn modele;
-    
-    public String compteurOsteopathie = "0";
-    public String compteurMedGenPriv = "0";
-    public String compteurPsychologieInd = "0";
-    public String compteurChiropratie = "0";
-    public String compteurPhysiotherapie = "0";
     
     public InterfaceContrat(ModeleJsonIn modele) {
         
         this.modele = modele;
     }
-
-    
+    //parametre un int pour le numero et le cout, je pense
     public ModeleJsonOut calculRemboursement(){
         ModeleJsonOut sortie = new ModeleJsonOut();
-        sortie.setDossier(modele.getTypeContrat() + modele.getClient());
+        sortie.setClient(modele.getClient());
         sortie.setMois(modele.getMois());
         
-        parcoursLesReclamations(sortie);
-        return sortie;
-    }
-
-    private void parcoursLesReclamations(ModeleJsonOut sortie) {
         for(Reclamation reclamation : modele.getReclamations()){
-            String strMontant = reclamation.getMontant();
-            String strRemboursement = "";
+            Dollar montant = reclamation.getMontant();
+            Dollar remboursementDollar = new Dollar();
             
-            Remboursement nouveauRemboursement = setLeNouveauRemboursement(reclamation);
+            Remboursement nouveauRemboursement = new Remboursement();
+            nouveauRemboursement.setSoins(reclamation.getSoins());
+            nouveauRemboursement.setDate(reclamation.getDate());
             
-            strRemboursement = choixDuSoinATraiter(reclamation, strRemboursement, strMontant);
-            nouveauRemboursement.setMontant(strRemboursement);
+            if(reclamation.getSoins() == 0){
+            remboursementDollar =  massotherapie(montant);
+        } else if(reclamation.getSoins() == 100){
+            remboursementDollar = osteopathie(montant);
+        } else if(reclamation.getSoins() == 150){
+            remboursementDollar = kinesitherapie(montant);
+        } else if(reclamation.getSoins() == 175){
+            remboursementDollar = medecin_generaliste_prive(montant);
+        } else if(reclamation.getSoins() == 200){
+            remboursementDollar = psychologie_individuelle(montant);
+        } else if(reclamation.getSoins() >= 300 && reclamation.getSoins() < 400){
+            remboursementDollar = soin_dentaire(montant);
+        } else if(reclamation.getSoins() == 400){
+            remboursementDollar = naturo_acuponcture(montant);
+        } else if(reclamation.getSoins() == 500){
+            remboursementDollar = chiropratie(montant);
+        } else if(reclamation.getSoins() == 600){
+            remboursementDollar = physiotherapie(montant);
+        } else if(reclamation.getSoins() == 700){
+            remboursementDollar = orthophonie_ergotherapie(montant);
+        }
+            
+            nouveauRemboursement.setMontant(remboursementDollar);
             
             sortie.addRemboursement(nouveauRemboursement);
         }
+        //modele.addReclamation(nouvelleReclamation);
+        return sortie;
     }
-
-    private Remboursement setLeNouveauRemboursement(Reclamation reclamation) {
-        Remboursement nouveauRemboursement = new Remboursement();
-        nouveauRemboursement.setSoins(reclamation.getSoins());
-        nouveauRemboursement.setDate(reclamation.getDate());
-        return nouveauRemboursement;
-    }
-
-    private String choixDuSoinATraiter(Reclamation reclamation, String strRemboursement, String strMontant) {
-        if(reclamation.getSoins() == 0){
-            strRemboursement =  massotherapie(strMontant);
-        } else if(reclamation.getSoins() == 100){
-            strRemboursement = osteopathie(strMontant);
-        } else if(reclamation.getSoins() == 150){
-            strRemboursement = kinesitherapie(strMontant);
-        } else if(reclamation.getSoins() == 175){
-            strRemboursement = medecin_generaliste_prive(strMontant);
-        } else if(reclamation.getSoins() == 200){
-            strRemboursement = psychologie_individuelle(strMontant);
-        } else if(reclamation.getSoins() >= 300 && reclamation.getSoins() < 400){
-            strRemboursement = soin_dentaire(strMontant);
-        } else if(reclamation.getSoins() == 400){
-            strRemboursement = naturo_acuponcture(strMontant);
-        } else if(reclamation.getSoins() == 500){
-            strRemboursement = chiropratie(strMontant);
-        } else if(reclamation.getSoins() == 600){
-            strRemboursement = physiotherapie(strMontant);
-        } else if(reclamation.getSoins() == 700){
-            strRemboursement = orthophonie_ergotherapie(strMontant);
-        }
-        return strRemboursement;
-    }
-    
     
     
     //numero 0
-    public abstract String massotherapie(String montant);
+    public abstract Dollar massotherapie(Dollar montant);
     
     //numero 100
-    public abstract String osteopathie(String montant);
+    public abstract Dollar osteopathie(Dollar montant);
     
     //numero 150
-    public abstract String kinesitherapie (String montant);
+    public abstract Dollar kinesitherapie (Dollar montant);
     
     //numero 175
-    public abstract String medecin_generaliste_prive (String montant);
+    public abstract Dollar medecin_generaliste_prive (Dollar montant);
     
     //numero 200
-    public abstract String psychologie_individuelle(String montant);
+    public abstract Dollar psychologie_individuelle(Dollar montant);
     
     //numero 300 a 399
-    public abstract String soin_dentaire(String montant);
+    public abstract Dollar soin_dentaire(Dollar montant);
     
    //numero 400    
-    public abstract String naturo_acuponcture(String montant);
+    public abstract Dollar naturo_acuponcture(Dollar montant);
     
    //numero 500
-    public abstract String chiropratie(String montant);
+    public abstract Dollar chiropratie(Dollar montant);
     
     //numero 600
-    public abstract String physiotherapie(String montant);
+    public abstract Dollar physiotherapie(Dollar montant);
     
     //numero 700
-    public abstract String orthophonie_ergotherapie(String montant);
+    public abstract Dollar orthophonie_ergotherapie(Dollar montant);
     
-    public static String maxMensuel (){
-        
-        return "";
-    }
-       
+    
     
 }

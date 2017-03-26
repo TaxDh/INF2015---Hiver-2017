@@ -5,6 +5,8 @@
  */
 package projetagile.jsonmodels;
 
+import projetagile.Dollar;
+
 /**
  *
  * @author rene
@@ -13,12 +15,12 @@ public class Remboursement {
       
     private int soins;
     private String date;
-    private String montant;
+    private Dollar montant;
 
     public Remboursement() {
     }
 
-    public Remboursement(int soins, String date, String montant) {
+    public Remboursement(int soins, String date, Dollar montant) {
         this.soins = soins;
         this.date = date;
         this.montant = montant;
@@ -34,7 +36,7 @@ public class Remboursement {
         return date;
     }
 
-    public String getMontant() {
+    public Dollar getMontant() {
         return montant;
     }
 
@@ -46,7 +48,7 @@ public class Remboursement {
         this.date = date;
     }
 
-    public void setMontant(String montant) {
+    public void setMontant(Dollar montant) {
         this.montant = montant;
     }
 
