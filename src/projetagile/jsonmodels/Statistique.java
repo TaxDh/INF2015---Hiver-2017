@@ -13,20 +13,39 @@ import java.util.List;
 public class Statistique {
     private int reclamationValide;
     private int reclamationRejete;
-    private List<StatSoin> soin;
+    private int nbSoinMassotheratpie;
+    private int nbSoinOsteopathie;
+    private int nbSoinKinesitherapie;
+    private int nbSoinMGP;
+    private int nbSoinPsychologie;
+    private int nbSoinDentaire;
+    private int nbSoinNaturo;
+    private int nbSoinChiropratie;
+    private int nbSoinPhysiotherapie;
+    private int nbSoinOrthophonie;
 
-    
-    
-    public Statistique(int reclamationValide, int reclamationRejete){
+    public Statistique(){
+    }
+
+    public Statistique(int reclamationValide, int reclamationRejete, int nbSoinMassotheratpie,
+            int nbSoinOsteopathie, int nbSoinKinesitherapie, int nbSoinMGP, int nbSoinPsychologie,
+            int nbSoinDentaire, int nbSoinNaturo, int nbSoinChiropratie, int nbSoinPhysiotherapie,
+            int nbSoinOrthophonie) {
+        
         this.reclamationValide = reclamationValide;
         this.reclamationRejete = reclamationRejete;
-        this.soin = new ArrayList<>();
+        this.nbSoinMassotheratpie = nbSoinMassotheratpie;
+        this.nbSoinOsteopathie = nbSoinOsteopathie;
+        this.nbSoinKinesitherapie = nbSoinKinesitherapie;
+        this.nbSoinMGP = nbSoinMGP;
+        this.nbSoinPsychologie = nbSoinPsychologie;
+        this.nbSoinDentaire = nbSoinDentaire;
+        this.nbSoinNaturo = nbSoinNaturo;
+        this.nbSoinChiropratie = nbSoinChiropratie;
+        this.nbSoinPhysiotherapie = nbSoinPhysiotherapie;
+        this.nbSoinOrthophonie = nbSoinOrthophonie;
     }
     
-     public Statistique(){
-        this.soin = new ArrayList<>();
-    }
-     
     public int getReclamationValide() {
         return reclamationValide;
     }
@@ -43,16 +62,88 @@ public class Statistique {
         this.reclamationRejete = reclamationRejete;
     }
 
-    public List<StatSoin> getSoin() {
-        return soin;
+    public int getNbSoinMassotheratpie() {
+        return nbSoinMassotheratpie;
     }
 
-    public void setSoin(List<StatSoin> soin) {
-        this.soin = soin;
+    public void setNbSoinMassotheratpie(int nbSoinMassotheratpie) {
+        this.nbSoinMassotheratpie = nbSoinMassotheratpie;
+    }
+
+    public int getNbSoinOsteopathie() {
+        return nbSoinOsteopathie;
+    }
+
+    public void setNbSoinOsteopathie(int nbSoinOsteopathie) {
+        this.nbSoinOsteopathie = nbSoinOsteopathie;
+    }
+
+    public int getNbSoinKinesitherapie() {
+        return nbSoinKinesitherapie;
+    }
+
+    public void setNbSoinKinesitherapie(int nbSoinKinesitherapie) {
+        this.nbSoinKinesitherapie = nbSoinKinesitherapie;
+    }
+
+    public int getNbSoinMGP() {
+        return nbSoinMGP;
+    }
+
+    public void setNbSoinMGP(int nbSoinMGP) {
+        this.nbSoinMGP = nbSoinMGP;
+    }
+
+    public int getNbSoinPsychologie() {
+        return nbSoinPsychologie;
+    }
+
+    public void setNbSoinPsychologie(int nbSoinPsychologie) {
+        this.nbSoinPsychologie = nbSoinPsychologie;
+    }
+
+    public int getNbSoinDentaire() {
+        return nbSoinDentaire;
+    }
+
+    public void setNbSoinDentaire(int nbSoinDentaire) {
+        this.nbSoinDentaire = nbSoinDentaire;
+    }
+
+    public int getNbSoinNaturo() {
+        return nbSoinNaturo;
+    }
+
+    public void setNbSoinNaturo(int nbSoinNaturo) {
+        this.nbSoinNaturo = nbSoinNaturo;
+    }
+
+    public int getNbSoinChiropratie() {
+        return nbSoinChiropratie;
+    }
+
+    public void setNbSoinChiropratie(int nbSoinChiropratie) {
+        this.nbSoinChiropratie = nbSoinChiropratie;
+    }
+
+    public int getNbSoinPhysiotherapie() {
+        return nbSoinPhysiotherapie;
+    }
+
+    public void setNbSoinPhysiotherapie(int nbSoinPhysiotherapie) {
+        this.nbSoinPhysiotherapie = nbSoinPhysiotherapie;
+    }
+
+    public int getNbSoinOrthophonie() {
+        return nbSoinOrthophonie;
+    }
+
+    public void setNbSoinOrthophonie(int nbSoinOrthophonie) {
+        this.nbSoinOrthophonie = nbSoinOrthophonie;
     }
     
-    public void ajouterSoin(StatSoin nouveauSoin) {
-        soin.add(nouveauSoin);
-    }
-   
 }
+
+    
+    
+    

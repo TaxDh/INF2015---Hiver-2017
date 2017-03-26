@@ -14,7 +14,6 @@ import projetagile.jsonmodels.ModeleJsonIn;
 import projetagile.jsonmodels.Reclamation;
 import projetagile.jsonmodels.ModeleJsonOut;
 import projetagile.jsonmodels.Remboursement;
-import projetagile.jsonmodels.StatSoin;
 import projetagile.jsonmodels.Statistique;
 /**
  *
@@ -156,7 +155,16 @@ public class JsonFileHandler {
         JSONObject racine;
         int reclamationValide;
         int reclamationRejete;
-        JSONArray soin;
+        int nbSoinMassotheratpie;
+        int nbSoinOsteopathie;
+        int nbSoinKinesitherapie;
+        int nbSoinMGP;
+        int nbSoinPsychologie;
+        int nbSoinDentaire;
+        int nbSoinNaturo;
+        int nbSoinChiropratie;
+        int nbSoinPhysiotherapie;
+        int nbSoinOrthophonie;
         
         try {
             jsonTxt = Utf8File.loadFileIntoString("statistique.json");
@@ -182,103 +190,80 @@ public class JsonFileHandler {
         } catch(net.sf.json.JSONException e){
             throw new InvalidArgumentException("Erreur! Les reclamations rejetes ne sont pas presentes.");
         }
-        
-        try{
-            soin = racine.getJSONArray("soin");
-        } catch(net.sf.json.JSONException e){
-            throw new InvalidArgumentException("Erreur! Il n'y a pas de soins.");
+         
+        try{   
+            nbSoinMassotheratpie = racine.getInt("massotherapie");
+        } catch (net.sf.json.JSONException e){
+            throw new InvalidArgumentException("Erreur! Il n'y a pas de massotherapie");
         }
-        
+
+        try{   
+            nbSoinOsteopathie = racine.getInt("ostheopathie");
+        } catch (net.sf.json.JSONException e){
+            throw new InvalidArgumentException("Erreur! Il n'y a pas de ostheopathie");
+        }
+
+        try{   
+            nbSoinKinesitherapie = racine.getInt("kinesitherapie");
+        } catch (net.sf.json.JSONException e){
+            throw new InvalidArgumentException("Erreur! Il n'y a pas de kinesitherapie");
+        }
+
+        try{   
+            nbSoinMGP = racine.getInt("medecin_generaliste_prive");
+        } catch (net.sf.json.JSONException e){
+            throw new InvalidArgumentException("Erreur! Il n'y a pas de medecin generaliste prive");
+        }
+
+        try{   
+            nbSoinPsychologie = racine.getInt("psychologie_individuelle");
+        } catch (net.sf.json.JSONException e){
+            throw new InvalidArgumentException("Erreur! Il n'y a pas de psychologie individuelle");
+        }
+
+        try{   
+            nbSoinDentaire = racine.getInt("soin_dentaire");
+        } catch (net.sf.json.JSONException e){
+            throw new InvalidArgumentException("Erreur! Il n'y a pas de soin dentaire");
+        }
+
+        try{   
+            nbSoinNaturo = racine.getInt("naturopathie_acuponcture");
+        } catch (net.sf.json.JSONException e){
+            throw new InvalidArgumentException("Erreur! Il n'y a pas de naturopathie ou acuponcture");
+        }
+
+        try{   
+            nbSoinChiropratie = racine.getInt("chiropratie");
+        } catch (net.sf.json.JSONException e){
+            throw new InvalidArgumentException("Erreur! Il n'y a pas de chiropratie");
+        }
+
+        try{   
+            nbSoinPhysiotherapie = racine.getInt("physiotherapie");
+        } catch (net.sf.json.JSONException e){
+            throw new InvalidArgumentException("Erreur! Il n'y a pas de physiotherapie");
+        }
+
+        try{   
+            nbSoinOrthophonie = racine.getInt("Orthophonie_ergotherapie");
+        } catch (net.sf.json.JSONException e){
+            throw new InvalidArgumentException("Erreur! Il n'y a pas de Orthophonie ou ergotherapie");
+        }
+            
         stats.setReclamationValide(reclamationValide);
         stats.setReclamationRejete(reclamationRejete);
-        
-        for(int i = 0; i < soin.size(); i++){
-            int nbSoinMassotheratpie;
-            int nbSoinOsteopathie;
-            int nbSoinKinesitherapie;
-            int nbSoinMGP;
-            int nbSoinPsychologie;
-            int nbSoinDentaire;
-            int nbSoinNaturo;
-            int nbSoinChiropratie;
-            int nbSoinPhysiotherapie;
-            int nbSoinOrthophonie;
-            StatSoin nouveauSoin = new StatSoin();
-            JSONObject soinCourant = soin.getJSONObject(i);
-            
-            try{   
-                nbSoinMassotheratpie = soinCourant.getInt("massotherapie");
-            } catch (net.sf.json.JSONException e){
-                throw new InvalidArgumentException("Erreur! Il n'y a pas de massotherapie");
-            }
-            
-            try{   
-                nbSoinOsteopathie = soinCourant.getInt("ostheopathie");
-            } catch (net.sf.json.JSONException e){
-                throw new InvalidArgumentException("Erreur! Il n'y a pas de ostheopathie");
-            }
-            
-            try{   
-                nbSoinKinesitherapie = soinCourant.getInt("kinesitherapie");
-            } catch (net.sf.json.JSONException e){
-                throw new InvalidArgumentException("Erreur! Il n'y a pas de kinesitherapie");
-            }
-            
-            try{   
-                nbSoinMGP = soinCourant.getInt("medecin_generaliste_prive");
-            } catch (net.sf.json.JSONException e){
-                throw new InvalidArgumentException("Erreur! Il n'y a pas de medecin generaliste prive");
-            }
-            
-            try{   
-                nbSoinPsychologie = soinCourant.getInt("psychologie_individuelle");
-            } catch (net.sf.json.JSONException e){
-                throw new InvalidArgumentException("Erreur! Il n'y a pas de psychologie individuelle");
-            }
-            
-            try{   
-                nbSoinDentaire = soinCourant.getInt("soin_dentaire");
-            } catch (net.sf.json.JSONException e){
-                throw new InvalidArgumentException("Erreur! Il n'y a pas de soin dentaire");
-            }
-            
-            try{   
-                nbSoinNaturo = soinCourant.getInt("naturopathie_acuponcture");
-            } catch (net.sf.json.JSONException e){
-                throw new InvalidArgumentException("Erreur! Il n'y a pas de naturopathie ou acuponcture");
-            }
-            
-            try{   
-                nbSoinChiropratie = soinCourant.getInt("chiropratie");
-            } catch (net.sf.json.JSONException e){
-                throw new InvalidArgumentException("Erreur! Il n'y a pas de chiropratie");
-            }
-            
-            try{   
-                nbSoinPhysiotherapie = soinCourant.getInt("physiotherapie");
-            } catch (net.sf.json.JSONException e){
-                throw new InvalidArgumentException("Erreur! Il n'y a pas de physiotherapie");
-            }
-            
-            try{   
-                nbSoinOrthophonie = soinCourant.getInt("Orthophonie_ergotherapie");
-            } catch (net.sf.json.JSONException e){
-                throw new InvalidArgumentException("Erreur! Il n'y a pas de Orthophonie ou ergotherapie");
-            }
-            
-            nouveauSoin.setNbSoinMassotheratpie(nbSoinMassotheratpie);
-            nouveauSoin.setNbSoinOsteopathie(nbSoinOsteopathie);
-            nouveauSoin.setNbSoinKinesitherapie(nbSoinKinesitherapie);
-            nouveauSoin.setNbSoinMGP(nbSoinMGP);
-            nouveauSoin.setNbSoinPsychologie(nbSoinPsychologie);
-            nouveauSoin.setNbSoinDentaire(nbSoinDentaire);
-            nouveauSoin.setNbSoinNaturo(nbSoinNaturo);
-            nouveauSoin.setNbSoinChiropratie(nbSoinChiropratie);
-            nouveauSoin.setNbSoinPhysiotherapie(nbSoinPhysiotherapie);
-            nouveauSoin.setNbSoinOrthophonie(nbSoinOrthophonie);
-            
-            stats.ajouterSoin(nouveauSoin);
-        }
+        stats.setNbSoinMassotheratpie(nbSoinMassotheratpie);
+        stats.setNbSoinOsteopathie(nbSoinOsteopathie);
+        stats.setNbSoinKinesitherapie(nbSoinKinesitherapie);
+        stats.setNbSoinMGP(nbSoinMGP);
+        stats.setNbSoinPsychologie(nbSoinPsychologie);
+        stats.setNbSoinDentaire(nbSoinDentaire);
+        stats.setNbSoinNaturo(nbSoinNaturo);
+        stats.setNbSoinChiropratie(nbSoinChiropratie);
+        stats.setNbSoinPhysiotherapie(nbSoinPhysiotherapie);
+        stats.setNbSoinOrthophonie(nbSoinOrthophonie);
+
         return stats;
     }
 

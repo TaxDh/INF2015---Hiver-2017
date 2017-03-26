@@ -26,8 +26,10 @@ public class ProjetSession {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
+        
+        
         /*try{      
-            JsonFileHandler.ouvrirFichierStatistique();
+           Statistique stats = JsonFileHandler.ouvrirFichierStatistique();
         } catch (InvalidArgumentException e){
             System.out.println("Erreur avec l'ouverture du fichier statistique.json");
         }*/
