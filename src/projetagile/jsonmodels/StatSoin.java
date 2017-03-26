@@ -34,6 +34,9 @@ public class StatSoin {
         this.nbSoinPhysiotherapie = nbSoinPhysiotherapie;
         this.nbSoinOrthophonie = nbSoinOrthophonie;
     }
+    
+    public StatSoin(){
+    }
 
     public int getNbSoinMassotheratpie() {
         return nbSoinMassotheratpie;

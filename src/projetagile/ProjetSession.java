@@ -26,12 +26,12 @@ public class ProjetSession {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        Statistique stats = new Statistique();
-        
-        
-        
-        
-        
+        /*try{      
+            JsonFileHandler.ouvrirFichierStatistique();
+        } catch (InvalidArgumentException e){
+            System.out.println("Erreur avec l'ouverture du fichier statistique.json");
+        }*/
+
         if(args.length == 1){
             if(args[0].contentEquals(affichageStats)){
                 System.out.println("Test -S");
@@ -63,4 +63,5 @@ public class ProjetSession {
             System.out.println("Erreur! Vous devez mettre 1 ou 2 arguments.");
         }          
     }
+
 }

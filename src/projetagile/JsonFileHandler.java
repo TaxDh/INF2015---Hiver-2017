@@ -7,12 +7,15 @@ package projetagile;
 
 import java.io.IOException;
 import net.sf.json.JSONArray;
+import net.sf.json.JSONException;
 import net.sf.json.JSONObject;
 import net.sf.json.JSONSerializer;
 import projetagile.jsonmodels.ModeleJsonIn;
 import projetagile.jsonmodels.Reclamation;
 import projetagile.jsonmodels.ModeleJsonOut;
 import projetagile.jsonmodels.Remboursement;
+import projetagile.jsonmodels.StatSoin;
+import projetagile.jsonmodels.Statistique;
 /**
  *
  * @author rene
@@ -146,6 +149,138 @@ public class JsonFileHandler {
         }
 
     }
+    
+    public static Statistique ouvrirFichierStatistique() throws InvalidArgumentException {
+        Statistique stats = new Statistique();
+        String jsonTxt = null;
+        JSONObject racine;
+        int reclamationValide;
+        int reclamationRejete;
+        JSONArray soin;
+        
+        try {
+            jsonTxt = Utf8File.loadFileIntoString("statistique.json");
+        } catch (IOException ex) {
+            System.out.println("Erreur lors de la lecture du fichier statistique.json. " + ex.getLocalizedMessage());
+            System.exit(1);
+        }
+        
+        try {
+            racine = (JSONObject) JSONSerializer.toJSON(jsonTxt);
+        } catch (JSONException e) {
+            throw new InvalidArgumentException("Arguments invalides");
+        }
+        
+        try{
+            reclamationValide = racine.getInt("reclamations valides");
+        } catch(net.sf.json.JSONException e){
+            throw new InvalidArgumentException("Erreur! Les reclamations valides ne sont pas presentes.");
+        }
+        
+        try{
+            reclamationRejete = racine.getInt("reclamations rejetes");
+        } catch(net.sf.json.JSONException e){
+            throw new InvalidArgumentException("Erreur! Les reclamations rejetes ne sont pas presentes.");
+        }
+        
+        try{
+            soin = racine.getJSONArray("soin");
+        } catch(net.sf.json.JSONException e){
+            throw new InvalidArgumentException("Erreur! Il n'y a pas de soins.");
+        }
+        
+        stats.setReclamationValide(reclamationValide);
+        stats.setReclamationRejete(reclamationRejete);
+        
+        for(int i = 0; i < soin.size(); i++){
+            int nbSoinMassotheratpie;
+            int nbSoinOsteopathie;
+            int nbSoinKinesitherapie;
+            int nbSoinMGP;
+            int nbSoinPsychologie;
+            int nbSoinDentaire;
+            int nbSoinNaturo;
+            int nbSoinChiropratie;
+            int nbSoinPhysiotherapie;
+            int nbSoinOrthophonie;
+            StatSoin nouveauSoin = new StatSoin();
+            JSONObject soinCourant = soin.getJSONObject(i);
+            
+            try{   
+                nbSoinMassotheratpie = soinCourant.getInt("massotherapie");
+            } catch (net.sf.json.JSONException e){
+                throw new InvalidArgumentException("Erreur! Il n'y a pas de massotherapie");
+            }
+            
+            try{   
+                nbSoinOsteopathie = soinCourant.getInt("ostheopathie");
+            } catch (net.sf.json.JSONException e){
+                throw new InvalidArgumentException("Erreur! Il n'y a pas de ostheopathie");
+            }
+            
+            try{   
+                nbSoinKinesitherapie = soinCourant.getInt("kinesitherapie");
+            } catch (net.sf.json.JSONException e){
+                throw new InvalidArgumentException("Erreur! Il n'y a pas de kinesitherapie");
+            }
+            
+            try{   
+                nbSoinMGP = soinCourant.getInt("medecin_generaliste_prive");
+            } catch (net.sf.json.JSONException e){
+                throw new InvalidArgumentException("Erreur! Il n'y a pas de medecin generaliste prive");
+            }
+            
+            try{   
+                nbSoinPsychologie = soinCourant.getInt("psychologie_individuelle");
+            } catch (net.sf.json.JSONException e){
+                throw new InvalidArgumentException("Erreur! Il n'y a pas de psychologie individuelle");
+            }
+            
+            try{   
+                nbSoinDentaire = soinCourant.getInt("soin_dentaire");
+            } catch (net.sf.json.JSONException e){
+                throw new InvalidArgumentException("Erreur! Il n'y a pas de soin dentaire");
+            }
+            
+            try{   
+                nbSoinNaturo = soinCourant.getInt("naturopathie_acuponcture");
+            } catch (net.sf.json.JSONException e){
+                throw new InvalidArgumentException("Erreur! Il n'y a pas de naturopathie ou acuponcture");
+            }
+            
+            try{   
+                nbSoinChiropratie = soinCourant.getInt("chiropratie");
+            } catch (net.sf.json.JSONException e){
+                throw new InvalidArgumentException("Erreur! Il n'y a pas de chiropratie");
+            }
+            
+            try{   
+                nbSoinPhysiotherapie = soinCourant.getInt("physiotherapie");
+            } catch (net.sf.json.JSONException e){
+                throw new InvalidArgumentException("Erreur! Il n'y a pas de physiotherapie");
+            }
+            
+            try{   
+                nbSoinOrthophonie = soinCourant.getInt("Orthophonie_ergotherapie");
+            } catch (net.sf.json.JSONException e){
+                throw new InvalidArgumentException("Erreur! Il n'y a pas de Orthophonie ou ergotherapie");
+            }
+            
+            nouveauSoin.setNbSoinMassotheratpie(nbSoinMassotheratpie);
+            nouveauSoin.setNbSoinOsteopathie(nbSoinOsteopathie);
+            nouveauSoin.setNbSoinKinesitherapie(nbSoinKinesitherapie);
+            nouveauSoin.setNbSoinMGP(nbSoinMGP);
+            nouveauSoin.setNbSoinPsychologie(nbSoinPsychologie);
+            nouveauSoin.setNbSoinDentaire(nbSoinDentaire);
+            nouveauSoin.setNbSoinNaturo(nbSoinNaturo);
+            nouveauSoin.setNbSoinChiropratie(nbSoinChiropratie);
+            nouveauSoin.setNbSoinPhysiotherapie(nbSoinPhysiotherapie);
+            nouveauSoin.setNbSoinOrthophonie(nbSoinOrthophonie);
+            
+            stats.ajouterSoin(nouveauSoin);
+        }
+        return stats;
+    }
 
     public static void ecrireFichierErreur(String filePath, Exception e){
         JSONObject erreur = new JSONObject();
@@ -189,6 +324,8 @@ public class JsonFileHandler {
             return false;
         }
     }
+
+    
         
     
 }
