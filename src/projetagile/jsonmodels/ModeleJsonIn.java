@@ -63,7 +63,7 @@ public class ModeleJsonIn {
         this.reclamations = reclamations;
     }
     
-    public void addReclamation(Reclamation nouvelleReclamation) {
+    public void ajouterReclamation(Reclamation nouvelleReclamation) {
         reclamations.add(nouvelleReclamation);
     }
     

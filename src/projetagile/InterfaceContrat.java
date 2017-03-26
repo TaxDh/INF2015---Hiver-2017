@@ -64,7 +64,7 @@ public abstract class InterfaceContrat {
             
             nouveauRemboursement.setMontant(remboursementDollar);
             
-            sortie.addRemboursement(nouveauRemboursement);
+            sortie.ajouterRemboursement(nouveauRemboursement);
         }
         //modele.addReclamation(nouvelleReclamation);
         return sortie;

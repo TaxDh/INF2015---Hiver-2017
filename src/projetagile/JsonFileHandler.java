@@ -108,7 +108,7 @@ public class JsonFileHandler {
             } 
             
             nouvelleReclamation.setMontant(montant);
-            modele.addReclamation(nouvelleReclamation);
+            modele.ajouterReclamation(nouvelleReclamation);
         }
         
         return modele;

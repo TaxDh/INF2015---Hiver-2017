@@ -45,7 +45,7 @@ public class ModeleJsonOut {
         this.remboursement = remboursement;
     }
     
-    public void addRemboursement(Remboursement nouveauRemboursement) {
+    public void ajouterRemboursement(Remboursement nouveauRemboursement) {
         remboursement.add(nouveauRemboursement);
     }
     
