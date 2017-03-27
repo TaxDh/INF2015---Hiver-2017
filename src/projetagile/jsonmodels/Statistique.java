@@ -150,7 +150,7 @@ public class Statistique {
         
         for(Remboursement remboursement: listeRemboursement){
             soin = remboursement.getSoins();
-            
+
             if(soin == 0){
                 this.nbSoinMassotheratpie++;
             } else if(soin == 100){
@@ -173,6 +173,36 @@ public class Statistique {
                 this.nbSoinOrthophonie++;
             }
         }
+    }
+    
+    public void reinitialise(){
+        this.setReclamationValide(0);
+        this.setReclamationRejete(0);
+        this.setNbSoinMassotheratpie(0);
+        this.setNbSoinOsteopathie(0);
+        this.setNbSoinKinesitherapie(0);
+        this.setNbSoinMGP(0);
+        this.setNbSoinPsychologie(0);
+        this.setNbSoinDentaire(0);
+        this.setNbSoinNaturo(0);
+        this.setNbSoinChiropratie(0);
+        this.setNbSoinPhysiotherapie(0);
+        this.setNbSoinOrthophonie(0);
+    }
+    
+    public void afficherStatistiques(){
+        System.out.println("Le nombre de reclamations valides" + this.getReclamationValide());
+        System.out.println("Le nombre de reclamations rejetes" + this.getReclamationRejete());
+        System.out.println("Le nombre de massotherapies traitees " + this.getNbSoinMassotheratpie());
+        System.out.println("Le nombre de osteopathies traitees " + this.getNbSoinOsteopathie());
+        System.out.println("Le nombre de kinesitherapies traitees " + this.getNbSoinKinesitherapie());
+        System.out.println("Le nombre de medecins generalistes prives traitees " +this.getNbSoinMGP());
+        System.out.println("Le nombre de psychologies individuelles traitees " + this.getNbSoinPsychologie());
+        System.out.println("Le nombre de soins dentaires traitees " + this.getNbSoinDentaire());
+        System.out.println("Le nombre de naturopathies et/ou acuponctures traitees " + this.getNbSoinNaturo());
+        System.out.println("Le nombre de chiropratie traitees " + this.getNbSoinChiropratie());
+        System.out.println("Le nombre de physiotherapies traitees " + this.getNbSoinPhysiotherapie());
+        System.err.println("Le nombre d'orthophonies et/ou d'ergotherapies traitees " + this.getNbSoinOrthophonie()); 
     }
 }
 

@@ -107,7 +107,7 @@ public class Dollar {
     public static double convertirIntEnDouble(int intMontant){
         double montant;
         
-        montant = intMontant/100 + (double) intMontant % 100;
+        montant = intMontant/100 + ((double) intMontant % 100 / 100);
         
         return montant;
     }    
