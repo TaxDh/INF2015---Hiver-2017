@@ -48,31 +48,41 @@ public class JsonFileHandler {
     
     public static void parcoursDesReclamations(JSONArray reclamations, ModeleJsonIn modele) throws InvalidArgumentException {
         for(int i = 0; i < reclamations.size(); i++){
-            Dollar montant;
-            Reclamation nouvelleReclamation = new Reclamation();
-            JSONObject reclamationCourrante = reclamations.getJSONObject(i);
-            
+            JSONObject reclamationCourrante = reclamations.getJSONObject(i);            
             int soin = creeSoinJsonLire(reclamationCourrante);
             String date = creeDateJsonLire(reclamationCourrante);
-            
-            valideSoin(soin, nouvelleReclamation);
-            
-            
-            
-            if(estDateValide(date, modele.getMois())){
-                nouvelleReclamation.setDate(date);
-            } else {
-                throw new InvalidArgumentException("La date est invalide.");
-            }
-            
-            try{
-                montant = new Dollar(reclamationCourrante.getString("montant"));
-            } catch(net.sf.json.JSONException e){
-                throw new InvalidArgumentException("Erreur! Le montant n'est pas présent.");
-            } 
-            
-            nouvelleReclamation.setMontant(montant);
+            Dollar montant = creeMontantJsonLire(reclamationCourrante);   
+            Reclamation nouvelleReclamation = creeReclamationLire(soin, date, montant, modele);
             modele.ajouterReclamation(nouvelleReclamation);
+        }
+    }
+
+    private static Reclamation creeReclamationLire(int soin, String date, Dollar montant, ModeleJsonIn modele )
+            throws InvalidArgumentException{
+        
+        Reclamation nouvelleReclamation = new Reclamation();
+        valideSoin(soin, nouvelleReclamation);
+        valideDate(date, modele, nouvelleReclamation);
+        nouvelleReclamation.setMontant(montant);
+        return nouvelleReclamation;
+    }
+            
+    
+    public static Dollar creeMontantJsonLire(JSONObject reclamationCourrante) throws InvalidArgumentException {
+        Dollar montant;
+        try{
+            montant = new Dollar(reclamationCourrante.getString("montant"));
+        } catch(net.sf.json.JSONException e){
+            throw new InvalidArgumentException("Erreur! Le montant n'est pas présent.");
+        }
+        return montant;
+    }
+
+    public static void valideDate(String date, ModeleJsonIn modele, Reclamation nouvelleReclamation) throws InvalidArgumentException {
+        if(estDateValide(date, modele.getMois())){
+            nouvelleReclamation.setDate(date);
+        } else {
+            throw new InvalidArgumentException("La date est invalide.");
         }
     }
 
