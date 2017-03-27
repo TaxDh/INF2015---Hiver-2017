@@ -187,18 +187,18 @@ public class Statistique {
     }
     
     public void afficherStatistiques(){
-        System.out.println("Le nombre de reclamations valides" + this.getReclamationValide());
-        System.out.println("Le nombre de reclamations rejetes" + this.getReclamationRejete());
-        System.out.println("Le nombre de massotherapies traitees " + this.getNbSoinMassotheratpie());
-        System.out.println("Le nombre de osteopathies traitees " + this.getNbSoinOsteopathie());
-        System.out.println("Le nombre de kinesitherapies traitees " + this.getNbSoinKinesitherapie());
-        System.out.println("Le nombre de medecins generalistes prives traitees " +this.getNbSoinMGP());
-        System.out.println("Le nombre de psychologies individuelles traitees " + this.getNbSoinPsychologie());
-        System.out.println("Le nombre de soins dentaires traitees " + this.getNbSoinDentaire());
-        System.out.println("Le nombre de naturopathies et/ou acuponctures traitees " + this.getNbSoinNaturo());
-        System.out.println("Le nombre de chiropratie traitees " + this.getNbSoinChiropratie());
-        System.out.println("Le nombre de physiotherapies traitees " + this.getNbSoinPhysiotherapie());
-        System.err.println("Le nombre d'orthophonies et/ou d'ergotherapies traitees " + this.getNbSoinOrthophonie()); 
+        System.out.println("Le nombre de reclamations valides: " + this.getReclamationValide());
+        System.out.println("Le nombre de reclamations rejetes: " + this.getReclamationRejete());
+        System.out.println("Le nombre de massotherapies traitees: " + this.getNbSoinMassotheratpie());
+        System.out.println("Le nombre de osteopathies traitees: " + this.getNbSoinOsteopathie());
+        System.out.println("Le nombre de kinesitherapies traitees: " + this.getNbSoinKinesitherapie());
+        System.out.println("Le nombre de medecins generalistes prives traitees: " +this.getNbSoinMGP());
+        System.out.println("Le nombre de psychologies individuelles traitees: " + this.getNbSoinPsychologie());
+        System.out.println("Le nombre de soins dentaires traitees: " + this.getNbSoinDentaire());
+        System.out.println("Le nombre de naturopathies et/ou acuponctures traitees: " + this.getNbSoinNaturo());
+        System.out.println("Le nombre de chiropratie traitees: " + this.getNbSoinChiropratie());
+        System.out.println("Le nombre de physiotherapies traitees: " + this.getNbSoinPhysiotherapie());
+        System.err.println("Le nombre d'orthophonies et/ou d'ergotherapies traitees: " + this.getNbSoinOrthophonie()); 
     }
 }
 

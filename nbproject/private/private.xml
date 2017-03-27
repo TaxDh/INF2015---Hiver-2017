@@ -4,12 +4,12 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/rene/Documents/NetBeansProjects/equipe13/src/projetagile/jsonmodels/Statistique.java</file>
-            <file>file:/C:/Users/rene/Documents/NetBeansProjects/equipe13/src/projetagile/ProjetSession.java</file>
-            <file>file:/C:/Users/rene/Documents/NetBeansProjects/equipe13/src/projetagile/AffichageStats.java</file>
-            <file>file:/C:/Users/rene/Documents/NetBeansProjects/equipe13/src/projetagile/InterfaceContrat.java</file>
-            <file>file:/C:/Users/rene/Documents/NetBeansProjects/equipe13/src/projetagile/JsonFileHandler.java</file>
-            <file>file:/C:/Users/rene/Documents/NetBeansProjects/equipe13/src/projetagile/ReinitialiseStats.java</file>
+            <file>file:/C:/Users/rene/Documents/NetBeansProjects/equipe13/test/projetagile/ContratATest.java</file>
+            <file>file:/C:/Users/rene/Documents/NetBeansProjects/equipe13/src/projetagile/jsonmodels/ModeleJsonIn.java</file>
+            <file>file:/C:/Users/rene/Documents/NetBeansProjects/equipe13/test/RootSuite.java</file>
+            <file>file:/C:/Users/rene/Documents/NetBeansProjects/equipe13/src/projetagile/jsonmodels/ModeleJsonOut.java</file>
             <file>file:/C:/Users/rene/Documents/NetBeansProjects/equipe13/src/projetagile/ContratA.java</file>
+            <file>file:/C:/Users/rene/Documents/NetBeansProjects/equipe13/src/projetagile/Dollar.java</file>
         </group>
     </open-files>
 </project-private>
