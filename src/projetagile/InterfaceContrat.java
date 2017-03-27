@@ -9,10 +9,7 @@ import projetagile.jsonmodels.ModeleJsonOut;
 import projetagile.jsonmodels.Reclamation;
 import projetagile.jsonmodels.Remboursement;
 
-/**
- *
- * @author kf891141
- */
+
 public abstract class InterfaceContrat {
     protected Dollar maximumMensuelOsteopahtie = new Dollar("250.00$");
     protected Dollar maximumMensuelMedGenPriv = new Dollar("200.00$");
@@ -105,7 +102,5 @@ public abstract class InterfaceContrat {
     
     //numero 700
     public abstract Dollar orthophonie_ergotherapie(Dollar montant);
-    
-    
-    
+
 }

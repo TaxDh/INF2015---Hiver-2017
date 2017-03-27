@@ -8,11 +8,6 @@ import projetagile.jsonmodels.ModeleJsonIn;
 import projetagile.jsonmodels.ModeleJsonOut;
 import projetagile.jsonmodels.Statistique;
 
-
-/**
- *
- * @author kf891141
- */
 public class ProjetSession {
     
     public static final String affichageStats = "-S";

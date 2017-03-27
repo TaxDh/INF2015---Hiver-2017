@@ -1,28 +1,18 @@
+/*Objet contrat E, avec les méthodes type de soins associées*/
+
 package projetagile;
-
-
 
 import projetagile.InterfaceContrat;
 import projetagile.jsonmodels.ModeleJsonIn;
 
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 
-/**
- *
- * @author jg891159
- */
 public class ContratE extends InterfaceContrat {
     
     public ContratE(ModeleJsonIn modele) {
         
         super(modele);
     }
-  
-   
+
      //Type de soin
     //numero 0
     @Override
@@ -114,6 +104,7 @@ public class ContratE extends InterfaceContrat {
         maximumMensuelPhysiotherapie.soustractionDollar(remboursement);
         return remboursement;
     }
+    
     //numero 700
     @Override
     public Dollar orthophonie_ergotherapie(Dollar montant){

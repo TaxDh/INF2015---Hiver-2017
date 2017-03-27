@@ -6,10 +6,6 @@ package projetagile;
 import projetagile.jsonmodels.ModeleJsonIn;
 
 
-/**
- *
- * @author kf891141
- */
 public class ContratB extends InterfaceContrat{
      public ContratB(ModeleJsonIn modele) {
         
@@ -25,7 +21,6 @@ public class ContratB extends InterfaceContrat{
         if(remboursement.getMontant() > (new Dollar("40$")).getMontant()){
             remboursement = new Dollar("40$");
         }
-        
         return remboursement;
     }
     
@@ -48,7 +43,6 @@ public class ContratB extends InterfaceContrat{
     @Override
     public Dollar kinesitherapie (Dollar montant){
         return montant.calculerRemboursement(0.0);
-        
     }
     
     //numero 175

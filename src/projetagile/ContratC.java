@@ -5,10 +5,6 @@ package projetagile;
 
 import projetagile.jsonmodels.ModeleJsonIn;
 
-/**
- *
- * @author kf891141
- */
 public class ContratC extends InterfaceContrat{
      public ContratC(ModeleJsonIn modele) {
         
