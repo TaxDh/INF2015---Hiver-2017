@@ -143,28 +143,31 @@ public class Statistique {
         
         for(Remboursement remboursement: listeRemboursement){
             soin = remboursement.getSoins();
+            choixDuSoin(soin);
+        }
+    }
 
-            if(soin == 0){
-                this.nbSoinMassotheratpie++;
-            } else if(soin == 100){
-                this.nbSoinOsteopathie++;
-            } else if(soin == 150){
-                this.nbSoinKinesitherapie++;
-            } else if(soin == 175){
-                this.nbSoinMGP++;
-            } else if(soin == 200){
-                this.nbSoinPsychologie++;
-            } else if(soin >= 300 && soin < 400){
-                this.nbSoinDentaire++;
-            } else if(soin == 400){
-                this.nbSoinNaturo++;
-            } else if(soin == 500){
-                this.nbSoinChiropratie++;
-            } else if(soin == 600){
-                this.nbSoinPhysiotherapie++;
-            } else if(soin == 700){
-                this.nbSoinOrthophonie++;
-            }
+    public void choixDuSoin(int soin) {
+        if(soin == 0){
+            this.nbSoinMassotheratpie++;
+        } else if(soin == 100){
+            this.nbSoinOsteopathie++;
+        } else if(soin == 150){
+            this.nbSoinKinesitherapie++;
+        } else if(soin == 175){
+            this.nbSoinMGP++;
+        } else if(soin == 200){
+            this.nbSoinPsychologie++;
+        } else if(soin >= 300 && soin < 400){
+            this.nbSoinDentaire++;
+        } else if(soin == 400){
+            this.nbSoinNaturo++;
+        } else if(soin == 500){
+            this.nbSoinChiropratie++;
+        } else if(soin == 600){
+            this.nbSoinPhysiotherapie++;
+        } else if(soin == 700){
+            this.nbSoinOrthophonie++;
         }
     }
     
