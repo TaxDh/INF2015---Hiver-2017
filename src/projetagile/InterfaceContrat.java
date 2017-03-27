@@ -32,22 +32,21 @@ public abstract class InterfaceContrat {
         sortie.setClient(modele.getClient());
         sortie.setMois(modele.getMois());
         
+        sortie = parcoursReclamation(sortie);
+        return sortie;
+    }
+
+    public ModeleJsonOut parcoursReclamation(ModeleJsonOut sortie) {
         for(Reclamation reclamation : modele.getReclamations()){
             Dollar montant = reclamation.getMontant();
             Dollar remboursementDollar = new Dollar();
             
-            Remboursement nouveauRemboursement = new Remboursement();
-            nouveauRemboursement.setSoins(reclamation.getSoins());
-            nouveauRemboursement.setDate(reclamation.getDate());
-            
-            
             remboursementDollar = choixSoin(reclamation, remboursementDollar, montant);
-            
-            nouveauRemboursement.setMontant(remboursementDollar);
+            Remboursement nouveauRemboursement = new Remboursement(reclamation.getSoins(),
+                    reclamation.getDate(), remboursementDollar);
             
             sortie.ajouterRemboursement(nouveauRemboursement);
         }
-        //modele.addReclamation(nouvelleReclamation);
         return sortie;
     }
 

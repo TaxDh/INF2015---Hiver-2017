@@ -39,6 +39,10 @@ public class ProjetSession {
         String fichierEntree = args[0];
         String fichierSortie = args[1];
         
+        reclamtionInvalidArgumentException(fichierEntree, fichierSortie, stats);
+    }
+
+    public static void reclamtionInvalidArgumentException(String fichierEntree, String fichierSortie, Statistique stats) {
         try{
             traiterReclamation(fichierEntree, fichierSortie, stats);
         } catch (InvalidArgumentException e) {
