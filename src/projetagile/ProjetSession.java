@@ -23,10 +23,10 @@ public class ProjetSession {
     public static void main(String[] args) {
         Statistique stats = new Statistique();
         
-        try{      
+        try{
             stats = JsonFileHandler.ouvrirFichierStatistique("statistique.json");
         } catch (InvalidArgumentException e){
-            System.out.println("Erreur avec l'ouverture du fichier statistique.json");
+            System.out.println("Erreur avec l'ouverture du fichier statistique.json" + e.getLocalizedMessage());
         }
 
         if(args.length == 1){
@@ -45,8 +45,9 @@ public class ProjetSession {
             try{
                 ModeleJsonIn reclamation = JsonFileHandler.ouvrireFichier(fichierEntree);
                 InterfaceContrat nouveauContrat = ContratFactory.instancieContrat(reclamation);
-                ModeleJsonOut test = nouveauContrat.calculRemboursement();
-                JsonFileHandler.ecrireFichier(fichierSortie, test);
+                ModeleJsonOut sortie = nouveauContrat.calculRemboursement();
+                JsonFileHandler.ecrireFichier(fichierSortie, sortie);
+                stats.setReclamationValide(stats.getReclamationValide() + 1);
                 
             } catch (InvalidArgumentException e) {
                 stats.setReclamationRejete(stats.getReclamationRejete() + 1);

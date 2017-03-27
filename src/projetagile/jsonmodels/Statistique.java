@@ -3,6 +3,10 @@
  */
 package projetagile.jsonmodels;
 
+import java.util.List;
+
+
+
 
 /**
  *
@@ -140,6 +144,36 @@ public class Statistique {
         this.nbSoinOrthophonie = nbSoinOrthophonie;
     }
     
+    public void compterSoin(ModeleJsonOut sortie){
+        List<Remboursement> listeRemboursement = sortie.getRemboursement();
+        int soin;
+        
+        for(Remboursement remboursement: listeRemboursement){
+            soin = remboursement.getSoins();
+            
+            if(soin == 0){
+                this.nbSoinMassotheratpie++;
+            } else if(soin == 100){
+                this.nbSoinOsteopathie++;
+            } else if(soin == 150){
+                this.nbSoinKinesitherapie++;
+            } else if(soin == 175){
+                this.nbSoinMGP++;
+            } else if(soin == 200){
+                this.nbSoinPsychologie++;
+            } else if(soin >= 300 && soin < 400){
+                this.nbSoinDentaire++;
+            } else if(soin == 400){
+                this.nbSoinNaturo++;
+            } else if(soin == 500){
+                this.nbSoinChiropratie++;
+            } else if(soin == 600){
+                this.nbSoinPhysiotherapie++;
+            } else if(soin == 700){
+                this.nbSoinOrthophonie++;
+            }
+        }
+    }
 }
 
     
