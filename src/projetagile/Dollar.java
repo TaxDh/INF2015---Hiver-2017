@@ -23,30 +23,6 @@ public class Dollar {
         this.montant = convertirStringEnInt(montantStr);
     }
     
-    public static String calculMontant(String montant, double pourcentage, boolean maximum,
-            int maximumRemboursement, String maximumMensuel){
-        
-        int maxMensuelInt = convertirStringEnInt(maximumMensuel);
-        int intRemboursement = convertirStringEnInt(montant);
-        
-        intRemboursement *= pourcentage;
-        intRemboursement = siMaximumAtteint(maximum, intRemboursement, maximumRemboursement);
-        if(intRemboursement > maxMensuelInt){
-            intRemboursement = maxMensuelInt;
-            
-        }
-        return convertirIntEnString(intRemboursement);
-    }
-
-    private static int siMaximumAtteint(boolean maximum, int intRemboursement, int maximumRemboursement) {
-        if(maximum){
-            if(intRemboursement > maximumRemboursement*100){
-                intRemboursement = maximumRemboursement*100;
-            }
-        }
-        return intRemboursement;
-    }
-    
     public void additionDollar (Dollar dollar){
         this.montant += dollar.getMontant();
     }

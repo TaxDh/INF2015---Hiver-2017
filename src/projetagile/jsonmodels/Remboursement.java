@@ -1,5 +1,5 @@
 /*
- * Fabrique l'objet remboursement
+ * Objet remboursement, celui qui se trouve dans le tableau remboursement.
  */
 package projetagile.jsonmodels;
 

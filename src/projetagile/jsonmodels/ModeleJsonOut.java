@@ -1,5 +1,5 @@
 /*
-    * l'objet que deviendra le fichier json
+ * l'objet que deviendra le fichier json
 */
 package projetagile.jsonmodels;
 
