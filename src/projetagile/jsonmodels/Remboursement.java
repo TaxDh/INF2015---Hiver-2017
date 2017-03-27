@@ -1,16 +1,10 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Fabrique l'objet remboursement
  */
 package projetagile.jsonmodels;
 
 import projetagile.Dollar;
 
-/**
- *
- * @author rene
- */
 public class Remboursement {
       
     private int soins;

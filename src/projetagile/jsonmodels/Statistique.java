@@ -5,13 +5,6 @@ package projetagile.jsonmodels;
 
 import java.util.List;
 
-
-
-
-/**
- *
- * @author rene
- */
 public class Statistique {
     private int reclamationValide;
     private int reclamationRejete;

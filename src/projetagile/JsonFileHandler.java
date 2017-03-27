@@ -22,80 +22,42 @@ import projetagile.jsonmodels.Statistique;
 public class JsonFileHandler {
     
     public static ModeleJsonIn ouvrireFichier(String fichierEntree) throws InvalidArgumentException {
-        ModeleJsonIn modele = new ModeleJsonIn();
-        String jsonText = "";
-        JSONObject racine;
-        String numeroDossier;
-        String mois;
-        JSONArray reclamations;
-         
-        try {
-            jsonText = Utf8File.loadFileIntoString(fichierEntree);
-        }catch(IOException e) {
-            System.out.println("Erreur lors de la lecture du fichier JSON. " + e.getLocalizedMessage());
-            System.exit(1);
-        }
+        String jsonText = litTexteJson(fichierEntree);
+        JSONObject racine = JsonFileHandler.creeRacineJsonLire(jsonText);
+        String numeroDossier = creeDossierJsonLire(racine);
+        String mois = creeRacineJsonLire(racine);
+        JSONArray reclamations = creeReclamationJsonLire(racine);
+        ModeleJsonIn modele = creeModeleLire(numeroDossier, mois);
 
-        try{
-            racine = (JSONObject) JSONSerializer.toJSON(jsonText);
-        } catch(net.sf.json.JSONException e){
-            throw new InvalidArgumentException("Arguments invalides");
-            
-        }
-                
-       try{
-            numeroDossier = racine.getString("dossier");
-        } catch(net.sf.json.JSONException e){
-            throw new InvalidArgumentException("Erreur! Le dossier n'est pas présent.");
-        }
+        parcoursDesReclamations(reclamations, modele);
         
+        return modele;
+    }
+    
+    private static ModeleJsonIn creeModeleLire(String numeroDossier, String mois) throws InvalidArgumentException{
+        String client = "";
+        char typeContrat = '\0';
         if(estNumeroDossierValide(numeroDossier)){
-            modele.setClient(numeroDossier.substring(1));
-            modele.setTypeContrat(numeroDossier.substring(0,1).charAt(0));
+            client = numeroDossier.substring(1);
+            typeContrat = numeroDossier.substring(0,1).charAt(0);
         } else {
             throw new InvalidArgumentException("Erreur! Le numero de dossier est invalide.");
         }
-     
-        try{
-            mois = racine.getString("mois");
-        } catch(net.sf.json.JSONException e){
-            throw new InvalidArgumentException("Erreur! Le mois n'est pas présent.");
-        }
-        
-        modele.setMois(mois);
-        
-         try{
-            reclamations = racine.getJSONArray("reclamations");
-        } catch(net.sf.json.JSONException e){
-            throw new InvalidArgumentException("Erreur! Il n'y a pas de réclamations.");
-        }
-        
-         
-         
+        return new ModeleJsonIn(client, typeContrat, mois);
+    }
+    
+    public static void parcoursDesReclamations(JSONArray reclamations, ModeleJsonIn modele) throws InvalidArgumentException {
         for(int i = 0; i < reclamations.size(); i++){
-            int soin;
-            String date;
             Dollar montant;
             Reclamation nouvelleReclamation = new Reclamation();
             JSONObject reclamationCourrante = reclamations.getJSONObject(i);
             
-            try{   
-                soin = reclamationCourrante.getInt("soin");
-            } catch (net.sf.json.JSONException e){
-                throw new InvalidArgumentException("Erreur! Il n'y a pas de soin");
-            }
-
-            if(estNumeroSoinValide(soin)){
-                nouvelleReclamation.setSoins(soin);
-            } else {
-                throw new InvalidArgumentException("Le numéro de soin est Invalide");
-            }
+            int soin = creeSoinJsonLire(reclamationCourrante);
+            String date = creeDateJsonLire(reclamationCourrante);
             
-            try{
-                date = reclamationCourrante.getString("date");
-            } catch(net.sf.json.JSONException e){
-                throw new InvalidArgumentException("Erreur! La date n'est pas présent.");
-            } 
+            valideSoin(soin, nouvelleReclamation);
+            
+            
             
             if(estDateValide(date, modele.getMois())){
                 nouvelleReclamation.setDate(date);
@@ -112,8 +74,86 @@ public class JsonFileHandler {
             nouvelleReclamation.setMontant(montant);
             modele.ajouterReclamation(nouvelleReclamation);
         }
-        
-        return modele;
+    }
+
+    public static String creeDateJsonLire(JSONObject reclamationCourrante) throws InvalidArgumentException {
+        String date;
+        try{
+            date = reclamationCourrante.getString("date");
+        } catch(net.sf.json.JSONException e){
+            throw new InvalidArgumentException("Erreur! La date n'est pas présent.");
+        }
+        return date;
+    }
+
+    public static void valideSoin(int soin, Reclamation nouvelleReclamation) throws InvalidArgumentException {
+        if(estNumeroSoinValide(soin)){
+            nouvelleReclamation.setSoins(soin);
+        } else {
+            throw new InvalidArgumentException("Le numéro de soin est Invalide");
+        }
+    }
+
+    public static int creeSoinJsonLire(JSONObject reclamationCourrante) throws InvalidArgumentException {
+        int soin;
+        try{
+            soin = reclamationCourrante.getInt("soin");
+        } catch (net.sf.json.JSONException e){
+            throw new InvalidArgumentException("Erreur! Il n'y a pas de soin");
+        }
+        return soin;
+    }
+
+    public static JSONArray creeReclamationJsonLire(JSONObject racine) throws InvalidArgumentException {
+        JSONArray reclamations;
+        try{
+            reclamations = racine.getJSONArray("reclamations");
+        } catch(net.sf.json.JSONException e){
+            throw new InvalidArgumentException("Erreur! Il n'y a pas de réclamations.");
+        }
+        return reclamations;
+    }
+
+    public static String creeRacineJsonLire(JSONObject racine) throws InvalidArgumentException {
+        String mois = "";
+        try{
+            mois = racine.getString("mois");
+        } catch(net.sf.json.JSONException e){
+            throw new InvalidArgumentException("Erreur! Le mois n'est pas présent.");
+        }
+        return mois;
+    }
+
+   
+    public static String creeDossierJsonLire(JSONObject racine) throws InvalidArgumentException {
+        String numeroDossier = "";
+        try{
+            numeroDossier = racine.getString("dossier");
+        } catch(net.sf.json.JSONException e){
+            throw new InvalidArgumentException("Erreur! Le dossier n'est pas présent.");
+        }
+        return numeroDossier;
+    }
+
+    public static JSONObject creeRacineJsonLire(String jsonText) throws InvalidArgumentException {
+        JSONObject racine;
+        try{
+            racine = (JSONObject) JSONSerializer.toJSON(jsonText);
+        } catch(net.sf.json.JSONException e){
+            throw new InvalidArgumentException("Arguments invalides");
+        }
+        return racine;
+    }
+
+    public static String litTexteJson(String fichierEntree) {
+        String jsonText = "";
+        try {
+            jsonText = Utf8File.loadFileIntoString(fichierEntree);
+        }catch(IOException e) {
+            System.out.println("Erreur lors de la lecture du fichier JSON. " + e.getLocalizedMessage());
+            System.exit(1);
+        }
+        return jsonText;
     }
 
     public static void ecrireFichier(String fichierSortie, ModeleJsonOut modeleOut) {
@@ -121,7 +161,7 @@ public class JsonFileHandler {
         JSONObject remboursement = new JSONObject();
         Dollar montantTotal = new Dollar();
        
-        remboursement.accumulate("dossier", modeleOut.getClient());
+        remboursement.accumulate("dossier", modeleOut.getDossier());
         remboursement.accumulate("mois", modeleOut.getMois());
         
         JSONArray remboursementTab = new JSONArray();//tableau de remboursement
@@ -151,8 +191,7 @@ public class JsonFileHandler {
     
     public static Statistique ouvrirFichierStatistique(String fichierEntree) throws InvalidArgumentException {
         Statistique stats = new Statistique();
-        String jsonTxt = null;
-        JSONObject racine;
+        
         int reclamationValide;
         int reclamationRejete;
         int nbSoinMassotheratpie;
@@ -165,7 +204,7 @@ public class JsonFileHandler {
         int nbSoinChiropratie;
         int nbSoinPhysiotherapie;
         int nbSoinOrthophonie;
-        
+        String jsonTxt = null;
         try {
             jsonTxt = Utf8File.loadFileIntoString(fichierEntree);
         } catch (IOException ex) {
@@ -173,12 +212,7 @@ public class JsonFileHandler {
             System.exit(1);
         }
         
-        try {
-            racine = (JSONObject) JSONSerializer.toJSON(jsonTxt);
-        } catch (JSONException e) {
-            throw new InvalidArgumentException("Arguments invalides");
-        }
-        
+        JSONObject racine = JsonFileHandler.creeRacineJsonLire(jsonTxt);
         try{
             reclamationValide = racine.getInt("reclamations valides");
         } catch(net.sf.json.JSONException e){

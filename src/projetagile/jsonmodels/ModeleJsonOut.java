@@ -21,7 +21,7 @@ public class ModeleJsonOut {
     }
 
  
-    public String getClient() {
+    public String getDossier() {
         return dossier;
     }
 
