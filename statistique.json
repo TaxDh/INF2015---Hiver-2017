@@ -1,14 +1,14 @@
 {
-    "reclamations valides": 20,
+    "reclamations valides": 22,
     "reclamations rejetes": 0,
-    "massotherapie": 15,
-    "ostheopathie": 15,
-    "kinesitherapie": 15,
-    "medecin_generaliste_prive": 15,
-    "psychologie_individuelle": 34,
-    "soin_dentaire": 15,
-    "naturopathie_acuponcture": 15,
-    "chiropratie": 15,
-    "physiotherapie": 15,
-    "Orthophonie_ergotherapie": 15
+    "massotherapie": 17,
+    "ostheopathie": 17,
+    "kinesitherapie": 17,
+    "medecin_generaliste_prive": 17,
+    "psychologie_individuelle": 36,
+    "soin_dentaire": 17,
+    "naturopathie_acuponcture": 17,
+    "chiropratie": 17,
+    "physiotherapie": 17,
+    "Orthophonie_ergotherapie": 17
 }
