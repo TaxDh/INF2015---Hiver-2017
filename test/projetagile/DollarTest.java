@@ -159,17 +159,67 @@ public class DollarTest {
      * Test of calculerRemboursement method, of class Dollar.
      */
     @Test
-    public void testCalculerRemboursement() {
-        System.out.println("calculerRemboursement");
-        double pourcentage = 0.0;
-        Dollar instance = new Dollar();
-        Dollar expResult = null;
-        Dollar result = instance.calculerRemboursement(pourcentage);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testCalculerRemboursementNormal() {
+        
+        Dollar dollar1 = new Dollar(100);
+        Dollar dollar2 = dollar1.calculerRemboursement(0.25);
+        assertEquals(25, dollar2.getMontant());
+       
     }
 
+    @Test
+    public void testCalculerRemboursementNul() {
+        
+        Dollar dollar1 = new Dollar(100);
+        Dollar dollar2 = dollar1.calculerRemboursement(0.0);
+        assertEquals(0, dollar2.getMontant());
+       
+    }
+    @Test
+    public void testCalculerRemboursementMontantNul() {
+        
+        Dollar dollar1 = new Dollar(0);
+        Dollar dollar2 = dollar1.calculerRemboursement(0.25);
+        assertEquals(0, dollar2.getMontant());
+       
+    }
+    
+    @Test
+    public void testCalculerRemboursementComplet() {
+        
+        Dollar dollar1 = new Dollar(100);
+        Dollar dollar2 = dollar1.calculerRemboursement(1.0);
+        assertEquals(100, dollar2.getMontant());
+       
+    }
+    
+    @Test
+    public void testCalculerRemboursementGrandMontant() {
+        
+        Dollar dollar1 = new Dollar(3000000);
+        Dollar dollar2 = dollar1.calculerRemboursement(0.75);
+        assertEquals(2250000, dollar2.getMontant());
+       
+    }
+    
+    
+    @Test
+    public void testCalculerRemboursementPetitMontant() {
+        
+        Dollar dollar1 = new Dollar(10);
+        Dollar dollar2 = dollar1.calculerRemboursement(0.80);
+        assertEquals(8, dollar2.getMontant());
+       
+    }
+    
+    @Test(expected=NumberFormatException.class)
+    public void testCalculerRemboursementException() {
+        
+        Dollar dollar1 = new Dollar("hey");
+        Dollar dollar2 = dollar1.calculerRemboursement(0.25);
+        assertEquals(0, dollar2.getMontant());
+       
+    }
     /**
      * Test of convertirStringEnInt method, of class Dollar.
      */
