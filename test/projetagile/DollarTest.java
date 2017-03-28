@@ -288,29 +288,42 @@ public class DollarTest {
     public void testConvertirIntEnStringNegatif() {
             assertEquals("-0.10$", Dollar.convertirIntEnString(-10));        
     }
-     
-    
-    
-    
-    
-    
-    
-    //
 
     /**
      * Test of convertirEnString method, of class Dollar.
      */
     @Test
-    public void testConvertirEnString() {
-        System.out.println("convertirEnString");
-        Dollar instance = new Dollar();
-        String expResult = "";
-        String result = instance.convertirEnString();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testConvertirEnStringNormal() {
+        Dollar dollar1= new Dollar(20);
+        assertEquals("0.20$",dollar1.convertirEnString());
     }
 
+    @Test
+    public void testConvertirEnStringNul() {
+        Dollar dollar1= new Dollar(0);
+        assertEquals("0.00$",dollar1.convertirEnString());
+    }
+    
+    @Test
+    public void testConvertirEnStringGrand() {
+        Dollar dollar1= new Dollar(1000000);
+        assertEquals("10000.00$",dollar1.convertirEnString());
+    }
+    
+    @Test
+    public void testConvertirEnStringPetit() {
+        Dollar dollar1= new Dollar(1);
+        assertEquals("0.01$",dollar1.convertirEnString());
+    }
+    
+     @Test(expected=NumberFormatException.class)
+    public void testConvertirEnStringException() {
+        Dollar dollar1= new Dollar("hey");
+        assertEquals("0.01$",dollar1.convertirEnString());
+    }
+    
+    
+    
     /**
      * Test of convertirDoubleEnInt method, of class Dollar.
      */
