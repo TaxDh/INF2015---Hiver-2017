@@ -5,6 +5,7 @@
  */
 package projetagile;
 
+import java.io.IOException;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -41,13 +42,59 @@ public class DollarTest {
      * Test of additionDollar method, of class Dollar.
      */
     @Test
-    public void testAdditionDollar() {
-        System.out.println("additionDollar");
-        Dollar dollar = null;
-        Dollar instance = new Dollar();
-        instance.additionDollar(dollar);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testAdditionDollarNormal() {
+        Dollar dollar1 = new Dollar(15);
+        Dollar dollar2 = new Dollar(20);
+        dollar1.additionDollar(dollar2);
+        assertEquals(35, dollar1.getMontant());
+    }
+    
+    @Test
+    public void testAdditionDollarNul() {
+        Dollar dollar1 = new Dollar(15);
+        Dollar dollar2 = new Dollar(0);
+        dollar1.additionDollar(dollar2);
+        assertEquals(15, dollar1.getMontant());
+    }
+    
+    @Test
+    public void testAdditionDollarGrand() {
+        Dollar dollar1 = new Dollar(15000);
+        Dollar dollar2 = new Dollar(200000);
+        dollar1.additionDollar(dollar2);
+        assertEquals(215000, dollar1.getMontant());
+    }
+    
+    @Test
+    public void testAdditionDollarNegatif() {
+        Dollar dollar1 = new Dollar(-150);
+        Dollar dollar2 = new Dollar(-150);
+        dollar1.additionDollar(dollar2);
+        assertEquals(-300, dollar1.getMontant());
+    }
+    
+    @Test
+    public void testAdditionDollarPetit() {
+        Dollar dollar1 = new Dollar(1);
+        Dollar dollar2 = new Dollar(2);
+        dollar1.additionDollar(dollar2);
+        assertEquals(3, dollar1.getMontant());
+    }
+    
+    @Test
+    public void testAdditionDollarSAnnule() {
+        Dollar dollar1 = new Dollar(-1000);
+        Dollar dollar2 = new Dollar(1000);
+        dollar1.additionDollar(dollar2);
+        assertEquals(0, dollar1.getMontant());
+    }
+    
+    @Test(expected=NumberFormatException.class)
+    public void testAdditionDollarException() {
+        Dollar dollar1 = new Dollar("hello");
+        Dollar dollar2 = new Dollar(0);
+        dollar1.additionDollar(dollar2);
+        assertEquals(0, dollar1.getMontant());
     }
 
     /**
