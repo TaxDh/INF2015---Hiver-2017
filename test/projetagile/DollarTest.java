@@ -254,16 +254,48 @@ public class DollarTest {
     /**
      * Test of convertirIntEnString method, of class Dollar.
      */
+    //
+    
+    
+    
+    
+    
+    
+    
     @Test
-    public void testConvertirIntEnString() {
-        System.out.println("convertirIntEnString");
-        int intMontant = 0;
-        String expResult = "";
-        String result = Dollar.convertirIntEnString(intMontant);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testConvertirIntEnStringNormal() {
+        assertEquals("0.12$", Dollar.convertirIntEnString(12));
+        assertEquals("5.00$", Dollar.convertirIntEnString(500));
     }
+    
+      @Test
+    public void testConvertirIntEnStringNul() {
+            assertEquals("0.00$", Dollar.convertirIntEnString(0));        
+    }
+    
+    @Test
+    public void testConvertirIntEnStringGrand() {
+            assertEquals("10000.00$", Dollar.convertirIntEnString(1000000));        
+    }
+    
+      @Test
+    public void testConvertirIntEnStringPetit() {
+            assertEquals("0.01$", Dollar.convertirIntEnString(1));        
+    }
+
+    
+     @Test
+    public void testConvertirIntEnStringNegatif() {
+            assertEquals("-0.10$", Dollar.convertirIntEnString(-10));        
+    }
+     
+    
+    
+    
+    
+    
+    
+    //
 
     /**
      * Test of convertirEnString method, of class Dollar.
