@@ -45,6 +45,7 @@ public class JsonFileHandlerTest {
 
     /**
      * Test of ouvrireFichier method, of class JsonFileHandler.
+     * @throws java.lang.Exception
      */
     @Test
     public void testOuvrireFichier() throws Exception {
@@ -59,6 +60,7 @@ public class JsonFileHandlerTest {
 
     /**
      * Test of parcoursDesReclamations method, of class JsonFileHandler.
+     * @throws java.lang.Exception
      */
     @Test
     public void testParcoursDesReclamations() throws Exception {
@@ -72,6 +74,7 @@ public class JsonFileHandlerTest {
 
     /**
      * Test of creeMontantJsonLire method, of class JsonFileHandler.
+     * @throws java.lang.Exception
      */
     @Test
     public void testCreeMontantJsonLire() throws Exception {
@@ -86,6 +89,7 @@ public class JsonFileHandlerTest {
 
     /**
      * Test of valideDate method, of class JsonFileHandler.
+     * @throws java.lang.Exception
      */
     @Test
     public void testValideDate() throws Exception {
@@ -100,6 +104,7 @@ public class JsonFileHandlerTest {
 
     /**
      * Test of creeDateJsonLire method, of class JsonFileHandler.
+     * @throws java.lang.Exception
      */
     @Test
     public void testCreeDateJsonLire() throws Exception {
@@ -114,6 +119,7 @@ public class JsonFileHandlerTest {
 
     /**
      * Test of valideSoin method, of class JsonFileHandler.
+     * @throws java.lang.Exception
      */
     @Test
     public void testValideSoin() throws Exception {
@@ -127,6 +133,7 @@ public class JsonFileHandlerTest {
 
     /**
      * Test of creeSoinJsonLire method, of class JsonFileHandler.
+     * @throws java.lang.Exception
      */
     @Test
     public void testCreeSoinJsonLire() throws Exception {
@@ -141,6 +148,7 @@ public class JsonFileHandlerTest {
 
     /**
      * Test of creeReclamationJsonLire method, of class JsonFileHandler.
+     * @throws java.lang.Exception
      */
     @Test
     public void testCreeReclamationJsonLire() throws Exception {
@@ -155,6 +163,7 @@ public class JsonFileHandlerTest {
 
     /**
      * Test of creeRacineJsonLire method, of class JsonFileHandler.
+     * @throws java.lang.Exception
      */
     @Test
     public void testCreeRacineJsonLire_JSONObject() throws Exception {
@@ -169,6 +178,7 @@ public class JsonFileHandlerTest {
 
     /**
      * Test of creeDossierJsonLire method, of class JsonFileHandler.
+     * @throws java.lang.Exception
      */
     @Test
     public void testCreeDossierJsonLire() throws Exception {
@@ -183,6 +193,7 @@ public class JsonFileHandlerTest {
 
     /**
      * Test of creeRacineJsonLire method, of class JsonFileHandler.
+     * @throws java.lang.Exception
      */
     @Test
     public void testCreeRacineJsonLire_String() throws Exception {
@@ -253,6 +264,7 @@ public class JsonFileHandlerTest {
 
     /**
      * Test of ouvrirFichierStatistique method, of class JsonFileHandler.
+     * @throws java.lang.Exception
      */
     @Test
     public void testOuvrirFichierStatistique() throws Exception {
@@ -291,6 +303,7 @@ public class JsonFileHandlerTest {
 
     /**
      * Test of creeOrthophonieStat method, of class JsonFileHandler.
+     * @throws java.lang.Exception
      */
     @Test
     public void testCreeOrthophonieStat() throws Exception {
@@ -305,6 +318,7 @@ public class JsonFileHandlerTest {
 
     /**
      * Test of creePhysiotherapieStat method, of class JsonFileHandler.
+     * @throws java.lang.Exception
      */
     @Test
     public void testCreePhysiotherapieStat() throws Exception {
@@ -319,6 +333,7 @@ public class JsonFileHandlerTest {
 
     /**
      * Test of creeChiropratieStat method, of class JsonFileHandler.
+     * @throws java.lang.Exception
      */
     @Test
     public void testCreeChiropratieStat() throws Exception {
@@ -333,6 +348,7 @@ public class JsonFileHandlerTest {
 
     /**
      * Test of creeNaturopathieStat method, of class JsonFileHandler.
+     * @throws java.lang.Exception
      */
     @Test
     public void testCreeNaturopathieStat() throws Exception {
@@ -347,6 +363,7 @@ public class JsonFileHandlerTest {
 
     /**
      * Test of creeDentaireStat method, of class JsonFileHandler.
+     * @throws java.lang.Exception
      */
     @Test
     public void testCreeDentaireStat() throws Exception {
@@ -361,6 +378,7 @@ public class JsonFileHandlerTest {
 
     /**
      * Test of creePsychologieStat method, of class JsonFileHandler.
+     * @throws java.lang.Exception
      */
     @Test
     public void testCreePsychologieStat() throws Exception {
@@ -375,6 +393,7 @@ public class JsonFileHandlerTest {
 
     /**
      * Test of creeMedecinGenPriveStat method, of class JsonFileHandler.
+     * @throws java.lang.Exception
      */
     @Test
     public void testCreeMedecinGenPriveStat() throws Exception {
@@ -389,6 +408,7 @@ public class JsonFileHandlerTest {
 
     /**
      * Test of creeKinesitherapieStat method, of class JsonFileHandler.
+     * @throws java.lang.Exception
      */
     @Test
     public void testCreeKinesitherapieStat() throws Exception {
@@ -403,6 +423,7 @@ public class JsonFileHandlerTest {
 
     /**
      * Test of creeOsteopathieStat method, of class JsonFileHandler.
+     * @throws java.lang.Exception
      */
     @Test
     public void testCreeOsteopathieStat() throws Exception {
@@ -417,6 +438,7 @@ public class JsonFileHandlerTest {
 
     /**
      * Test of creeMassotherapieStat method, of class JsonFileHandler.
+     * @throws java.lang.Exception
      */
     @Test
     public void testCreeMassotherapieStat() throws Exception {
@@ -431,6 +453,7 @@ public class JsonFileHandlerTest {
 
     /**
      * Test of creeReclamationRejeteStat method, of class JsonFileHandler.
+     * @throws java.lang.Exception
      */
     @Test
     public void testCreeReclamationRejeteStat() throws Exception {
@@ -445,6 +468,7 @@ public class JsonFileHandlerTest {
 
     /**
      * Test of creeReclamationStat method, of class JsonFileHandler.
+     * @throws java.lang.Exception
      */
     @Test
     public void testCreeReclamationStat() throws Exception {
