@@ -337,6 +337,24 @@ public class DollarTest {
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
+        @Test
+    public void testConvertirDoubleEnIntNormal() {
+        assertEquals(1200, Dollar.convertirDoubleEnInt(12.0));
+        assertEquals(0, Dollar.convertirDoubleEnInt(0.0));
+        assertEquals(50000, Dollar.convertirDoubleEnInt(500.0));
+    }
+          @Test
+    public void testConvertirDoubleEnIntNul() {
+            assertEquals(0, Dollar.convertirDoubleEnInt(0));        
+    }
+    @Test
+    public void testConvertirDoubleEnIntGrand() {
+            assertEquals(100000000, Dollar.convertirDoubleEnInt(1000000));        
+    }
+          @Test
+    public void testConvertirDoubleEnIntPetit() {
+            assertEquals(100, Dollar.convertirDoubleEnInt(1));        
+    }
 
     /**
      * Test of convertirIntEnDouble method, of class Dollar.
@@ -350,6 +368,11 @@ public class DollarTest {
         assertEquals(expResult, result, 0.0);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
+    }
+    @Test
+    public void testConvertirIntEnDoubleNormal() {
+        assertEquals(12,0, Dollar.convertirIntEnDouble(1200));         
+        assertEquals(1,0, Dollar.convertirIntEnDouble(120)); 
     }
 
     /**
