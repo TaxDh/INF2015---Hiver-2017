@@ -224,16 +224,33 @@ public class DollarTest {
      * Test of convertirStringEnInt method, of class Dollar.
      */
     @Test
-    public void testConvertirStringEnInt() {
-        System.out.println("convertirStringEnInt");
-        String strMontant = "";
-        int expResult = 0;
-        int result = Dollar.convertirStringEnInt(strMontant);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testConvertirStringEnIntNormal() {
+        assertEquals(1200, Dollar.convertirStringEnInt("12"));
+        assertEquals(0, Dollar.convertirStringEnInt("0"));
+        assertEquals(50000, Dollar.convertirStringEnInt("500"));
+    }
+    
+      @Test
+    public void testConvertirStringEnIntNul() {
+            assertEquals(0, Dollar.convertirStringEnInt("0"));        
+    }
+    
+    @Test
+    public void testConvertirStringEnIntGrand() {
+            assertEquals(100000000, Dollar.convertirStringEnInt("1000000"));        
+    }
+    
+      @Test
+    public void testConvertirStringEnIntPetit() {
+            assertEquals(100, Dollar.convertirStringEnInt("1"));        
     }
 
+    
+     @Test(expected=NumberFormatException.class)
+    public void testConvertirStringEnIntException() {
+            assertEquals(100, Dollar.convertirStringEnInt("patate"));        
+    }
+    
     /**
      * Test of convertirIntEnString method, of class Dollar.
      */
