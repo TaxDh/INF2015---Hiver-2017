@@ -98,17 +98,61 @@ public class DollarTest {
         assertEquals(0, dollar1.getMontant());
     }
 
-    /**
-     * Test of soustractionDollar method, of class Dollar.
-     */
+    
     @Test
-    public void testSoustractionDollar() {
-        System.out.println("soustractionDollar");
-        Dollar dollar = null;
-        Dollar instance = new Dollar();
-        instance.soustractionDollar(dollar);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testSoustractionDollarNormal() {
+        Dollar dollar1 = new Dollar(20);
+        Dollar dollar2 = new Dollar(15);
+        dollar1.soustractionDollar(dollar2);
+        assertEquals(5, dollar1.getMontant());
+    }
+    
+    @Test
+    public void testSoustractionDollarNul() {
+        Dollar dollar1 = new Dollar(15);
+        Dollar dollar2 = new Dollar(0);
+        dollar1.soustractionDollar(dollar2);
+        assertEquals(15, dollar1.getMontant());
+    }
+    
+    @Test
+    public void testSoustractionDollarGrand() {
+        Dollar dollar1 = new Dollar(200000);
+        Dollar dollar2 = new Dollar(15000);
+        dollar1.soustractionDollar(dollar2);
+        assertEquals(185000, dollar1.getMontant());
+    }
+    
+    @Test
+    public void testSoustractionDollarNegatif() {
+        Dollar dollar1 = new Dollar(-150);
+        Dollar dollar2 = new Dollar(150);
+        dollar1.soustractionDollar(dollar2);
+        assertEquals(-300, dollar1.getMontant());
+    }
+    
+    @Test
+    public void testSoustractionDollarPetit() {
+        Dollar dollar1 = new Dollar(3);
+        Dollar dollar2 = new Dollar(2);
+        dollar1.soustractionDollar(dollar2);
+        assertEquals(1, dollar1.getMontant());
+    }
+    
+    @Test
+    public void testSoustractionDollarSAnnule() {
+        Dollar dollar1 = new Dollar(1000);
+        Dollar dollar2 = new Dollar(1000);
+        dollar1.soustractionDollar(dollar2);
+        assertEquals(0, dollar1.getMontant());
+    }
+    
+    @Test(expected=NumberFormatException.class)
+    public void testSoustractionDollarException() {
+        Dollar dollar1 = new Dollar("hello");
+        Dollar dollar2 = new Dollar(0);
+        dollar1.soustractionDollar(dollar2);
+        assertEquals(0, dollar1.getMontant());
     }
 
     /**
