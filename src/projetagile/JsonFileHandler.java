@@ -225,6 +225,7 @@ public class JsonFileHandler {
         return stats;
     }
 
+    
     public static void ecrisLesStatistiques(Statistique stats, int reclamationValide, int reclamationRejete, int nbSoinMassotheratpie, int nbSoinOsteopathie, int nbSoinKinesitherapie, int nbSoinMGP, int nbSoinPsychologie, int nbSoinDentaire, int nbSoinNaturo, int nbSoinChiropratie, int nbSoinPhysiotherapie, int nbSoinOrthophonie) {
         stats.setReclamationValide(reclamationValide);
         stats.setReclamationRejete(reclamationRejete);
@@ -389,11 +390,8 @@ public class JsonFileHandler {
     }
     
     private static boolean estNumeroContratValide(char numeroContrat){
-        if(numeroContrat == 'A' || numeroContrat == 'B' || numeroContrat == 'C'
-                || numeroContrat == 'D' || numeroContrat == 'E'){
-            return true;
-        }
-        return false;
+        return numeroContrat == 'A' || numeroContrat == 'B' || numeroContrat == 'C'
+                || numeroContrat == 'D' || numeroContrat == 'E';
     }
     
     private static boolean estNumeroSoinValide(int soin){

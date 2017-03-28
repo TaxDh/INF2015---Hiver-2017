@@ -80,6 +80,7 @@ public class ProjetSessionTest {
 
     /**
      * Test of traiterReclamation method, of class ProjetSession.
+     * @throws java.lang.Exception
      */
     @Test
     public void testTraiterReclamation() throws Exception {
