@@ -72,21 +72,18 @@ public class Dollar {
     public static int convertirDoubleEnInt(double dblMontant){
         int montant;
         
-        dblMontant *= 100;
-        montant = (int) dblMontant;
+        montant = (int) Math.round(dblMontant * 100);
                 
         return montant;
     }
     
     public static double convertirIntEnDouble(int intMontant){
         double montant;
-        int montantModuloInt;
-        double montantModuloDbl;
+        double reste;
         
         montant = intMontant/100;
-        montantModuloInt = intMontant % 100;
-        montantModuloDbl = (double) montantModuloInt;
-        montant += montantModuloDbl / 100;
+        reste = (double) intMontant % 100;
+        montant += reste / 100;
         
         return montant;
     }    
