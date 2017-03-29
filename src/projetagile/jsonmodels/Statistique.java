@@ -198,7 +198,7 @@ public class Statistique {
         System.out.println("Le nombre de naturopathies et/ou acuponctures traitees: " + this.getNbSoinNaturo());
         System.out.println("Le nombre de chiropratie traitees: " + this.getNbSoinChiropratie());
         System.out.println("Le nombre de physiotherapies traitees: " + this.getNbSoinPhysiotherapie());
-        System.err.println("Le nombre d'orthophonies et/ou d'ergotherapies traitees: " + this.getNbSoinOrthophonie()); 
+        System.out.println("Le nombre d'orthophonies et/ou d'ergotherapies traitees: " + this.getNbSoinOrthophonie()); 
     }
 }
 
