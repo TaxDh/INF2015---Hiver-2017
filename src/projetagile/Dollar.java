@@ -60,7 +60,7 @@ public class Dollar {
         return montant;
     }
     
-    public String convertirEnString(){
+    public String convertirEnStringDollar(){
         String montant;
         double dblMontant = convertirIntEnDouble(this.montant);
         
