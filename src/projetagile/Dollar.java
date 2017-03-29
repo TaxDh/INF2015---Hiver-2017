@@ -45,7 +45,7 @@ public class Dollar {
         double dblMontant;
         int montant;
         
-        dblMontant = convertirStringEnDouble(strMontant);
+        dblMontant = convertirStringDollarEnDouble(strMontant);
         montant = convertirDoubleEnInt(dblMontant);
         
         return montant;
@@ -55,7 +55,7 @@ public class Dollar {
         String montant;
         double dblMontant = convertirIntEnDouble(intMontant);
         
-        montant = convertirDoubleEnString(dblMontant);
+        montant = convertirDoubleEnStringDollar(dblMontant);
         
         return montant;
     }
@@ -64,7 +64,7 @@ public class Dollar {
         String montant;
         double dblMontant = convertirIntEnDouble(this.montant);
         
-        montant = convertirDoubleEnString(dblMontant);
+        montant = convertirDoubleEnStringDollar(dblMontant);
         
         return montant;
     }
@@ -91,7 +91,7 @@ public class Dollar {
         return montant;
     }    
 
-    public static double convertirStringEnDouble(String strMontant) {
+    public static double convertirStringDollarEnDouble(String strMontant) {
         double montant;
         String stringSansDollar = strMontant.replace("$", "");
         if (contientVirgule(stringSansDollar)) {
@@ -111,9 +111,9 @@ public class Dollar {
         return reponse;
     }
 
-    public static String convertirDoubleEnString(double dblMontant) {
+    public static String convertirDoubleEnStringDollar(double dblMontant) {
         String montant;
-        montant = String.format("%.2f", dblMontant); //vive le C
+        montant = String.format("%.2f", dblMontant); 
         montant = montant + "$";
         montant = montant.replace(",", ".");
         return montant;
