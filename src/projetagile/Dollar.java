@@ -4,6 +4,10 @@
 package projetagile;
 
 public class Dollar {    
+
+    static Object convertirDoubleEnInt(String string) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
     private int montant;
 
@@ -76,8 +80,13 @@ public class Dollar {
     
     public static double convertirIntEnDouble(int intMontant){
         double montant;
+        int montantModuloInt;
+        double montantModuloDbl;
         
-        montant = intMontant/100 + ((double) intMontant % 100 / 100);
+        montant = intMontant/100;
+        montantModuloInt = intMontant % 100;
+        montantModuloDbl = (double) montantModuloInt;
+        montant += montantModuloDbl / 100;
         
         return montant;
     }    
