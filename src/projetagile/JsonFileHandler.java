@@ -186,7 +186,7 @@ public class JsonFileHandler {
         remboursement.accumulate("mois", modeleOut.getMois());
         ajoutSoinDateMontantJson(modeleOut, remboursementTab, montantTotal);
         remboursement.accumulate("remboursements", remboursementTab);
-        remboursement.accumulate("total", montantTotal.convertirEnString());
+        remboursement.accumulate("total", montantTotal.convertirEnStringDollar());
     }
 
     public static void ajoutSoinDateMontantJson(ModeleJsonOut modeleOut, JSONArray remboursementTab, Dollar montantTotal) {
@@ -196,7 +196,7 @@ public class JsonFileHandler {
             
             objetCourant.accumulate("soin", remboursementCourant.getSoins());
             objetCourant.accumulate("date", remboursementCourant.getDate());
-            objetCourant.accumulate("montant", remboursementCourant.getMontant().convertirEnString());
+            objetCourant.accumulate("montant", remboursementCourant.getMontant().convertirEnStringDollar());
             remboursementTab.add(objetCourant);
             montantTotal.additionDollar(remboursementCourant.getMontant());
         }
