@@ -24,7 +24,7 @@ public class Dollar {
     }
     
     public Dollar (String montantStr){
-        this.montant = convertirStringEnInt(montantStr);
+        this.montant = convertirStringDollarEnInt(montantStr);
     }
     
     public void additionDollar (Dollar dollar){
@@ -41,7 +41,7 @@ public class Dollar {
         return remboursementDollar;
     }
     
-    public static int convertirStringEnInt(String strMontant){
+    public static int convertirStringDollarEnInt(String strMontant){
         double dblMontant;
         int montant;
         
@@ -51,7 +51,7 @@ public class Dollar {
         return montant;
     }
     
-    public static String convertirIntEnString(int intMontant){
+    public static String convertirIntEnStringDollar(int intMontant){
         String montant;
         double dblMontant = convertirIntEnDouble(intMontant);
         

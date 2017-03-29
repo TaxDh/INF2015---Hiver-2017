@@ -225,30 +225,30 @@ public class DollarTest {
      */
     @Test
     public void testConvertirStringEnIntNormal() {
-        assertEquals(1200, Dollar.convertirStringEnInt("12"));
-        assertEquals(0, Dollar.convertirStringEnInt("0"));
-        assertEquals(50000, Dollar.convertirStringEnInt("500"));
+        assertEquals(1200, Dollar.convertirStringDollarEnInt("12"));
+        assertEquals(0, Dollar.convertirStringDollarEnInt("0"));
+        assertEquals(50000, Dollar.convertirStringDollarEnInt("500"));
     }
     
       @Test
     public void testConvertirStringEnIntNul() {
-            assertEquals(0, Dollar.convertirStringEnInt("0"));        
+            assertEquals(0, Dollar.convertirStringDollarEnInt("0"));        
     }
     
     @Test
     public void testConvertirStringEnIntGrand() {
-            assertEquals(100000000, Dollar.convertirStringEnInt("1000000"));        
+            assertEquals(100000000, Dollar.convertirStringDollarEnInt("1000000"));        
     }
     
       @Test
     public void testConvertirStringEnIntPetit() {
-            assertEquals(100, Dollar.convertirStringEnInt("1"));        
+            assertEquals(100, Dollar.convertirStringDollarEnInt("1"));        
     }
 
     
      @Test(expected=NumberFormatException.class)
     public void testConvertirStringEnIntException() {
-            assertEquals(100, Dollar.convertirStringEnInt("patate"));        
+            assertEquals(100, Dollar.convertirStringDollarEnInt("patate"));        
     }
     
     /**
@@ -264,29 +264,29 @@ public class DollarTest {
     
     @Test
     public void testConvertirIntEnStringNormal() {
-        assertEquals("0.12$", Dollar.convertirIntEnString(12));
-        assertEquals("5.00$", Dollar.convertirIntEnString(500));
+        assertEquals("0.12$", Dollar.convertirIntEnStringDollar(12));
+        assertEquals("5.00$", Dollar.convertirIntEnStringDollar(500));
     }
     
       @Test
     public void testConvertirIntEnStringNul() {
-            assertEquals("0.00$", Dollar.convertirIntEnString(0));        
+            assertEquals("0.00$", Dollar.convertirIntEnStringDollar(0));        
     }
     
     @Test
     public void testConvertirIntEnStringGrand() {
-            assertEquals("10000.00$", Dollar.convertirIntEnString(1000000));        
+            assertEquals("10000.00$", Dollar.convertirIntEnStringDollar(1000000));        
     }
     
       @Test
     public void testConvertirIntEnStringPetit() {
-            assertEquals("0.01$", Dollar.convertirIntEnString(1));        
+            assertEquals("0.01$", Dollar.convertirIntEnStringDollar(1));        
     }
 
     
      @Test
     public void testConvertirIntEnStringNegatif() {
-            assertEquals("-0.10$", Dollar.convertirIntEnString(-10));        
+            assertEquals("-0.10$", Dollar.convertirIntEnStringDollar(-10));        
     }
 
     /**
