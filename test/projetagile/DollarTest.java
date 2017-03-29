@@ -1,47 +1,15 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Classe pour tester les méthodes de la classe Dollar.
  */
 package projetagile;
 
-
-import org.junit.After;
-import org.junit.AfterClass;
-import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 
-/**
- *
- * @author rene
- */
-public class DollarTest {
-    
-    public DollarTest() {
-    }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
-    @Before
-    public void setUp() {
-    }
-    
-    @After
-    public void tearDown() {
-    }
 
-    /**
-     * Test of additionDollar method, of class Dollar.
-     */
+public class DollarTest {
+
     @Test
     public void testAdditionDollarNormal() {
         Dollar dollar1 = new Dollar(15);
@@ -155,9 +123,7 @@ public class DollarTest {
         assertEquals(0, dollar1.getMontant());
     }
 
-    /**
-     * Test of calculerRemboursement method, of class Dollar.
-     */
+
     @Test
     public void testCalculerRemboursementNormal() {
         
@@ -220,228 +186,222 @@ public class DollarTest {
         assertEquals(0, dollar2.getMontant());
        
     }
-    /**
-     * Test of convertirStringEnInt method, of class Dollar.
-     */
+
     @Test
-    public void testConvertirStringEnIntNormal() {
+    public void testConvertirStringDollarEnIntNormal() {
         assertEquals(1200, Dollar.convertirStringDollarEnInt("12"));
         assertEquals(0, Dollar.convertirStringDollarEnInt("0"));
         assertEquals(50000, Dollar.convertirStringDollarEnInt("500"));
     }
     
       @Test
-    public void testConvertirStringEnIntNul() {
+    public void testConvertirStringDollarEnIntNul() {
             assertEquals(0, Dollar.convertirStringDollarEnInt("0"));        
     }
     
     @Test
-    public void testConvertirStringEnIntGrand() {
+    public void testConvertirStringDollarEnIntGrand() {
             assertEquals(100000000, Dollar.convertirStringDollarEnInt("1000000"));        
     }
     
-      @Test
-    public void testConvertirStringEnIntPetit() {
+    @Test
+    public void testConvertirStringDollarEnIntPetit() {
             assertEquals(100, Dollar.convertirStringDollarEnInt("1"));        
     }
 
     
-     @Test(expected=NumberFormatException.class)
-    public void testConvertirStringEnIntException() {
+    @Test(expected=NumberFormatException.class)
+    public void testConvertirStringDollarEnIntException() {
             assertEquals(100, Dollar.convertirStringDollarEnInt("patate"));        
     }
-    
-    /**
-     * Test of convertirIntEnString method, of class Dollar.
-     */
-    //
-    
-    
-    
-    
-    
-    
-    
+
     @Test
-    public void testConvertirIntEnStringNormal() {
+    public void testConvertirIntEnStringDollarNormal() {
         assertEquals("0.12$", Dollar.convertirIntEnStringDollar(12));
         assertEquals("5.00$", Dollar.convertirIntEnStringDollar(500));
     }
     
       @Test
-    public void testConvertirIntEnStringNul() {
+    public void testConvertirIntEnStringDollarNul() {
             assertEquals("0.00$", Dollar.convertirIntEnStringDollar(0));        
     }
     
     @Test
-    public void testConvertirIntEnStringGrand() {
+    public void testConvertirIntEnStringDollarGrand() {
             assertEquals("10000.00$", Dollar.convertirIntEnStringDollar(1000000));        
     }
     
-      @Test
-    public void testConvertirIntEnStringPetit() {
+    @Test
+    public void testConvertirIntEnStringDollarPetit() {
             assertEquals("0.01$", Dollar.convertirIntEnStringDollar(1));        
     }
 
-    
-     @Test
-    public void testConvertirIntEnStringNegatif() {
+    @Test
+    public void testConvertirIntEnStringDollarNegatif() {
             assertEquals("-0.10$", Dollar.convertirIntEnStringDollar(-10));        
     }
 
-    /**
-     * Test of convertirEnString method, of class Dollar.
-     */
     @Test
-    public void testConvertirEnStringNormal() {
+    public void testConvertirEnStringDollarNormal() {
         Dollar dollar1= new Dollar(20);
-        assertEquals("0.20$",dollar1.convertirEnString());
+        assertEquals("0.20$",dollar1.convertirEnStringDollar());
     }
 
     @Test
-    public void testConvertirEnStringNul() {
+    public void testConvertirEnStringDollarNul() {
         Dollar dollar1= new Dollar(0);
-        assertEquals("0.00$",dollar1.convertirEnString());
+        assertEquals("0.00$",dollar1.convertirEnStringDollar());
     }
     
     @Test
-    public void testConvertirEnStringGrand() {
+    public void testConvertirEnStringDollarGrand() {
         Dollar dollar1= new Dollar(1000000);
-        assertEquals("10000.00$",dollar1.convertirEnString());
+        assertEquals("10000.00$",dollar1.convertirEnStringDollar());
     }
     
     @Test
-    public void testConvertirEnStringPetit() {
+    public void testConvertirEnStringDollarPetit() {
         Dollar dollar1= new Dollar(1);
-        assertEquals("0.01$",dollar1.convertirEnString());
+        assertEquals("0.01$",dollar1.convertirEnStringDollar());
     }
     
-     @Test(expected=NumberFormatException.class)
-    public void testConvertirEnStringException() {
+    @Test(expected=NumberFormatException.class)
+    public void testConvertirEnStringDollarException() {
         Dollar dollar1= new Dollar("hey");
-        assertEquals("0.01$",dollar1.convertirEnString());
+        assertEquals("0.01$",dollar1.convertirEnStringDollar());
     }
     
-    
-    
-    /**
-     * Test of convertirDoubleEnInt method, of class Dollar.
-     */
     @Test
-    public void testConvertirDoubleEnInt() {
-        System.out.println("convertirDoubleEnInt");
-        double dblMontant = 0.0;
-        int expResult = 0;
-        int result = Dollar.convertirDoubleEnInt(dblMontant);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
-        @Test
     public void testConvertirDoubleEnIntNormal() {
-        assertEquals(1200, Dollar.convertirDoubleEnInt(12.0));
-        assertEquals(0, Dollar.convertirDoubleEnInt(0.0));
-        assertEquals(50000, Dollar.convertirDoubleEnInt(500.0));
+        assertEquals(35050, Dollar.convertirDoubleEnInt(350.50));
+        assertEquals(1000, Dollar.convertirDoubleEnInt(10.00));
+        assertEquals(3498, Dollar.convertirDoubleEnInt(34.98));
     }
-          @Test
-    public void testConvertirDoubleEnIntNul() {
-            assertEquals(0, Dollar.convertirDoubleEnInt(0));        
+    
+    @Test
+    public void testConvertirDoubleEnIntPetit() {
+        assertEquals(150, Dollar.convertirDoubleEnInt(1.50));
+        assertEquals(90, Dollar.convertirDoubleEnInt(0.90));
+        assertEquals(2, Dollar.convertirDoubleEnInt(0.02));
     }
+    
+    @Test
+    public void testConvertirDoubleEnIntnul() {
+        assertEquals(0, Dollar.convertirDoubleEnInt(0));
+    }
+   
+    
     @Test
     public void testConvertirDoubleEnIntGrand() {
-            assertEquals(100000000, Dollar.convertirDoubleEnInt(1000000));        
+            assertEquals(100000000, Dollar.convertirDoubleEnInt(1000000));
+            assertEquals(1123581300, Dollar.convertirDoubleEnInt(11235813));
     }
-          @Test
-    public void testConvertirDoubleEnIntPetit() {
-            assertEquals(100, Dollar.convertirDoubleEnInt(1));        
-    }
-
-    /**
-     * Test of convertirIntEnDouble method, of class Dollar.
-     */
-    @Test
-    public void testConvertirIntEnDouble() {
-        System.out.println("convertirIntEnDouble");
-        int intMontant = 0;
-        double expResult = 0.0;
-        double result = Dollar.convertirIntEnDouble(intMontant);
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
-    }
+    
+    
     @Test
     public void testConvertirIntEnDoubleNormal() {
-        assertEquals(12,0, Dollar.convertirIntEnDouble(1200));         
-        assertEquals(1,0, Dollar.convertirIntEnDouble(120)); 
+        assertEquals(12.0, Dollar.convertirIntEnDouble(1200), 0);
+        assertEquals(32.50,Dollar.convertirIntEnDouble(3250), 0); 
+        assertEquals(6.66,Dollar.convertirIntEnDouble(666), 0);
     }
-
-    /**
-     * Test of convertirStringEnDouble method, of class Dollar.
-     */
+    
     @Test
-    public void testConvertirStringEnDouble() {
-        System.out.println("convertirStringEnDouble");
-        String strMontant = "";
-        double expResult = 0.0;
-        double result = Dollar.convertirStringEnDouble(strMontant);
-        assertEquals(expResult, result, 0.0);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testConvertirIntEnDoublePetit() {
+        assertEquals(0.12, Dollar.convertirIntEnDouble(12), 0);
+        assertEquals(3.58,Dollar.convertirIntEnDouble(358), 0); 
+        assertEquals(0.01,Dollar.convertirIntEnDouble(1), 0);
     }
-
-    /**
-     * Test of contientVirgule method, of class Dollar.
-     */
+    
     @Test
-    public void testContientVirgule() {
-        System.out.println("contientVirgule");
-        String montant = "";
-        boolean expResult = false;
-        boolean result = Dollar.contientVirgule(montant);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testConvertirIntEnDoubleNul() {
+        assertEquals(0.00, Dollar.convertirIntEnDouble(0), 0);
     }
-
-    /**
-     * Test of convertirDoubleEnString method, of class Dollar.
-     */
+    
     @Test
-    public void testConvertirDoubleEnString() {
-        System.out.println("convertirDoubleEnString");
-        double dblMontant = 0.0;
-        String expResult = "";
-        String result = Dollar.convertirDoubleEnString(dblMontant);
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testConvertirIntEnDoubleGrand() {
+        assertEquals(358740.25, Dollar.convertirIntEnDouble(35874025), 0);
+        assertEquals(100.00,Dollar.convertirIntEnDouble(10000), 0); 
+        assertEquals(3141592.65,Dollar.convertirIntEnDouble(314159265), 0);
     }
-
-    /**
-     * Test of getMontant method, of class Dollar.
-     */
+    
+   
     @Test
-    public void testGetMontant() {
-        System.out.println("getMontant");
-        Dollar instance = new Dollar();
-        int expResult = 0;
-        int result = instance.getMontant();
-        assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+    public void testConvertirStringDollarEnDoublePetit() {
+        assertEquals(3.15, Dollar.convertirStringDollarEnDouble("3.15$"), 0.0);
+        assertEquals(0.03, Dollar.convertirStringDollarEnDouble("0.03$"), 0.0);
+        assertEquals(0.10, Dollar.convertirStringDollarEnDouble("0,10$"), 0.0);
+    }
+    
+    @Test
+    public void testConvertirStringDollarEnDoubleNormal() {
+       assertEquals(54.45, Dollar.convertirStringDollarEnDouble("54.45$"), 0.0);
+       assertEquals(2254.45, Dollar.convertirStringDollarEnDouble("2254.45$"), 0.0);
+       assertEquals(545.34, Dollar.convertirStringDollarEnDouble("545.34$"), 0.0);
+    }
+    
+    @Test
+    public void testConvertirStringDollarEnDoubleGrand() {
+       assertEquals(10000.358, Dollar.convertirStringDollarEnDouble("10000.358$"), 0.0);
+       assertEquals(35201587493.00, Dollar.convertirStringDollarEnDouble("35201587493.00$"), 0.0);
+       assertEquals(123456897.17, Dollar.convertirStringDollarEnDouble("123456897,17$"), 0.0);
+    }
+    
+    @Test
+    public void testConvertirStringDollarEnDoubleNul() {
+        assertEquals(0.0, Dollar.convertirStringDollarEnDouble("0.00$"), 0.0);
+    }
+   
+    @Test(expected=NumberFormatException.class)
+    public void testConvertirStringDollarEnDoubleException() {
+       assertEquals(0.0, Dollar.convertirStringDollarEnDouble("patate$"), 0.0);
+    }
+    
+    @Test
+    public void testContientVirguleFalse() {
+        assertFalse(Dollar.contientVirgule("392.34$"));
+        assertFalse(Dollar.contientVirgule("1.05$"));
+        assertFalse(Dollar.contientVirgule("1000.01$"));
+    }
+    
+    @Test
+    public void testContientVirguleTrue() {
+        assertTrue(Dollar.contientVirgule("392,34$"));
+        assertTrue(Dollar.contientVirgule("1,05$"));
+        assertTrue(Dollar.contientVirgule("1000,01$"));
     }
 
-    /**
-     * Test of setMontant method, of class Dollar.
-     */
+    @Test
+    public void testConvertirDoubleEnStringDollarPetit() {
+        assertEquals("1.01$", Dollar.convertirDoubleEnStringDollar(1.01));
+        assertEquals("0.02$", Dollar.convertirDoubleEnStringDollar(0.02));
+        assertEquals("9.99$", Dollar.convertirDoubleEnStringDollar(9.99));
+    }
+    
+    @Test
+    public void testConvertirDoubleEnStringDollarNormal() {
+        assertEquals("100.01$", Dollar.convertirDoubleEnStringDollar(100.01));
+        assertEquals("987.22$", Dollar.convertirDoubleEnStringDollar(987.22));
+        assertEquals("999.99$", Dollar.convertirDoubleEnStringDollar(999.99));
+    }
+    
+    @Test
+    public void testConvertirDoubleEnStringDollarGrand() {
+        assertEquals("10000.97$", Dollar.convertirDoubleEnStringDollar(10000.97));
+        assertEquals("3521478932.25$", Dollar.convertirDoubleEnStringDollar(3521478932.25));
+        assertEquals("4508795.37$", Dollar.convertirDoubleEnStringDollar(4508795.37));
+    }
+    
+    @Test
+    public void testConvertirDoubleEnStringDollarNul() {
+        assertEquals("0.00$", Dollar.convertirDoubleEnStringDollar(0.0));
+    }
+    
+
     @Test
     public void testSetMontant() {
-        System.out.println("setMontant");
-        int montant = 0;
-        Dollar instance = new Dollar();
-        instance.setMontant(montant);
-        // TODO review the generated test code and remove the default call to fail.
-        fail("The test case is a prototype.");
+        Dollar dollarTest = new Dollar(20);
+        dollarTest.setMontant(15);
+        assertEquals(15, dollarTest.getMontant());
     }
     
 }
