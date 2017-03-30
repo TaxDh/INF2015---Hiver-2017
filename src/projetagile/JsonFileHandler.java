@@ -384,14 +384,18 @@ public class JsonFileHandler {
         }
     }
     
-    /*methode pour traiter les erreurs*/
+
     private static boolean estNumeroDossierValide(String dossier) {
         return dossier.length() == 7 && dossier.matches("[A-E][0-9]{6}");  
     }
     
     private static boolean estNumeroContratValide(char numeroContrat){
-        return numeroContrat == 'A' || numeroContrat == 'B' || numeroContrat == 'C'
-                || numeroContrat == 'D' || numeroContrat == 'E';
+        boolean resultat = false;
+         if(numeroContrat == 'A' || numeroContrat == 'B' || numeroContrat == 'C'|| numeroContrat == 'D'
+                || numeroContrat == 'E'){
+             resultat = true;
+         }
+         return resultat;
     }
     
     private static boolean estNumeroSoinValide(int soin){
