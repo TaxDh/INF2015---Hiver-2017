@@ -60,7 +60,7 @@ public class ModeleJsonOutTest {
         System.out.println("setClient");
         String client = "";
         ModeleJsonOut instance = new ModeleJsonOut();
-        instance.setClient(client);
+        instance.setDossier(client);
         // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }

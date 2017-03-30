@@ -25,8 +25,8 @@ public class ModeleJsonOut {
         return dossier;
     }
 
-    public void setClient(String client) {
-        this.dossier = client;
+    public void setDossier(String dossier) {
+        this.dossier = dossier;
     }
 
     public String getMois() {

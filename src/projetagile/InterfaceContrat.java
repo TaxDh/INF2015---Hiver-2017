@@ -26,7 +26,7 @@ public abstract class InterfaceContrat {
 
     public ModeleJsonOut calculRemboursement(){
         ModeleJsonOut sortie = new ModeleJsonOut();
-        sortie.setClient(modele.getClient());
+        sortie.setDossier(modele.getTypeContrat() + modele.getClient());
         sortie.setMois(modele.getMois());
         
         sortie = parcoursReclamation(sortie);
