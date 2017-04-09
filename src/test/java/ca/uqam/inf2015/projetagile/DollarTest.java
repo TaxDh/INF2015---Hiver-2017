@@ -4,12 +4,16 @@ Classe pour les JUnits de la classe dollar
 */
 package ca.uqam.inf2015.projetagile;
 
-import org.junit.Test;
+
+
 import static org.junit.Assert.*;
+import org.junit.Test;
+
 
 
 public class DollarTest {
 
+    
     @Test
     public void testAdditionDollarNormal() {
         Dollar dollar1 = new Dollar(15);
@@ -403,5 +407,5 @@ public class DollarTest {
         dollarTest.setMontant(15);
         assertEquals(15, dollarTest.getMontant());
     }
-    
+
 }

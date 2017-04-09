@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="56" failures="0" name="ca.uqam.inf2015.projetagile.DollarTest" time="0.227" errors="0" skipped="0">
+<testsuite tests="56" failures="0" name="ca.uqam.inf2015.projetagile.DollarTest" time="0.247" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_121\jre\bin"/>
@@ -75,8 +75,8 @@
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testCalculerRemboursementGrandMontant" time="0"/>
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testConvertirDoubleEnIntnul" time="0"/>
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testConvertirIntEnStringDollarNul" time="0"/>
-  <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testSoustractionDollarException" time="0.01"/>
-  <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testConvertirIntEnDoubleNul" time="0"/>
+  <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testSoustractionDollarException" time="0"/>
+  <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testConvertirIntEnDoubleNul" time="0.057"/>
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testConvertirEnStringDollarException" time="0"/>
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testSoustractionDollarGrand" time="0"/>
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testSoustractionDollarPetit" time="0"/>
@@ -89,7 +89,7 @@
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testSoustractionDollarNormal" time="0"/>
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testAdditionDollarSAnnule" time="0"/>
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testAdditionDollarException" time="0"/>
-  <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testConvertirDoubleEnStringDollarNormal" time="0"/>
+  <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testConvertirDoubleEnStringDollarNormal" time="0.001"/>
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testConvertirDoubleEnIntGrand" time="0"/>
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testConvertirDoubleEnIntPetit" time="0"/>
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testConvertirStringDollarEnIntException" time="0"/>
@@ -99,7 +99,7 @@
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testConvertirStringDollarEnDoubleException" time="0"/>
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testAdditionDollarGrand" time="0"/>
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testAdditionDollarPetit" time="0"/>
-  <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testConvertirIntEnStringDollarGrand" time="0.035"/>
+  <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testConvertirIntEnStringDollarGrand" time="0"/>
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testConvertirIntEnStringDollarPetit" time="0"/>
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testCalculerRemboursementPetitMontant" time="0"/>
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testAdditionDollarNul" time="0"/>
@@ -108,14 +108,14 @@
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testConvertirDoubleEnStringDollarGrand" time="0"/>
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testConvertirDoubleEnStringDollarPetit" time="0"/>
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testCalculerRemboursementException" time="0"/>
-  <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testConvertirIntEnStringDollarNegatif" time="0"/>
+  <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testConvertirIntEnStringDollarNegatif" time="0.004"/>
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testConvertirStringDollarEnIntNul" time="0"/>
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testCalculerRemboursementMontantNul" time="0"/>
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testConvertirStringDollarEnDoubleNul" time="0"/>
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testSoustractionDollarSAnnule" time="0"/>
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testConvertirIntEnStringDollarNormal" time="0"/>
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testCalculerRemboursementNul" time="0"/>
-  <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testConvertirStringDollarEnIntNormal" time="0"/>
+  <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testConvertirStringDollarEnIntNormal" time="0.001"/>
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testSoustractionDollarNegatif" time="0"/>
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testConvertirEnStringDollarGrand" time="0"/>
   <testcase classname="ca.uqam.inf2015.projetagile.DollarTest" name="testConvertirEnStringDollarPetit" time="0"/>
