@@ -8,18 +8,37 @@
     <build>
         <plugins>
             <plugin>
-      <artifactId>maven-assembly-plugin</artifactId>
-      <configuration>
-        <archive>
-          <manifest>
-            <mainClass>ca.uqam.inf2015.projetagile.ProjetSession</mainClass>
-          </manifest>
-        </archive>
-        <descriptorRefs>
-          <descriptorRef>jar-with-dependencies</descriptorRef>
-        </descriptorRefs>
-      </configuration>
-    </plugin>
+                <artifactId>maven-assembly-plugin</artifactId>
+                <configuration>
+                    <archive>
+                        <manifest>
+                            <mainClass>ca.uqam.inf2015.projetagile.ProjetSession</mainClass>
+                        </manifest>
+                    </archive>
+                    <descriptorRefs>
+                        <descriptorRef>jar-with-dependencies</descriptorRef>
+                    </descriptorRefs>
+                </configuration>
+            </plugin>
+            <plugin>
+             <groupId>org.jacoco</groupId>
+             <artifactId>jacoco-maven-plugin</artifactId>
+             <version>0.7.0.201403182114</version>
+             <executions>
+                 <execution>
+                     <goals>
+                         <goal>prepare-agent</goal>
+                     </goals>
+                 </execution>
+                 <execution>
+                     <id>report</id>
+                     <phase>prepare-package</phase>
+                     <goals>
+                         <goal>report</goal>
+                     </goals>
+                 </execution>
+             </executions>
+         </plugin>
         </plugins>
     </build>
     <dependencies>

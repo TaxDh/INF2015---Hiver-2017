@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>Statistique.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ProjetAgile</a> &gt; <a href="index.source.html" class="el_package">ca.uqam.inf2015.projetagile.jsonmodels</a> &gt; <span class="el_source">Statistique.java</span></div><h1>Statistique.java</h1><pre class="source lang-java linenums">/*
+ * L'objet statistique pour le fichier json statistique
+ */
+package ca.uqam.inf2015.projetagile.jsonmodels;
+
+import java.util.List;
+
+public class Statistique {
+    private int reclamationValide;
+    private int reclamationRejete;
+    private int nbSoinMassotheratpie;
+    private int nbSoinOsteopathie;
+    private int nbSoinKinesitherapie;
+    private int nbSoinMGP;
+    private int nbSoinPsychologie;
+    private int nbSoinDentaire;
+    private int nbSoinNaturo;
+    private int nbSoinChiropratie;
+    private int nbSoinPhysiotherapie;
+    private int nbSoinOrthophonie;
+
+<span class="nc" id="L22">    public Statistique(){</span>
+<span class="nc" id="L23">    }</span>
+
+    public Statistique(int reclamationValide, int reclamationRejete, int nbSoinMassotheratpie,
+            int nbSoinOsteopathie, int nbSoinKinesitherapie, int nbSoinMGP, int nbSoinPsychologie,
+            int nbSoinDentaire, int nbSoinNaturo, int nbSoinChiropratie, int nbSoinPhysiotherapie,
+<span class="nc" id="L28">            int nbSoinOrthophonie) {</span>
+        
+<span class="nc" id="L30">        this.reclamationValide = reclamationValide;</span>
+<span class="nc" id="L31">        this.reclamationRejete = reclamationRejete;</span>
+<span class="nc" id="L32">        this.nbSoinMassotheratpie = nbSoinMassotheratpie;</span>
+<span class="nc" id="L33">        this.nbSoinOsteopathie = nbSoinOsteopathie;</span>
+<span class="nc" id="L34">        this.nbSoinKinesitherapie = nbSoinKinesitherapie;</span>
+<span class="nc" id="L35">        this.nbSoinMGP = nbSoinMGP;</span>
+<span class="nc" id="L36">        this.nbSoinPsychologie = nbSoinPsychologie;</span>
+<span class="nc" id="L37">        this.nbSoinDentaire = nbSoinDentaire;</span>
+<span class="nc" id="L38">        this.nbSoinNaturo = nbSoinNaturo;</span>
+<span class="nc" id="L39">        this.nbSoinChiropratie = nbSoinChiropratie;</span>
+<span class="nc" id="L40">        this.nbSoinPhysiotherapie = nbSoinPhysiotherapie;</span>
+<span class="nc" id="L41">        this.nbSoinOrthophonie = nbSoinOrthophonie;</span>
+<span class="nc" id="L42">    }</span>
+    
+    public int getReclamationValide() {
+<span class="nc" id="L45">        return reclamationValide;</span>
+    }
+
+    public void setReclamationValide(int reclamationValide) {
+<span class="nc" id="L49">        this.reclamationValide = reclamationValide;</span>
+<span class="nc" id="L50">    }</span>
+
+    public int getReclamationRejete() {
+<span class="nc" id="L53">        return reclamationRejete;</span>
+    }
+
+    public void setReclamationRejete(int reclamationRejete) {
+<span class="nc" id="L57">        this.reclamationRejete = reclamationRejete;</span>
+<span class="nc" id="L58">    }</span>
+
+    public int getNbSoinMassotheratpie() {
+<span class="nc" id="L61">        return nbSoinMassotheratpie;</span>
+    }
+
+    public void setNbSoinMassotheratpie(int nbSoinMassotheratpie) {
+<span class="nc" id="L65">        this.nbSoinMassotheratpie = nbSoinMassotheratpie;</span>
+<span class="nc" id="L66">    }</span>
+
+    public int getNbSoinOsteopathie() {
+<span class="nc" id="L69">        return nbSoinOsteopathie;</span>
+    }
+
+    public void setNbSoinOsteopathie(int nbSoinOsteopathie) {
+<span class="nc" id="L73">        this.nbSoinOsteopathie = nbSoinOsteopathie;</span>
+<span class="nc" id="L74">    }</span>
+
+    public int getNbSoinKinesitherapie() {
+<span class="nc" id="L77">        return nbSoinKinesitherapie;</span>
+    }
+
+    public void setNbSoinKinesitherapie(int nbSoinKinesitherapie) {
+<span class="nc" id="L81">        this.nbSoinKinesitherapie = nbSoinKinesitherapie;</span>
+<span class="nc" id="L82">    }</span>
+
+    public int getNbSoinMGP() {
+<span class="nc" id="L85">        return nbSoinMGP;</span>
+    }
+
+    public void setNbSoinMGP(int nbSoinMGP) {
+<span class="nc" id="L89">        this.nbSoinMGP = nbSoinMGP;</span>
+<span class="nc" id="L90">    }</span>
+
+    public int getNbSoinPsychologie() {
+<span class="nc" id="L93">        return nbSoinPsychologie;</span>
+    }
+
+    public void setNbSoinPsychologie(int nbSoinPsychologie) {
+<span class="nc" id="L97">        this.nbSoinPsychologie = nbSoinPsychologie;</span>
+<span class="nc" id="L98">    }</span>
+
+    public int getNbSoinDentaire() {
+<span class="nc" id="L101">        return nbSoinDentaire;</span>
+    }
+
+    public void setNbSoinDentaire(int nbSoinDentaire) {
+<span class="nc" id="L105">        this.nbSoinDentaire = nbSoinDentaire;</span>
+<span class="nc" id="L106">    }</span>
+
+    public int getNbSoinNaturo() {
+<span class="nc" id="L109">        return nbSoinNaturo;</span>
+    }
+
+    public void setNbSoinNaturo(int nbSoinNaturo) {
+<span class="nc" id="L113">        this.nbSoinNaturo = nbSoinNaturo;</span>
+<span class="nc" id="L114">    }</span>
+
+    public int getNbSoinChiropratie() {
+<span class="nc" id="L117">        return nbSoinChiropratie;</span>
+    }
+
+    public void setNbSoinChiropratie(int nbSoinChiropratie) {
+<span class="nc" id="L121">        this.nbSoinChiropratie = nbSoinChiropratie;</span>
+<span class="nc" id="L122">    }</span>
+
+    public int getNbSoinPhysiotherapie() {
+<span class="nc" id="L125">        return nbSoinPhysiotherapie;</span>
+    }
+
+    public void setNbSoinPhysiotherapie(int nbSoinPhysiotherapie) {
+<span class="nc" id="L129">        this.nbSoinPhysiotherapie = nbSoinPhysiotherapie;</span>
+<span class="nc" id="L130">    }</span>
+
+    public int getNbSoinOrthophonie() {
+<span class="nc" id="L133">        return nbSoinOrthophonie;</span>
+    }
+
+    public void setNbSoinOrthophonie(int nbSoinOrthophonie) {
+<span class="nc" id="L137">        this.nbSoinOrthophonie = nbSoinOrthophonie;</span>
+<span class="nc" id="L138">    }</span>
+    
+    public void compterSoin(ModeleJsonOut sortie){
+<span class="nc" id="L141">        List&lt;Remboursement&gt; listeRemboursement = sortie.getRemboursement();</span>
+        int soin;
+        
+<span class="nc bnc" id="L144" title="All 2 branches missed.">        for(Remboursement remboursement: listeRemboursement){</span>
+<span class="nc" id="L145">            soin = remboursement.getSoins();</span>
+<span class="nc" id="L146">            choixDuSoin(soin);</span>
+<span class="nc" id="L147">        }</span>
+<span class="nc" id="L148">    }</span>
+
+    public void choixDuSoin(int soin) {
+<span class="nc bnc" id="L151" title="All 2 branches missed.">        if(soin == 0){</span>
+<span class="nc" id="L152">            this.nbSoinMassotheratpie++;</span>
+<span class="nc bnc" id="L153" title="All 2 branches missed.">        } else if(soin == 100){</span>
+<span class="nc" id="L154">            this.nbSoinOsteopathie++;</span>
+<span class="nc bnc" id="L155" title="All 2 branches missed.">        } else if(soin == 150){</span>
+<span class="nc" id="L156">            this.nbSoinKinesitherapie++;</span>
+<span class="nc bnc" id="L157" title="All 2 branches missed.">        } else if(soin == 175){</span>
+<span class="nc" id="L158">            this.nbSoinMGP++;</span>
+<span class="nc bnc" id="L159" title="All 2 branches missed.">        } else if(soin == 200){</span>
+<span class="nc" id="L160">            this.nbSoinPsychologie++;</span>
+<span class="nc bnc" id="L161" title="All 4 branches missed.">        } else if(soin &gt;= 300 &amp;&amp; soin &lt; 400){</span>
+<span class="nc" id="L162">            this.nbSoinDentaire++;</span>
+<span class="nc bnc" id="L163" title="All 2 branches missed.">        } else if(soin == 400){</span>
+<span class="nc" id="L164">            this.nbSoinNaturo++;</span>
+<span class="nc bnc" id="L165" title="All 2 branches missed.">        } else if(soin == 500){</span>
+<span class="nc" id="L166">            this.nbSoinChiropratie++;</span>
+<span class="nc bnc" id="L167" title="All 2 branches missed.">        } else if(soin == 600){</span>
+<span class="nc" id="L168">            this.nbSoinPhysiotherapie++;</span>
+<span class="nc bnc" id="L169" title="All 2 branches missed.">        } else if(soin == 700){</span>
+<span class="nc" id="L170">            this.nbSoinOrthophonie++;</span>
+        }
+<span class="nc" id="L172">    }</span>
+    
+    public void reinitialise(){
+<span class="nc" id="L175">        this.setReclamationValide(0);</span>
+<span class="nc" id="L176">        this.setReclamationRejete(0);</span>
+<span class="nc" id="L177">        this.setNbSoinMassotheratpie(0);</span>
+<span class="nc" id="L178">        this.setNbSoinOsteopathie(0);</span>
+<span class="nc" id="L179">        this.setNbSoinKinesitherapie(0);</span>
+<span class="nc" id="L180">        this.setNbSoinMGP(0);</span>
+<span class="nc" id="L181">        this.setNbSoinPsychologie(0);</span>
+<span class="nc" id="L182">        this.setNbSoinDentaire(0);</span>
+<span class="nc" id="L183">        this.setNbSoinNaturo(0);</span>
+<span class="nc" id="L184">        this.setNbSoinChiropratie(0);</span>
+<span class="nc" id="L185">        this.setNbSoinPhysiotherapie(0);</span>
+<span class="nc" id="L186">        this.setNbSoinOrthophonie(0);</span>
+<span class="nc" id="L187">    }</span>
+    
+    public void afficherStatistiques(){
+<span class="nc" id="L190">        System.out.println(&quot;Le nombre de reclamations valides: &quot; + this.getReclamationValide());</span>
+<span class="nc" id="L191">        System.out.println(&quot;Le nombre de reclamations rejetes: &quot; + this.getReclamationRejete());</span>
+<span class="nc" id="L192">        System.out.println(&quot;Le nombre de massotherapies traitees: &quot; + this.getNbSoinMassotheratpie());</span>
+<span class="nc" id="L193">        System.out.println(&quot;Le nombre de osteopathies traitees: &quot; + this.getNbSoinOsteopathie());</span>
+<span class="nc" id="L194">        System.out.println(&quot;Le nombre de kinesitherapies traitees: &quot; + this.getNbSoinKinesitherapie());</span>
+<span class="nc" id="L195">        System.out.println(&quot;Le nombre de medecins generalistes prives traitees: &quot; +this.getNbSoinMGP());</span>
+<span class="nc" id="L196">        System.out.println(&quot;Le nombre de psychologies individuelles traitees: &quot; + this.getNbSoinPsychologie());</span>
+<span class="nc" id="L197">        System.out.println(&quot;Le nombre de soins dentaires traitees: &quot; + this.getNbSoinDentaire());</span>
+<span class="nc" id="L198">        System.out.println(&quot;Le nombre de naturopathies et/ou acuponctures traitees: &quot; + this.getNbSoinNaturo());</span>
+<span class="nc" id="L199">        System.out.println(&quot;Le nombre de chiropratie traitees: &quot; + this.getNbSoinChiropratie());</span>
+<span class="nc" id="L200">        System.out.println(&quot;Le nombre de physiotherapies traitees: &quot; + this.getNbSoinPhysiotherapie());</span>
+<span class="nc" id="L201">        System.out.println(&quot;Le nombre d'orthophonies et/ou d'ergotherapies traitees: &quot; + this.getNbSoinOrthophonie()); </span>
+<span class="nc" id="L202">    }</span>
+}
+
+    
+    
+    
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.0.201403182114</span></div></body></html>

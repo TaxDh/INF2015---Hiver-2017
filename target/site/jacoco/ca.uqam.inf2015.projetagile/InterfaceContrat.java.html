@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>InterfaceContrat.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ProjetAgile</a> &gt; <a href="index.source.html" class="el_package">ca.uqam.inf2015.projetagile</a> &gt; <span class="el_source">InterfaceContrat.java</span></div><h1>InterfaceContrat.java</h1><pre class="source lang-java linenums">/* chaque soin est considéré comme une méthode
+elle différe pour chaque objet (contrat), donc on utilise une classe
+abstraite.
+ */
+package ca.uqam.inf2015.projetagile;
+
+import ca.uqam.inf2015.projetagile.jsonmodels.ModeleJsonIn;
+import ca.uqam.inf2015.projetagile.jsonmodels.ModeleJsonOut;
+import ca.uqam.inf2015.projetagile.jsonmodels.Reclamation;
+import ca.uqam.inf2015.projetagile.jsonmodels.Remboursement;
+
+
+public abstract class InterfaceContrat {
+<span class="nc" id="L14">    protected Dollar maximumMensuelOsteopahtie = new Dollar(&quot;250.00$&quot;);</span>
+<span class="nc" id="L15">    protected Dollar maximumMensuelMedGenPriv = new Dollar(&quot;200.00$&quot;);</span>
+<span class="nc" id="L16">    protected Dollar maximumMensuelPsychologieInd = new Dollar(&quot;250.00$&quot;);</span>
+<span class="nc" id="L17">    protected Dollar maximumMensuelChiropratie = new Dollar(&quot;150.00$&quot;);</span>
+<span class="nc" id="L18">    protected Dollar maximumMensuelPhysiotherapie = new Dollar(&quot;300.00$&quot;);</span>
+   
+    private ModeleJsonIn modele;
+    
+<span class="nc" id="L22">    public InterfaceContrat(ModeleJsonIn modele) {</span>
+        
+<span class="nc" id="L24">        this.modele = modele;</span>
+<span class="nc" id="L25">    }</span>
+
+    public ModeleJsonOut calculRemboursement(){
+<span class="nc" id="L28">        ModeleJsonOut sortie = new ModeleJsonOut();</span>
+<span class="nc" id="L29">        sortie.setDossier(modele.getTypeContrat() + modele.getClient());</span>
+<span class="nc" id="L30">        sortie.setMois(modele.getMois());</span>
+        
+<span class="nc" id="L32">        sortie = parcoursReclamation(sortie);</span>
+<span class="nc" id="L33">        return sortie;</span>
+    }
+
+    public ModeleJsonOut parcoursReclamation(ModeleJsonOut sortie) {
+<span class="nc bnc" id="L37" title="All 2 branches missed.">        for(Reclamation reclamation : modele.getReclamations()){</span>
+<span class="nc" id="L38">            Dollar montant = reclamation.getMontant();</span>
+<span class="nc" id="L39">            Dollar remboursementDollar = new Dollar();</span>
+            
+<span class="nc" id="L41">            remboursementDollar = choixSoin(reclamation, remboursementDollar, montant);</span>
+<span class="nc" id="L42">            Remboursement nouveauRemboursement = new Remboursement(reclamation.getSoins(),</span>
+<span class="nc" id="L43">                    reclamation.getDate(), remboursementDollar);</span>
+            
+<span class="nc" id="L45">            sortie.ajouterRemboursement(nouveauRemboursement);</span>
+<span class="nc" id="L46">        }</span>
+<span class="nc" id="L47">        return sortie;</span>
+    }
+
+    public Dollar choixSoin(Reclamation reclamation, Dollar remboursementDollar, Dollar montant) {
+<span class="nc bnc" id="L51" title="All 2 branches missed.">        if(reclamation.getSoins() == 0){</span>
+<span class="nc" id="L52">            remboursementDollar =  massotherapie(montant);</span>
+<span class="nc bnc" id="L53" title="All 2 branches missed.">        } else if(reclamation.getSoins() == 100){</span>
+<span class="nc" id="L54">            remboursementDollar = osteopathie(montant);</span>
+<span class="nc bnc" id="L55" title="All 2 branches missed.">        } else if(reclamation.getSoins() == 150){</span>
+<span class="nc" id="L56">            remboursementDollar = kinesitherapie(montant);</span>
+<span class="nc bnc" id="L57" title="All 2 branches missed.">        } else if(reclamation.getSoins() == 175){</span>
+<span class="nc" id="L58">            remboursementDollar = medecin_generaliste_prive(montant);</span>
+<span class="nc bnc" id="L59" title="All 2 branches missed.">        } else if(reclamation.getSoins() == 200){</span>
+<span class="nc" id="L60">            remboursementDollar = psychologie_individuelle(montant);</span>
+<span class="nc bnc" id="L61" title="All 4 branches missed.">        } else if(reclamation.getSoins() &gt;= 300 &amp;&amp; reclamation.getSoins() &lt; 400){</span>
+<span class="nc" id="L62">            remboursementDollar = soin_dentaire(montant);</span>
+<span class="nc bnc" id="L63" title="All 2 branches missed.">        } else if(reclamation.getSoins() == 400){</span>
+<span class="nc" id="L64">            remboursementDollar = naturo_acuponcture(montant);</span>
+<span class="nc bnc" id="L65" title="All 2 branches missed.">        } else if(reclamation.getSoins() == 500){</span>
+<span class="nc" id="L66">            remboursementDollar = chiropratie(montant);</span>
+<span class="nc bnc" id="L67" title="All 2 branches missed.">        } else if(reclamation.getSoins() == 600){</span>
+<span class="nc" id="L68">            remboursementDollar = physiotherapie(montant);</span>
+<span class="nc bnc" id="L69" title="All 2 branches missed.">        } else if(reclamation.getSoins() == 700){</span>
+<span class="nc" id="L70">            remboursementDollar = orthophonie_ergotherapie(montant);</span>
+        }
+<span class="nc" id="L72">        return remboursementDollar;</span>
+    }
+    
+    
+    //numero 0
+    public abstract Dollar massotherapie(Dollar montant);
+    
+    //numero 100
+    public abstract Dollar osteopathie(Dollar montant);
+    
+    //numero 150
+    public abstract Dollar kinesitherapie (Dollar montant);
+    
+    //numero 175
+    public abstract Dollar medecin_generaliste_prive (Dollar montant);
+    
+    //numero 200
+    public abstract Dollar psychologie_individuelle(Dollar montant);
+    
+    //numero 300 a 399
+    public abstract Dollar soin_dentaire(Dollar montant);
+    
+   //numero 400    
+    public abstract Dollar naturo_acuponcture(Dollar montant);
+    
+   //numero 500
+    public abstract Dollar chiropratie(Dollar montant);
+    
+    //numero 600
+    public abstract Dollar physiotherapie(Dollar montant);
+    
+    //numero 700
+    public abstract Dollar orthophonie_ergotherapie(Dollar montant);
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.0.201403182114</span></div></body></html>

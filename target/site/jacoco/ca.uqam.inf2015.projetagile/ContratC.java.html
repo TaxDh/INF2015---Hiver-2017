@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../.resources/report.css" type="text/css"/><link rel="shortcut icon" href="../.resources/report.gif" type="image/gif"/><title>ContratC.java</title><link rel="stylesheet" href="../.resources/prettify.css" type="text/css"/><script type="text/javascript" src="../.resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../.sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">ProjetAgile</a> &gt; <a href="index.source.html" class="el_package">ca.uqam.inf2015.projetagile</a> &gt; <span class="el_source">ContratC.java</span></div><h1>ContratC.java</h1><pre class="source lang-java linenums">/*
+ * Objet contrat C, avec les méthodes type de soins associées
+ */
+package ca.uqam.inf2015.projetagile;
+
+import ca.uqam.inf2015.projetagile.jsonmodels.ModeleJsonIn;
+
+
+public class ContratC extends InterfaceContrat{
+     public ContratC(ModeleJsonIn modele) {
+        
+<span class="nc" id="L12">        super(modele);</span>
+<span class="nc" id="L13">    }</span>
+    
+    //Type de soin
+    //numero 0
+    @Override
+    public Dollar massotherapie(Dollar montant){
+<span class="nc" id="L19">        return montant.calculerRemboursement(0.90);</span>
+    }
+    
+    //numero 100
+    @Override
+    public Dollar osteopathie(Dollar montant){
+<span class="nc" id="L25">        Dollar remboursement = montant.calculerRemboursement(0.95);</span>
+<span class="nc bnc" id="L26" title="All 2 branches missed.">        if(remboursement.getMontant() &gt; maximumMensuelOsteopahtie.getMontant()){</span>
+<span class="nc" id="L27">            remboursement.setMontant(maximumMensuelOsteopahtie.getMontant());</span>
+        }
+<span class="nc" id="L29">        maximumMensuelOsteopahtie.soustractionDollar(remboursement);</span>
+<span class="nc" id="L30">        return remboursement;</span>
+    }
+    
+     //numero 150
+    @Override
+    public Dollar kinesitherapie (Dollar montant){
+<span class="nc" id="L36">        return montant.calculerRemboursement(0.85);</span>
+    }
+    
+    //numero 175
+    @Override
+    public Dollar medecin_generaliste_prive (Dollar montant){
+<span class="nc" id="L42">        Dollar remboursement = montant.calculerRemboursement(0.9);</span>
+<span class="nc bnc" id="L43" title="All 2 branches missed.">        if(remboursement.getMontant() &gt; maximumMensuelMedGenPriv.getMontant()){</span>
+<span class="nc" id="L44">            remboursement.setMontant(maximumMensuelMedGenPriv.getMontant());</span>
+        }
+<span class="nc" id="L46">        maximumMensuelMedGenPriv.soustractionDollar(remboursement);</span>
+<span class="nc" id="L47">        return remboursement;</span>
+    }
+    
+    //numero 200
+    @Override
+    public Dollar psychologie_individuelle(Dollar montant){
+<span class="nc" id="L53">       Dollar remboursement = montant.calculerRemboursement(0.90);</span>
+<span class="nc bnc" id="L54" title="All 2 branches missed.">        if(remboursement.getMontant() &gt; maximumMensuelPsychologieInd.getMontant()){</span>
+<span class="nc" id="L55">            remboursement.setMontant(maximumMensuelPsychologieInd.getMontant());</span>
+        }
+<span class="nc" id="L57">        maximumMensuelPsychologieInd.soustractionDollar(remboursement);</span>
+<span class="nc" id="L58">        return remboursement;</span>
+    }
+    
+    //numero 300 a 399
+    @Override
+    public Dollar soin_dentaire(Dollar montant){
+<span class="nc" id="L64">       return montant.calculerRemboursement(0.90);</span>
+    }
+    
+     //numero 400   
+    @Override
+    public Dollar naturo_acuponcture(Dollar montant){
+<span class="nc" id="L70">        return montant.calculerRemboursement(0.90);</span>
+    }
+    
+    //numero 500
+    @Override
+    public Dollar chiropratie(Dollar montant){
+<span class="nc" id="L76">        Dollar remboursement = montant.calculerRemboursement(0.9);</span>
+<span class="nc bnc" id="L77" title="All 2 branches missed.">        if(remboursement.getMontant() &gt; maximumMensuelChiropratie.getMontant()){</span>
+<span class="nc" id="L78">            remboursement.setMontant(maximumMensuelChiropratie.getMontant());</span>
+        }
+<span class="nc" id="L80">        maximumMensuelChiropratie.soustractionDollar(remboursement);</span>
+<span class="nc" id="L81">        return remboursement;</span>
+    }
+    
+    //numero 600
+    @Override
+    public Dollar physiotherapie(Dollar montant){
+<span class="nc" id="L87">        Dollar remboursement = montant.calculerRemboursement(0.75);</span>
+<span class="nc bnc" id="L88" title="All 2 branches missed.">        if(remboursement.getMontant() &gt; maximumMensuelPhysiotherapie.getMontant()){</span>
+<span class="nc" id="L89">            remboursement.setMontant(maximumMensuelPhysiotherapie.getMontant());</span>
+        }
+<span class="nc" id="L91">        maximumMensuelPhysiotherapie.soustractionDollar(remboursement);</span>
+<span class="nc" id="L92">        return remboursement;</span>
+    }
+    //numero 700
+    @Override
+    public Dollar orthophonie_ergotherapie(Dollar montant){
+<span class="nc" id="L97">        return montant.calculerRemboursement(0.90);</span>
+    }
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.eclemma.org/jacoco">JaCoCo</a> 0.7.0.201403182114</span></div></body></html>
