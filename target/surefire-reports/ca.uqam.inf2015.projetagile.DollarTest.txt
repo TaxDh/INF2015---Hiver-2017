@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: ca.uqam.inf2015.projetagile.DollarTest
 -------------------------------------------------------------------------------
-Tests run: 56, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.248 sec
+Tests run: 56, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.234 sec
