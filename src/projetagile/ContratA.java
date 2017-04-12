@@ -1,5 +1,5 @@
 /*
- * Objet contrat A, avec les méthodes type de soins associées
+ * Objet contrat A, avec les méthodes type de soins associées.
  */
 package projetagile;
 
