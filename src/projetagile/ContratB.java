@@ -32,10 +32,10 @@ public class ContratB extends InterfaceContrat{
             remboursement = new Dollar("50$");
         }
             
-        if(remboursement.getMontant() > maximumMensuelOsteopahtie.getMontant()){
-            remboursement.setMontant(maximumMensuelOsteopahtie.getMontant());
+        if(remboursement.getMontant() > maximumMensuelOsteopathie.getMontant()){
+            remboursement.setMontant(maximumMensuelOsteopathie.getMontant());
         }
-        maximumMensuelOsteopahtie.soustractionDollar(remboursement);
+        maximumMensuelOsteopathie.soustractionDollar(remboursement);
         return remboursement;
     }
     
