@@ -35,7 +35,7 @@ public class ContratATest {
     public void tearDown() {
     }
 
-/*
+
     @Test
     public void testMassotherapie() {
         Dollar montant = new Dollar("100.00$");
@@ -54,9 +54,8 @@ public class ContratATest {
         
     }   
     
-   
- */
-/*
+ 
+
     @Test
     public void testOsteopathieMaxMensuelGrand() {
         Dollar montant = new Dollar("2000.00$");
@@ -94,29 +93,61 @@ public class ContratATest {
         Dollar result = instance.kinesitherapie(montant);        
         assertEquals(expResult.getMontant(), result.getMontant());        
     }   
-*/
+
     @Test
     public void testMedecin_generaliste_prive() {
-        System.out.println("medecin_generaliste_prive");
-        Dollar montant = null;
-        ContratA instance = null;
-        Dollar expResult = null;
-        Dollar result = instance.medecin_generaliste_prive(montant);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        Dollar expResult = new Dollar("50.00$");
+        Dollar result = instance.medecin_generaliste_prive(dollar100); 
+        assertEquals(expResult.getMontant(), result.getMontant());
     }
-/*
+    
+    
+    @Test
+    public void testMedecin_generaliste_priveMaxMensuelPetit() {
+        Dollar montant = new Dollar("300.00$");
+        Dollar expResult = new Dollar("150.00$");
+        Dollar result = instance.medecin_generaliste_prive(montant); 
+        assertEquals(expResult.getMontant(), result.getMontant());
+        
+    }   
+    
+    
+    @Test
+    public void testMedecin_generaliste_priveMaxMensuelGrand() {
+        Dollar montant = new Dollar("3000.00$");
+        Dollar expResult = new Dollar("200.00$");
+        Dollar result = instance.medecin_generaliste_prive(montant); 
+        assertEquals(expResult.getMontant(), result.getMontant());
+        
+    }   
+    
+
     @Test
     public void testPsychologie_individuelle() {
-        System.out.println("psychologie_individuelle");
-        Dollar montant = null;
-        ContratA instance = null;
-        Dollar expResult = null;
-        Dollar result = instance.psychologie_individuelle(montant);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+          Dollar expResult = new Dollar("25.00$");
+        Dollar result = instance.psychologie_individuelle(dollar100); 
+        assertEquals(expResult.getMontant(), result.getMontant());
     }
-
+    
+    
+    @Test
+    public void testPsychologie_individuellePetit() {
+        Dollar montant = new Dollar("300.00$");
+        Dollar expResult = new Dollar("75.00$");
+        Dollar result = instance.psychologie_individuelle(montant); 
+        assertEquals(expResult.getMontant(), result.getMontant());
+        
+    }   
+    
+    
+    @Test
+    public void testPsychologie_individuelleMaxMensuelGrand() {
+        Dollar montant = new Dollar("3000.00$");
+        Dollar expResult = new Dollar("250.00$");
+        Dollar result = instance.psychologie_individuelle(montant); 
+        assertEquals(expResult.getMontant(), result.getMontant());
+        
+    }   
     @Test
     public void testSoin_dentaire() {
         Dollar expResult = new Dollar("0.00$");        
@@ -148,44 +179,60 @@ public class ContratATest {
         assertEquals(expResult.getMontant(), result.getMontant());
         
     }
-/*
+
     @Test
     public void testChiropratie() {
-        System.out.println("chiropratie");
-        Dollar montant = null;
-        ContratA instance = null;
-        Dollar expResult = null;
-        Dollar result = instance.chiropratie(montant);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
-
-    @Test
-    public void testPhysiotherapie() {
-        System.out.println("physiotherapie");
-        Dollar montant = null;
-        ContratA instance = null;
-        Dollar expResult = null;
-        Dollar result = instance.physiotherapie(montant);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
-    }
-
-    @Test
-    public void testOrthophonie_ergotherapie() {
-         Dollar expResult = new Dollar("0.00$");        
-        Dollar result = instance.orthophonie_ergotherapie(dollar100);        
+        Dollar expResult = new Dollar("25.00$");
+        Dollar result = instance.chiropratie(dollar100); 
         assertEquals(expResult.getMontant(), result.getMontant());
     }
     
+    
     @Test
-    public void testOrthophonie_ergotherapieGrand() {
-        Dollar montant = new Dollar("1000000.00$");
-        Dollar expResult = new Dollar("0.00$");        
-        Dollar result = instance.orthophonie_ergotherapie(dollar100);        
+    public void testChiropratiePetit() {
+        Dollar montant = new Dollar("300.00$");
+        Dollar expResult = new Dollar("75.00$");
+        Dollar result = instance.chiropratie(montant); 
         assertEquals(expResult.getMontant(), result.getMontant());
         
+    }   
+    
+    
+    @Test
+    public void testChiropratieMaxMensuelGrand() {
+        Dollar montant = new Dollar("3000.00$");
+        Dollar expResult = new Dollar("150.00$");
+        Dollar result = instance.chiropratie(montant); 
+        assertEquals(expResult.getMontant(), result.getMontant());
+        
+    }   
+
+    @Test
+    public void testPhysiotherapie() {
+         Dollar expResult = new Dollar("40.00$");
+        Dollar result = instance.physiotherapie(dollar100); 
+        assertEquals(expResult.getMontant(), result.getMontant());
     }
-    */
+    
+    
+    @Test
+    public void testPhysiotherapiePetit() {
+        Dollar montant = new Dollar("300.00$");
+        Dollar expResult = new Dollar("120.00$");
+        Dollar result = instance.physiotherapie(montant); 
+        assertEquals(expResult.getMontant(), result.getMontant());
+        
+    }   
+    
+    
+    @Test
+    public void testPhysiotherapieMaxMensuelGrand() {
+        Dollar montant = new Dollar("3000.00$");
+        Dollar expResult = new Dollar("300.00$");
+        Dollar result = instance.physiotherapie(montant); 
+        assertEquals(expResult.getMontant(), result.getMontant());
+        
+    }   
+    
     
 }
