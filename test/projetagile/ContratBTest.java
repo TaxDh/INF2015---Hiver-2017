@@ -190,7 +190,7 @@ public class ContratBTest {
         
     }
     
-    */
+   
     
 
     @Test
@@ -219,19 +219,33 @@ public class ContratBTest {
         assertEquals(expResult.getMontant(), result.getMontant());
         
     }   
-/*
+/* */
     
     @Test
     public void testPhysiotherapie() {
-        System.out.println("physiotherapie");
-        Dollar montant = null;
-        ContratB instance = null;
-        Dollar expResult = null;
-        Dollar result = instance.physiotherapie(montant);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+         Dollar expResult = new Dollar("100.00$");
+        Dollar result = instance.physiotherapie(dollar100); 
+        assertEquals(expResult.getMontant(), result.getMontant());
     }
-
+        
+    @Test
+    public void testPhysiotherapiePetit() {
+        Dollar montant = new Dollar("300.00$");
+        Dollar expResult = new Dollar("300.00$");
+        Dollar result = instance.physiotherapie(montant); 
+        assertEquals(expResult.getMontant(), result.getMontant());
+        
+    }   
+        
+    @Test
+    public void testPhysiotherapieMaxMensuelGrand() {
+        Dollar montant = new Dollar("3000.00$");
+        Dollar expResult = new Dollar("300.00$");
+        Dollar result = instance.physiotherapie(montant); 
+        assertEquals(expResult.getMontant(), result.getMontant());
+        
+    }   
+/*
     @Test
     public void testOrthophonie_ergotherapie() {
         System.out.println("orthophonie_ergotherapie");
