@@ -41,9 +41,7 @@ public class ContratATest {
     public void tearDown() {
     }
 
-    /**
-     * Test of massotherapie method, of class ContratA.
-     */
+ 
     @Test
     public void testMassotherapie() {
         Dollar montant = new Dollar("100.00$");
@@ -52,13 +50,24 @@ public class ContratATest {
         
         Dollar result = instance.massotherapie(montant);
         
-        assertEquals(expResult, result);
+        assertEquals(expResult.getMontant(), result.getMontant());
         
     }
-
-    /**
-     * Test of osteopathie method, of class ContratA.
-     */
+    
+    @Test
+    public void testMassotherapiePetit() {
+        Dollar montant = new Dollar("1.00$");
+        ContratA instance = new ContratA(jsonIn);
+        Dollar expResult = new Dollar("0.25$");
+        
+        Dollar result = instance.massotherapie(montant);
+        
+        assertEquals(expResult.getMontant(), result.getMontant());
+        
+    }
+    
+    
+/*
     @Test
     public void testOsteopathie() {
         System.out.println("osteopathie");
@@ -67,13 +76,9 @@ public class ContratATest {
         Dollar expResult = null;
         Dollar result = instance.osteopathie(montant);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of kinesitherapie method, of class ContratA.
-     */
     @Test
     public void testKinesitherapie() {
         System.out.println("kinesitherapie");
@@ -82,13 +87,9 @@ public class ContratATest {
         Dollar expResult = null;
         Dollar result = instance.kinesitherapie(montant);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of medecin_generaliste_prive method, of class ContratA.
-     */
     @Test
     public void testMedecin_generaliste_prive() {
         System.out.println("medecin_generaliste_prive");
@@ -97,13 +98,9 @@ public class ContratATest {
         Dollar expResult = null;
         Dollar result = instance.medecin_generaliste_prive(montant);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of psychologie_individuelle method, of class ContratA.
-     */
     @Test
     public void testPsychologie_individuelle() {
         System.out.println("psychologie_individuelle");
@@ -112,13 +109,9 @@ public class ContratATest {
         Dollar expResult = null;
         Dollar result = instance.psychologie_individuelle(montant);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of soin_dentaire method, of class ContratA.
-     */
     @Test
     public void testSoin_dentaire() {
         System.out.println("soin_dentaire");
@@ -127,13 +120,9 @@ public class ContratATest {
         Dollar expResult = null;
         Dollar result = instance.soin_dentaire(montant);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of naturo_acuponcture method, of class ContratA.
-     */
     @Test
     public void testNaturo_acuponcture() {
         System.out.println("naturo_acuponcture");
@@ -142,13 +131,9 @@ public class ContratATest {
         Dollar expResult = null;
         Dollar result = instance.naturo_acuponcture(montant);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of chiropratie method, of class ContratA.
-     */
     @Test
     public void testChiropratie() {
         System.out.println("chiropratie");
@@ -157,13 +142,9 @@ public class ContratATest {
         Dollar expResult = null;
         Dollar result = instance.chiropratie(montant);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of physiotherapie method, of class ContratA.
-     */
     @Test
     public void testPhysiotherapie() {
         System.out.println("physiotherapie");
@@ -172,13 +153,9 @@ public class ContratATest {
         Dollar expResult = null;
         Dollar result = instance.physiotherapie(montant);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
 
-    /**
-     * Test of orthophonie_ergotherapie method, of class ContratA.
-     */
     @Test
     public void testOrthophonie_ergotherapie() {
         System.out.println("orthophonie_ergotherapie");
@@ -187,8 +164,8 @@ public class ContratATest {
         Dollar expResult = null;
         Dollar result = instance.orthophonie_ergotherapie(montant);
         assertEquals(expResult, result);
-        // TODO review the generated test code and remove the default call to fail.
         fail("The test case is a prototype.");
     }
-
+    
+    */
 }
