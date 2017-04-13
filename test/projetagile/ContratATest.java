@@ -64,10 +64,11 @@ public class ContratATest {
         
         assertEquals(expResult.getMontant(), result.getMontant());
         
-    }
+    }   
     
+   
     
-/*
+
     @Test
     public void testOsteopathie() {
         System.out.println("osteopathie");
@@ -89,7 +90,19 @@ public class ContratATest {
         assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
-
+    
+    @Test
+    public void testKinesitherapiePetit() {
+        Dollar montant = new Dollar("1.00$");
+        ContratA instance = new ContratA(jsonIn);
+        Dollar expResult = new Dollar("0.25$");
+        
+        Dollar result = instance.kinesitherapie(montant);
+        
+        assertEquals(expResult.getMontant(), result.getMontant());
+        
+    }   
+/*
     @Test
     public void testMedecin_generaliste_prive() {
         System.out.println("medecin_generaliste_prive");
