@@ -24,10 +24,10 @@ public class ContratE extends InterfaceContrat {
     public Dollar osteopathie(Dollar montant){
         Dollar remboursement ;
         remboursement = montant.calculerRemboursement(0.25);
-        if(remboursement.getMontant() > maximumMensuelOsteopahtie.getMontant()){
-            remboursement.setMontant(maximumMensuelOsteopahtie.getMontant());
+        if(remboursement.getMontant() > maximumMensuelOsteopathie.getMontant()){
+            remboursement.setMontant(maximumMensuelOsteopathie.getMontant());
         }
-        maximumMensuelOsteopahtie.soustractionDollar(remboursement);
+        maximumMensuelOsteopathie.soustractionDollar(remboursement);
         return remboursement;
     }
     
