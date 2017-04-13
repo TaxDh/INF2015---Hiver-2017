@@ -23,10 +23,10 @@ public class ContratC extends InterfaceContrat{
     @Override
     public Dollar osteopathie(Dollar montant){
         Dollar remboursement = montant.calculerRemboursement(0.95);
-        if(remboursement.getMontant() > maximumMensuelOsteopahtie.getMontant()){
-            remboursement.setMontant(maximumMensuelOsteopahtie.getMontant());
+        if(remboursement.getMontant() > maximumMensuelOsteopathie.getMontant()){
+            remboursement.setMontant(maximumMensuelOsteopathie.getMontant());
         }
-        maximumMensuelOsteopahtie.soustractionDollar(remboursement);
+        maximumMensuelOsteopathie.soustractionDollar(remboursement);
         return remboursement;
     }
     
