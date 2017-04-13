@@ -6,9 +6,7 @@
 package projetagile;
 
 import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import projetagile.jsonmodels.ModeleJsonIn;
@@ -20,36 +18,29 @@ import projetagile.jsonmodels.ModeleJsonIn;
 public class ContratATest {
     
     ModeleJsonIn jsonIn;
+    ContratA instance;
+    Dollar dollar100;
     
     public ContratATest() {
     }
-    
-    @BeforeClass
-    public static void setUpClass() {
-    }
-    
-    @AfterClass
-    public static void tearDownClass() {
-    }
-    
+
     @Before
     public void setUp() {
         jsonIn = new ModeleJsonIn("100323", 'A', "2017-01");
+        instance = new ContratA(jsonIn);
+        dollar100 = new Dollar("100.00$");
     }
     
     @After
     public void tearDown() {
     }
 
- 
+/*
     @Test
     public void testMassotherapie() {
         Dollar montant = new Dollar("100.00$");
-        ContratA instance = new ContratA(jsonIn);
-        Dollar expResult = new Dollar("25.00$");
-        
-        Dollar result = instance.massotherapie(montant);
-        
+        Dollar expResult = new Dollar("25.00$");        
+        Dollar result = instance.massotherapie(montant);        
         assertEquals(expResult.getMontant(), result.getMontant());
         
     }
@@ -57,50 +48,45 @@ public class ContratATest {
     @Test
     public void testMassotherapiePetit() {
         Dollar montant = new Dollar("1.00$");
-        ContratA instance = new ContratA(jsonIn);
         Dollar expResult = new Dollar("0.25$");
-        
-        Dollar result = instance.massotherapie(montant);
-        
+        Dollar result = instance.massotherapie(montant); 
         assertEquals(expResult.getMontant(), result.getMontant());
         
     }   
     
    
-    
+ */
 
     @Test
-    public void testOsteopathie() {
-        System.out.println("osteopathie");
-        Dollar montant = null;
-        ContratA instance = null;
-        Dollar expResult = null;
+    public void testOsteopathieMaxMensuelGrand() {
+        Dollar montant = new Dollar("2000.00$");
+        Dollar expResult = new Dollar("250.00$");
         Dollar result = instance.osteopathie(montant);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        assertEquals(expResult.getMontant(), result.getMontant());
     }
-
+    
+   @Test
+    public void testOsteopathieMaxMensuelPetit() {
+        Dollar montant = new Dollar("250.01$");
+        Dollar expResult = new Dollar("87.50$");
+        Dollar result = instance.osteopathie(montant);
+        assertEquals(expResult.getMontant(), result.getMontant());
+    }
+    
+    
     @Test
     public void testKinesitherapie() {
-        System.out.println("kinesitherapie");
-        Dollar montant = null;
-        ContratA instance = null;
-        Dollar expResult = null;
-        Dollar result = instance.kinesitherapie(montant);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        Dollar expResult = new Dollar("0.00$");        
+        Dollar result = instance.kinesitherapie(dollar100);        
+        assertEquals(expResult.getMontant(), result.getMontant());
     }
-    
+   
     @Test
     public void testKinesitherapiePetit() {
-        Dollar montant = new Dollar("1.00$");
-        ContratA instance = new ContratA(jsonIn);
-        Dollar expResult = new Dollar("0.25$");
-        
-        Dollar result = instance.kinesitherapie(montant);
-        
-        assertEquals(expResult.getMontant(), result.getMontant());
-        
+        Dollar montant = new Dollar("100000.00$");
+        Dollar expResult = new Dollar("0.00$");        
+        Dollar result = instance.kinesitherapie(montant);        
+        assertEquals(expResult.getMontant(), result.getMontant());        
     }   
 /*
     @Test
@@ -127,26 +113,36 @@ public class ContratATest {
 
     @Test
     public void testSoin_dentaire() {
-        System.out.println("soin_dentaire");
-        Dollar montant = null;
-        ContratA instance = null;
-        Dollar expResult = null;
-        Dollar result = instance.soin_dentaire(montant);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        Dollar expResult = new Dollar("0.00$");        
+        Dollar result = instance.soin_dentaire(dollar100);        
+        assertEquals(expResult.getMontant(), result.getMontant());
+    }
+    
+    @Test
+    public void testSoin_dentaireGrand() {
+        Dollar montant = new Dollar("1000000.00$");
+        Dollar expResult = new Dollar("0.00$");        
+        Dollar result = instance.soin_dentaire(montant);        
+        assertEquals(expResult.getMontant(), result.getMontant());
+        
     }
 
     @Test
     public void testNaturo_acuponcture() {
-        System.out.println("naturo_acuponcture");
-        Dollar montant = null;
-        ContratA instance = null;
-        Dollar expResult = null;
-        Dollar result = instance.naturo_acuponcture(montant);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        Dollar expResult = new Dollar("0.00$");        
+        Dollar result = instance.naturo_acuponcture(dollar100);        
+        assertEquals(expResult.getMontant(), result.getMontant());
     }
-
+    
+    @Test
+    public void testNaturo_acuponctureGrand() {
+        Dollar montant = new Dollar("1000000.00$");
+        Dollar expResult = new Dollar("0.00$");        
+        Dollar result = instance.naturo_acuponcture(montant);        
+        assertEquals(expResult.getMontant(), result.getMontant());
+        
+    }
+/*
     @Test
     public void testChiropratie() {
         System.out.println("chiropratie");
@@ -171,14 +167,19 @@ public class ContratATest {
 
     @Test
     public void testOrthophonie_ergotherapie() {
-        System.out.println("orthophonie_ergotherapie");
-        Dollar montant = null;
-        ContratA instance = null;
-        Dollar expResult = null;
-        Dollar result = instance.orthophonie_ergotherapie(montant);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+         Dollar expResult = new Dollar("0.00$");        
+        Dollar result = instance.orthophonie_ergotherapie(dollar100);        
+        assertEquals(expResult.getMontant(), result.getMontant());
     }
     
+    @Test
+    public void testOrthophonie_ergotherapieGrand() {
+        Dollar montant = new Dollar("1000000.00$");
+        Dollar expResult = new Dollar("0.00$");        
+        Dollar result = instance.orthophonie_ergotherapie(dollar100);        
+        assertEquals(expResult.getMontant(), result.getMontant());
+        
+    }
     */
+    
 }
