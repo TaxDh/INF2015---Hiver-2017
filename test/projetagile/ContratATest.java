@@ -56,7 +56,7 @@ public class ContratATest {
     
    
  */
-
+/*
     @Test
     public void testOsteopathieMaxMensuelGrand() {
         Dollar montant = new Dollar("2000.00$");
@@ -73,7 +73,13 @@ public class ContratATest {
         assertEquals(expResult.getMontant(), result.getMontant());
     }
     
-    
+      @Test
+    public void testOsteopathie() {
+        Dollar expResult = new Dollar("35.00$");
+        Dollar result = instance.osteopathie(dollar100);
+        assertEquals(expResult.getMontant(), result.getMontant());
+    }
+        
     @Test
     public void testKinesitherapie() {
         Dollar expResult = new Dollar("0.00$");        
@@ -88,7 +94,7 @@ public class ContratATest {
         Dollar result = instance.kinesitherapie(montant);        
         assertEquals(expResult.getMontant(), result.getMontant());        
     }   
-/*
+*/
     @Test
     public void testMedecin_generaliste_prive() {
         System.out.println("medecin_generaliste_prive");
@@ -99,7 +105,7 @@ public class ContratATest {
         assertEquals(expResult, result);
         fail("The test case is a prototype.");
     }
-
+/*
     @Test
     public void testPsychologie_individuelle() {
         System.out.println("psychologie_individuelle");
