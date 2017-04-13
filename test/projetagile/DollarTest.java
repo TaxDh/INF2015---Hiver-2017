@@ -5,14 +5,11 @@ Classe pour les JUnits de la classe dollar
 package projetagile;
 
 
-
 import static org.junit.Assert.*;
 import org.junit.Test;
 
 
-
 public class DollarTest {
-
     
     @Test
     public void testAdditionDollarNormal() {
@@ -407,5 +404,62 @@ public class DollarTest {
         dollarTest.setMontant(15);
         assertEquals(15, dollarTest.getMontant());
     }
+
+    
+    @Test
+    public void testEqualsFauxPetit() {
+        Dollar autreMontant = new Dollar("100.00$");
+        Dollar dollarInitial = new Dollar("100.01$");
+        boolean expResult = false;
+        boolean result = dollarInitial.equals(autreMontant);
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testEqualsFauxGrand() {
+        Dollar autreMontant = new Dollar("50000.00$");
+        Dollar dollarInitial = new Dollar("100000.01$");
+        boolean expResult = false;
+        boolean result = dollarInitial.equals(autreMontant);
+        assertEquals(expResult, result);
+    }
+    
+    @Test(expected=NullPointerException.class)
+    public void testEqualsFauxNull() {
+        Dollar autreMontant = new Dollar("100.00$");
+        Dollar dollarInitial = null;
+        boolean expResult = false;
+        boolean result = dollarInitial.equals(autreMontant);
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testEqualsVraiGrand() {
+        Dollar autreMontant = new Dollar("500.99$");
+        Dollar dollarInitial = new Dollar("500.99$");
+        boolean expResult = true;
+        boolean result = dollarInitial.equals(autreMontant);
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testEqualsVraiPetit() {
+        Dollar autreMontant = new Dollar("0.29$");
+        Dollar dollarInitial = new Dollar("0.29$");
+        boolean expResult = true;
+        boolean result = dollarInitial.equals(autreMontant);
+        assertEquals(expResult, result);
+    }
+    
+    @Test
+    public void testEquals() {
+        Dollar autreMontant = new Dollar("485.21$");
+        Dollar dollarInitial = new Dollar("485.21");
+        boolean expResult = true;
+        boolean result = dollarInitial.equals(autreMontant);
+        assertEquals(expResult, result);
+    }
+    
+    
 
 }
