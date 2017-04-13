@@ -155,7 +155,7 @@ public class ContratETest {
         assertEquals(expResult.getMontant(), result.getMontant());
         
     }   
-/**/
+/*
     @Test
     public void testSoin_dentaire() {
         Dollar expResult = new Dollar("60.00$");        
@@ -171,7 +171,7 @@ public class ContratETest {
         assertEquals(expResult.getMontant(), result.getMontant());
         
     }
-/*
+/**/
     @Test
     public void testNaturo_acuponcture() {
         System.out.println("naturo_acuponcture");
