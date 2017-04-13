@@ -11,7 +11,7 @@ import projetagile.jsonmodels.Remboursement;
 
 
 public abstract class InterfaceContrat {
-    protected Dollar maximumMensuelOsteopahtie = new Dollar("250.00$");
+    protected Dollar maximumMensuelOsteopathie = new Dollar("250.00$");
     protected Dollar maximumMensuelMedGenPriv = new Dollar("200.00$");
     protected Dollar maximumMensuelPsychologieInd = new Dollar("250.00$");
     protected Dollar maximumMensuelChiropratie = new Dollar("150.00$");
