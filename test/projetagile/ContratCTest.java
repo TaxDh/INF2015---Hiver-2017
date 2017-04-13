@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+JUnits pour contrat C
  */
 package projetagile;
 
@@ -43,7 +41,7 @@ public class ContratCTest {
     @After
     public void tearDown() {
     }
-/*
+
         @Test
     public void testMassotherapie() {
         Dollar montant = new Dollar("100.00$");
@@ -212,7 +210,7 @@ public class ContratCTest {
         assertEquals(expResult.getMontant(), result.getMontant());
         
     }   
-*/
+
     @Test
     public void testPhysiotherapie() {
          Dollar expResult = new Dollar("75.00$");
@@ -239,17 +237,20 @@ public class ContratCTest {
         assertEquals(expResult.getMontant(), result.getMontant());
         
     } 
-    /*
+    
 
     @Test
     public void testOrthophonie_ergotherapie() {
-        System.out.println("orthophonie_ergotherapie");
-        Dollar montant = null;
-        ContratC instance = null;
-        Dollar expResult = null;
-        Dollar result = instance.orthophonie_ergotherapie(montant);
-        assertEquals(expResult, result);
-        fail("The test case is a prototype.");
+        Dollar expResult = new Dollar("90.00$");        
+        Dollar result = instance.naturo_acuponcture(dollar100);        
+        assertEquals(expResult.getMontant(), result.getMontant());
     }
-    */
+    @Test
+    public void testOrthophonie_ergotherapiePetit() {
+        Dollar montant = new Dollar("1000.00$");
+        Dollar expResult = new Dollar("900.00$");        
+        Dollar result = instance.naturo_acuponcture(montant);        
+        assertEquals(expResult.getMontant(), result.getMontant());
+        
+    }
 }
