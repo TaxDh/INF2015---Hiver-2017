@@ -100,4 +100,5 @@ public class ContratA extends InterfaceContrat{
     public Dollar orthophonie_ergotherapie(Dollar montant){
         return montant.calculerRemboursement(0.0);
     }
+    
 }
