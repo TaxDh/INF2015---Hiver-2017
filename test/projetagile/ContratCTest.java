@@ -33,7 +33,7 @@ public class ContratCTest {
     
     @Before
     public void setUp() {
-        jsonIn = new ModeleJsonIn("100323", 'B', "2017-01");
+        jsonIn = new ModeleJsonIn("100323", 'C', "2017-01");
         instance = new ContratC(jsonIn);
         dollar100 = new Dollar("100.00$");
     }
