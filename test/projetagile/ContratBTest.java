@@ -245,4 +245,19 @@ public class ContratBTest {
         assertEquals(expResult.getMontant(), result.getMontant());
         
     }   
+        @Test
+    public void testOrthophonie_ergotherapie() {
+         Dollar expResult = new Dollar("70.00$");
+        Dollar result = instance.orthophonie_ergotherapie(dollar100); 
+        assertEquals(expResult.getMontant(), result.getMontant());
+    }
+    
+        @Test
+    public void testOrthophonie_ergotherapieGrand() {
+        Dollar montant = new Dollar("3000.00$");
+        Dollar expResult = new Dollar("2100.00$");
+        Dollar result = instance.orthophonie_ergotherapie(montant); 
+        assertEquals(expResult.getMontant(), result.getMontant());
+        
+    }
 }
