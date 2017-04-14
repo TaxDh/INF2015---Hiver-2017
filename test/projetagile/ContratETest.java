@@ -44,7 +44,7 @@ public class ContratETest {
     public void tearDown() {
     }
 
-    /*
+    
         @Test
     public void testMassotherapie() {
         Dollar expResult = new Dollar("15.00$");        
@@ -155,7 +155,7 @@ public class ContratETest {
         assertEquals(expResult.getMontant(), result.getMontant());
         
     }   
-/*
+
     @Test
     public void testSoin_dentaire() {
         Dollar expResult = new Dollar("60.00$");        
@@ -243,7 +243,7 @@ public class ContratETest {
         
     }   
 
-*/
+
     @Test
     public void testOrthophonie_ergotherapie() {
          Dollar expResult = new Dollar("22.00$");
