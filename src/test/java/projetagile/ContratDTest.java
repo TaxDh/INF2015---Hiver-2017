@@ -47,7 +47,7 @@ public class ContratDTest {
     @After
     public void tearDown() {
     }
-/**
+
  @Test
     public void testMassotherapie() {
         Dollar montant = new Dollar("80.00$");
@@ -237,7 +237,7 @@ public class ContratDTest {
         assertEquals(expResult.getMontant(), result.getMontant());
         
     }   
-*/
+
     @Test
     public void testOrthophonie_ergotherapie() {
          Dollar expResult = new Dollar("90.00$");
