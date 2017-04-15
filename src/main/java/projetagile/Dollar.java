@@ -123,11 +123,4 @@ public class Dollar {
     public void setMontant(int montant) {
         this.montant = montant;
     }
-    
-    public boolean equals(Dollar autreMontant) {
-        if(autreMontant == null) {
-            return false;
-        }
-        return this.montant == autreMontant.getMontant();
-    }
 }
