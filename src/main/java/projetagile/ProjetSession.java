@@ -6,6 +6,7 @@ import projetagile.jsonmodels.ModeleJsonIn;
 import projetagile.jsonmodels.ModeleJsonOut;
 import projetagile.jsonmodels.Statistique;
 import net.sf.json.JSONObject;
+import projetagile.jsonmodels.Reclamation;
 
 public class ProjetSession {
 
@@ -28,7 +29,7 @@ public class ProjetSession {
                 argumentReclamation(args, stats);
                 break;
             case 3:
-            validationModeSansEchec(args);
+                validationModeSansEchec(args);
                 break;
             default:
                 System.out.println("Erreur! Vous devez mettre 1 a 3 arguments.");
@@ -36,21 +37,23 @@ public class ProjetSession {
     }
 
     private static void validationModeSansEchec(String[] args) {
-        if(args[0] == SANS_ECHEC){
+        if(args[0].equals(SANS_ECHEC)){
             argumentReclamation(args, null);
         } else {
+            System.out.println(args[0]);
             System.out.println("Erreur! Si vous entrez 3 arguments il faut que ce soit"
                     + " -p et 2 fichier a traiter ");
         }
     }
 
     public static void argumentReclamation(String[] args, Statistique stats) {
-        int positionArgs = 1;
+        String fichierEntree = args[1];
+        String fichierSortie = args[2];
         if(stats != null){
-            positionArgs = 0;
+            fichierEntree = args[0];
+            fichierSortie = args[1];
         }
-        String fichierEntree = args[positionArgs];
-        String fichierSortie = args[positionArgs + 1];
+        
 
         reclamtionInvalidArgumentException(fichierEntree, fichierSortie, stats);
     }
@@ -59,7 +62,9 @@ public class ProjetSession {
         try {
             traiterReclamation(fichierEntree, fichierSortie, stats);
         } catch (InvalidArgumentException e) {
-            stats.setReclamationRejete(stats.getReclamationRejete() + 1);
+            if(stats != null) {
+                stats.setReclamationRejete(stats.getReclamationRejete() + 1);
+            }
             JsonFileHandler.ecrireFichierErreur(fichierSortie, e);
         } finally {
             if(stats != null)
