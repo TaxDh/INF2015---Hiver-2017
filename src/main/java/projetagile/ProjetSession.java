@@ -12,7 +12,7 @@ public class ProjetSession {
 
     private static final String AFFICHAGE_STATS = "-S";
     private static final String EFFACE_STATS = "-SR";
-    private static final String SANS_ECHEC = "-p";
+    private static final String SANS_STATS = "-p";
 
     /**
      * @param args the command line arguments
@@ -29,15 +29,15 @@ public class ProjetSession {
                 argumentReclamation(args, stats);
                 break;
             case 3:
-                validationModeSansEchec(args);
+                validationModeSansStats(args);
                 break;
             default:
                 System.out.println("Erreur! Vous devez mettre 1 a 3 arguments.");
         }
     }
 
-    private static void validationModeSansEchec(String[] args) {
-        if(args[0].equals(SANS_ECHEC)){
+    private static void validationModeSansStats(String[] args) {
+        if(args[0].equals(SANS_STATS)){
             argumentReclamation(args, null);
         } else {
             System.out.println(args[0]);
@@ -49,12 +49,11 @@ public class ProjetSession {
     public static void argumentReclamation(String[] args, Statistique stats) {
         String fichierEntree = args[1];
         String fichierSortie = args[2];
+        
         if(stats != null){
             fichierEntree = args[0];
             fichierSortie = args[1];
         }
-        
-
         reclamtionInvalidArgumentException(fichierEntree, fichierSortie, stats);
     }
 
