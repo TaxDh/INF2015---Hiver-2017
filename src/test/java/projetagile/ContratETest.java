@@ -125,11 +125,10 @@ public class ContratETest {
     @Test
     public void testMedecin_generaliste_priveMaxMensuelDepasse() {
         Dollar montant = new Dollar("3000.00$");
-        Dollar expResult = new Dollar("20.00$");
+        Dollar expResult = new Dollar("0.00$");
+        Dollar nouveau = new Dollar("0.00$");
+        instance.maximumMensuelMedGenPriv = nouveau;
         Dollar result = instance.medecin_generaliste_prive(montant);
-        for (int i = 0; i < 9; i++) {
-            result = instance.medecin_generaliste_prive(montant);
-        }
         assertEquals(expResult.getMontant(), result.getMontant());
     }
 

@@ -1,7 +1,6 @@
 /* main du projet*/
 package projetagile;
 
-
 import java.io.IOException;
 import projetagile.jsonmodels.ModeleJsonIn;
 import projetagile.jsonmodels.ModeleJsonOut;
@@ -9,43 +8,52 @@ import projetagile.jsonmodels.Statistique;
 import net.sf.json.JSONObject;
 
 public class ProjetSession {
-    
-    public static final String affichageStats = "-S";
-    public static final String effaceStats = "-SR";
+
+    public static final String AFFICHAGE_STATS = "-S";
+    public static final String EFFACE_STATS = "-SR";
 
     /**
      * @param args the command line arguments
      */
     public static void main(String[] args) {
         Statistique stats = new Statistique();
-        
         stats = ouvrirFichierJsonStatistique(stats);
 
-        if(args.length == 1){
-            argumentStatistique(args, stats);
-        } else if(args.length == 2){
-            argumentReclamation(args, stats);
-        } else {
-            System.out.println("Erreur! Vous devez mettre 1 ou 2 arguments.");
-        }          
+        switch (args.length) {
+            case 1:
+                argumentStatistique(args, stats);
+                break;
+            case 2:
+                argumentReclamation(args, stats);
+                break;
+            case 3:
+                argumentReclamation(args, null);
+                break;
+            default:
+                System.out.println("Erreur! Vous devez mettre 1 ou 2 arguments.");
+        }
     }
 
     public static void argumentReclamation(String[] args, Statistique stats) {
-        String fichierEntree = args[0];
-        String fichierSortie = args[1];
-        
+        int positionArgs = 1;
+        if(stats != null){
+            positionArgs = 0;
+        }
+        String fichierEntree = args[positionArgs];
+        String fichierSortie = args[positionArgs + 1];
+
         reclamtionInvalidArgumentException(fichierEntree, fichierSortie, stats);
     }
 
     public static void reclamtionInvalidArgumentException(String fichierEntree, String fichierSortie, Statistique stats) {
-        try{
+        try {
             traiterReclamation(fichierEntree, fichierSortie, stats);
         } catch (InvalidArgumentException e) {
             stats.setReclamationRejete(stats.getReclamationRejete() + 1);
             JsonFileHandler.ecrireFichierErreur(fichierSortie, e);
-        }
-        finally{
-            ecrireStatistiques(stats);
+        } finally {
+            if(stats != null)
+                ecrireStatistiques(stats);
         }
     }
 
@@ -54,25 +62,27 @@ public class ProjetSession {
         InterfaceContrat nouveauContrat = ContratFactory.instancieContrat(reclamation);
         ModeleJsonOut sortie = nouveauContrat.calculRemboursement();
         JsonFileHandler.ecrireFichier(fichierSortie, sortie);
-        stats.setReclamationValide(stats.getReclamationValide() + 1);
-        stats.compterSoin(sortie);
+        if(stats != null){
+            stats.setReclamationValide(stats.getReclamationValide() + 1);
+            stats.compterSoin(sortie);
+        }
     }
 
     public static void argumentStatistique(String[] args, Statistique stats) {
-        if(args[0].contentEquals(affichageStats)){
+        if (args[0].contentEquals(AFFICHAGE_STATS)) {
             stats.afficherStatistiques();
-        } else if(args[0].contentEquals(effaceStats)){
+        } else if (args[0].contentEquals(EFFACE_STATS)) {
             stats.reinitialise();
             ecrireStatistiques(stats);
-        } else{
+        } else {
             System.out.println("Erreur! Il faut soit entrer -S, ou -SR ou 2 fichiers");
         }
     }
 
     public static Statistique ouvrirFichierJsonStatistique(Statistique stats) {
-        try{
+        try {
             stats = JsonFileHandler.ouvrirFichierStatistique("statistique.json");
-        } catch (InvalidArgumentException e){
+        } catch (InvalidArgumentException e) {
             System.out.println("Erreur avec l'ouverture du fichier statistique.json" + e.getLocalizedMessage());
         }
         return stats;
@@ -92,7 +102,7 @@ public class ProjetSession {
         statJson.accumulate("chiropratie", stats.getNbSoinChiropratie());
         statJson.accumulate("physiotherapie", stats.getNbSoinPhysiotherapie());
         statJson.accumulate("Orthophonie_ergotherapie", stats.getNbSoinOrthophonie());
-        
+
         ecrireFichierJsonStats(statJson);
     }
 
