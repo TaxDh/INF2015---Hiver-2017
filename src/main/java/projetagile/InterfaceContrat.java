@@ -48,27 +48,40 @@ public abstract class InterfaceContrat {
     }
 
     public Dollar choixSoin(Reclamation reclamation, Dollar remboursementDollar, Dollar montant) {
-        if(reclamation.getSoins() == 0){
-            remboursementDollar =  massotherapie(montant);
-        } else if(reclamation.getSoins() == 100){
-            remboursementDollar = osteopathie(montant);
-        } else if(reclamation.getSoins() == 150){
-            remboursementDollar = kinesitherapie(montant);
-        } else if(reclamation.getSoins() == 175){
-            remboursementDollar = medecin_generaliste_prive(montant);
-        } else if(reclamation.getSoins() == 200){
-            remboursementDollar = psychologie_individuelle(montant);
-        } else if(reclamation.getSoins() >= 300 && reclamation.getSoins() < 400){
-            remboursementDollar = soin_dentaire(montant);
-        } else if(reclamation.getSoins() == 400){
-            remboursementDollar = naturo_acuponcture(montant);
-        } else if(reclamation.getSoins() == 500){
-            remboursementDollar = chiropratie(montant);
-        } else if(reclamation.getSoins() == 600){
-            remboursementDollar = physiotherapie(montant);
-        } else if(reclamation.getSoins() == 700){
-            remboursementDollar = orthophonie_ergotherapie(montant);
-        }
+        int numero = reclamation.getSoins();
+        
+        switch(numero){
+            case 0:
+                remboursementDollar =  massotherapie(montant);
+                break;
+            case 100:
+                remboursementDollar =  osteopathie(montant);
+                break;
+            case 150:
+                remboursementDollar =  kinesitherapie(montant);
+                break;
+            case 175:
+                remboursementDollar =  medecin_generaliste_prive(montant);
+                break;
+            case 200:
+                remboursementDollar =  psychologie_individuelle(montant);
+                break;
+            case 400:
+                remboursementDollar =  naturo_acuponcture(montant);
+                break;
+            case 500:
+                remboursementDollar =  chiropratie(montant);
+                break;
+            case 600:
+                remboursementDollar =  physiotherapie(montant);
+                break;
+            case 700:
+                remboursementDollar =  orthophonie_ergotherapie(montant);
+                break;
+            default:
+                remboursementDollar =  soin_dentaire(montant);
+                break;
+        }       
         return remboursementDollar;
     }
     
