@@ -247,6 +247,15 @@ public class ContratCTest {
     }
     @Test
     public void testOrthophonie_ergotherapiePetit() {
+        Dollar montant = new Dollar("90.00$");
+        Dollar expResult = new Dollar("81.00$");        
+        Dollar result = instance.naturo_acuponcture(montant);        
+        assertEquals(expResult.getMontant(), result.getMontant());
+        
+    }
+    
+    @Test
+    public void testOrthophonie_ergotherapieGrand() {
         Dollar montant = new Dollar("1000.00$");
         Dollar expResult = new Dollar("900.00$");        
         Dollar result = instance.naturo_acuponcture(montant);        
