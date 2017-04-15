@@ -9,8 +9,9 @@ import net.sf.json.JSONObject;
 
 public class ProjetSession {
 
-    public static final String AFFICHAGE_STATS = "-S";
-    public static final String EFFACE_STATS = "-SR";
+    private static final String AFFICHAGE_STATS = "-S";
+    private static final String EFFACE_STATS = "-SR";
+    private static final String SANS_ECHEC = "-p";
 
     /**
      * @param args the command line arguments
@@ -27,10 +28,19 @@ public class ProjetSession {
                 argumentReclamation(args, stats);
                 break;
             case 3:
-                argumentReclamation(args, null);
+            validationModeSansEchec(args);
                 break;
             default:
-                System.out.println("Erreur! Vous devez mettre 1 ou 2 arguments.");
+                System.out.println("Erreur! Vous devez mettre 1 a 3 arguments.");
+        }
+    }
+
+    private static void validationModeSansEchec(String[] args) {
+        if(args[0] == SANS_ECHEC){
+            argumentReclamation(args, null);
+        } else {
+            System.out.println("Erreur! Si vous entrez 3 arguments il faut que ce soit"
+                    + " -p et 2 fichier a traiter ");
         }
     }
 
