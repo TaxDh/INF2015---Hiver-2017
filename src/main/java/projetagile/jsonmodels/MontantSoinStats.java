@@ -3,118 +3,134 @@
  */
 package projetagile.jsonmodels;
 
+import java.util.List;
 import projetagile.Dollar;
 
 public class MontantSoinStats {
-    private Dollar montantMaxMassotherapie;
-    private Dollar montantMaxOsteopathie;
-    private Dollar montantMaxkinesitherapie;
-    private Dollar montantMaxMGP;
-    private Dollar montantMaxPsychologie;
-    private Dollar montantMaxDentaire;
-    private Dollar montantMaxNaturo;
-    private Dollar montantMaxChiropratie;
-    private Dollar montantMaxPhysiotherapie;
-    private Dollar montantMaxOrthophonie;    
-    
+    private List<Dollar> montantMassotherapie;
+    private List<Dollar> montantOsteopathie;
+    private List<Dollar> montantkinesitherapie;
+    private List<Dollar> montantMGP;
+    private List<Dollar> montantPsychologie;
+    private List<Dollar> montantDentaire;
+    private List<Dollar> montantNaturo;
+    private List<Dollar> montantChiropratie;
+    private List<Dollar> montantPhysiotherapie;
+    private List<Dollar> montantOrthophonie;    
 
-    public MontantSoinStats(Dollar montantMaxMassotherapie, Dollar montantMaxOsteopathie, Dollar montantMaxkinesitherapie,
-            Dollar montantMaxMGP, Dollar montantMaxPsychologie, Dollar montantMaxDentaire, Dollar montantMaxNaturo,
-            Dollar montantMaxChiropratie, Dollar montantMaxPhysiotherapie, Dollar montantMaxOrthophonie) {
+    public MontantSoinStats() {
+    }
+
+    public MontantSoinStats(List<Dollar> montantMassotherapie, List<Dollar> montantOsteopathie,
+            List<Dollar> montantkinesitherapie, List<Dollar> montantMGP, List<Dollar> montantPsychologie,
+            List<Dollar> montantDentaire, List<Dollar> montantNaturo, List<Dollar> montantChiropratie,
+            List<Dollar> montantPhysiotherapie) {
         
-        this.montantMaxMassotherapie = montantMaxMassotherapie;
-        this.montantMaxOsteopathie = montantMaxOsteopathie;
-        this.montantMaxkinesitherapie = montantMaxkinesitherapie;
-        this.montantMaxMGP = montantMaxMGP;
-        this.montantMaxPsychologie = montantMaxPsychologie;
-        this.montantMaxDentaire = montantMaxDentaire;
-        this.montantMaxNaturo = montantMaxNaturo;
-        this.montantMaxChiropratie = montantMaxChiropratie;
-        this.montantMaxPhysiotherapie = montantMaxPhysiotherapie;
-        this.montantMaxOrthophonie = montantMaxOrthophonie;
+        this.montantMassotherapie = montantMassotherapie;
+        this.montantOsteopathie = montantOsteopathie;
+        this.montantkinesitherapie = montantkinesitherapie;
+        this.montantMGP = montantMGP;
+        this.montantPsychologie = montantPsychologie;
+        this.montantDentaire = montantDentaire;
+        this.montantNaturo = montantNaturo;
+        this.montantChiropratie = montantChiropratie;
+        this.montantPhysiotherapie = montantPhysiotherapie;
+    }
+
+    public List<Dollar> getMontantMassotherapie() {
+        return montantMassotherapie;
+    }
+
+    public void setMontantMassotherapie(List<Dollar> montantMassotherapie) {
+        this.montantMassotherapie = montantMassotherapie;
+    }
+
+    public List<Dollar> getMontantOsteopathie() {
+        return montantOsteopathie;
+    }
+
+    public void setMontantOsteopathie(List<Dollar> montantOsteopathie) {
+        this.montantOsteopathie = montantOsteopathie;
+    }
+
+    public List<Dollar> getMontantkinesitherapie() {
+        return montantkinesitherapie;
+    }
+
+    public void setMontantkinesitherapie(List<Dollar> montantkinesitherapie) {
+        this.montantkinesitherapie = montantkinesitherapie;
+    }
+
+    public List<Dollar> getMontantMGP() {
+        return montantMGP;
+    }
+
+    public void setMontantMGP(List<Dollar> montantMGP) {
+        this.montantMGP = montantMGP;
+    }
+
+    public List<Dollar> getMontantPsychologie() {
+        return montantPsychologie;
+    }
+
+    public void setMontantPsychologie(List<Dollar> montantPsychologie) {
+        this.montantPsychologie = montantPsychologie;
+    }
+
+    public List<Dollar> getMontantDentaire() {
+        return montantDentaire;
+    }
+
+    public void setMontantDentaire(List<Dollar> montantDentaire) {
+        this.montantDentaire = montantDentaire;
+    }
+
+    public List<Dollar> getMontantNaturo() {
+        return montantNaturo;
+    }
+
+    public void setMontantNaturo(List<Dollar> montantNaturo) {
+        this.montantNaturo = montantNaturo;
+    }
+
+    public List<Dollar> getMontantChiropratie() {
+        return montantChiropratie;
+    }
+
+    public void setMontantChiropratie(List<Dollar> montantChiropratie) {
+        this.montantChiropratie = montantChiropratie;
+    }
+
+    public List<Dollar> getMontantPhysiotherapie() {
+        return montantPhysiotherapie;
+    }
+
+    public void setMontantPhysiotherapie(List<Dollar> montantPhysiotherapie) {
+        this.montantPhysiotherapie = montantPhysiotherapie;
+    }
+
+    public List<Dollar> getMontantOrthophonie() {
+        return montantOrthophonie;
+    }
+
+    public void setMontantOrthophonie(List<Dollar> montantOrthophonie) {
+        this.montantOrthophonie = montantOrthophonie;
     }
     
-    public MontantSoinStats(){        
+    public Dollar rechercheMontantMax(List<Dollar> montantSoin){
+        Dollar maxTrouve = new Dollar("0.00$");
+        
+        for(Dollar montantCourant: montantSoin){
+            if(maxTrouve.getMontant() < montantCourant.getMontant()){
+                maxTrouve.setMontant(montantCourant.getMontant());
+            }
+        }
+        
+        return maxTrouve;
     }
     
-    public Dollar getMontantMaxMassotherapie() {
-        return montantMaxMassotherapie;
+    public Dollar montantMoyen(List<Dollar> montantSoin){
+        Dollar sommeMontant = new Dollar("0.00$");
     }
 
-    public void setMontantMaxMassotherapie(Dollar montantMaxMassotherapie) {
-        this.montantMaxMassotherapie = montantMaxMassotherapie;
-    }
-
-    public Dollar getMontantMaxOsteopathie() {
-        return montantMaxOsteopathie;
-    }
-
-    public void setMontantMaxOsteopathie(Dollar montantMaxOsteopathie) {
-        this.montantMaxOsteopathie = montantMaxOsteopathie;
-    }
-
-    public Dollar getMontantMaxkinesitherapie() {
-        return montantMaxkinesitherapie;
-    }
-
-    public void setMontantMaxkinesitherapie(Dollar montantMaxkinesitherapie) {
-        this.montantMaxkinesitherapie = montantMaxkinesitherapie;
-    }
-
-    public Dollar getMontantMaxMGP() {
-        return montantMaxMGP;
-    }
-
-    public void setMontantMaxMGP(Dollar montantMaxMGP) {
-        this.montantMaxMGP = montantMaxMGP;
-    }
-
-    public Dollar getMontantMaxPsychologie() {
-        return montantMaxPsychologie;
-    }
-
-    public void setMontantMaxPsychologie(Dollar montantMaxPsychologie) {
-        this.montantMaxPsychologie = montantMaxPsychologie;
-    }
-
-    public Dollar getMontantMaxDentaire() {
-        return montantMaxDentaire;
-    }
-
-    public void setMontantMaxDentaire(Dollar montantMaxDentaire) {
-        this.montantMaxDentaire = montantMaxDentaire;
-    }
-
-    public Dollar getMontantMaxNaturo() {
-        return montantMaxNaturo;
-    }
-
-    public void setMontantMaxNaturo(Dollar montantMaxNaturo) {
-        this.montantMaxNaturo = montantMaxNaturo;
-    }
-
-    public Dollar getMontantMaxChiropratie() {
-        return montantMaxChiropratie;
-    }
-
-    public void setMontantMaxChiropratie(Dollar montantMaxChiropratie) {
-        this.montantMaxChiropratie = montantMaxChiropratie;
-    }
-
-    public Dollar getMontantMaxPhysiotherapie() {
-        return montantMaxPhysiotherapie;
-    }
-
-    public void setMontantMaxPhysiotherapie(Dollar montantMaxPhysiotherapie) {
-        this.montantMaxPhysiotherapie = montantMaxPhysiotherapie;
-    }
-
-    public Dollar getMontantMaxOrthophonie() {
-        return montantMaxOrthophonie;
-    }
-
-    public void setMontantMaxOrthophonie(Dollar montantMaxOrthophonie) {
-        this.montantMaxOrthophonie = montantMaxOrthophonie;
-    }
-    
 }

@@ -35,6 +35,10 @@ public class Dollar {
         this.montant -= dollar.getMontant();
     }
     
+    public void divisionDollarParInt(int entier){
+        this.montant /= entier;
+    }
+    
     public Dollar calculerRemboursement(double pourcentage){
         double pourcentageRemboursement = this.montant * pourcentage;
         Dollar remboursementDollar = new Dollar((int)pourcentageRemboursement);

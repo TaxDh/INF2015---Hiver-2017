@@ -5,11 +5,31 @@ Classe pour les JUnits de la classe dollar
 package projetagile;
 
 
+import org.junit.After;
+import org.junit.AfterClass;
 import static org.junit.Assert.*;
+import org.junit.Before;
+import org.junit.BeforeClass;
 import org.junit.Test;
 
 
 public class DollarTest {
+
+    @BeforeClass
+    public static void setUpClass() throws Exception {
+    }
+
+    @AfterClass
+    public static void tearDownClass() throws Exception {
+    }
+
+    @Before
+    public void setUp() throws Exception {
+    }
+
+    @After
+    public void tearDown() throws Exception {
+    }
     
     @Test
     public void testAdditionDollarNormal() {
@@ -404,4 +424,14 @@ public class DollarTest {
         dollarTest.setMontant(15);
         assertEquals(15, dollarTest.getMontant());
     }
+
+    @Test
+    public void testDivisionDollarParInt() {
+        int entier = 10;
+        Dollar dollarTest = new Dollar("100.00$");
+        Dollar dollarAttendu = new Dollar("10.00$");
+        dollarTest.divisionDollarParInt(entier);
+        assertEquals(dollarAttendu.getMontant(), dollarTest.getMontant());
+    }
+
 }
