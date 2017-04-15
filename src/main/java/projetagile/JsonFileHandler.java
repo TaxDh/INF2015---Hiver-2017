@@ -14,6 +14,7 @@ import net.sf.json.JSONSerializer;
 public class JsonFileHandler {
     private static final Dollar dollar0 = new Dollar("0.00$");
     private static final Dollar dollar500 = new Dollar("500.00$");
+    private static int compteurSoin = 0;
     
 
     public static ModeleJsonIn ouvrireFichier(String fichierEntree) throws InvalidArgumentException {
@@ -50,9 +51,17 @@ public class JsonFileHandler {
             int soin = creeSoinJsonLire(reclamationCourrante);
             String date = creeDateJsonLire(reclamationCourrante);
             Dollar montant = creeMontantJsonLire(reclamationCourrante);
+            compteurSoin++;
             
+            valideNombreDeSoin();
             Reclamation nouvelleReclamation = creeReclamationLire(soin, date, montant, modele);
             modele.ajouterReclamation(nouvelleReclamation);
+        }
+    }
+
+    private static void valideNombreDeSoin() throws InvalidArgumentException {
+        if(compteurSoin > 4){
+            throw new InvalidArgumentException("Il ne peut y avoir plus de 4 soins par reclamation");
         }
     }
 
@@ -63,7 +72,6 @@ public class JsonFileHandler {
         valideSoin(soin, nouvelleReclamation);
         valideDate(date, modele, nouvelleReclamation);
         valideMontant(montant, nouvelleReclamation);
-        //nouvelleReclamation.setMontant(montant);
         return nouvelleReclamation;
     }
 
