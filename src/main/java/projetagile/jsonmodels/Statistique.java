@@ -201,16 +201,17 @@ public class Statistique {
     public void afficherStatistiques(){
         System.out.println("Le nombre de reclamations valides: " + this.getReclamationValide());
         System.out.println("Le nombre de reclamations rejetes: " + this.getReclamationRejete());
+        
         System.out.println("Le nombre de massotherapies traitees: " + this.massotherapie.getCompteur());
-        /*System.out.println("Le nombre de osteopathies traitees: " + this.getNbSoinOsteopathie());
-        System.out.println("Le nombre de kinesitherapies traitees: " + this.getNbSoinKinesitherapie());
-        System.out.println("Le nombre de medecins generalistes prives traitees: " +this.getNbSoinMGP());
-        System.out.println("Le nombre de psychologies individuelles traitees: " + this.getNbSoinPsychologie());
-        System.out.println("Le nombre de soins dentaires traitees: " + this.getNbSoinDentaire());
-        System.out.println("Le nombre de naturopathies et/ou acuponctures traitees: " + this.getNbSoinNaturo());
-        System.out.println("Le nombre de chiropratie traitees: " + this.getNbSoinChiropratie());
-        System.out.println("Le nombre de physiotherapies traitees: " + this.getNbSoinPhysiotherapie());
-        System.out.println("Le nombre d'orthophonies et/ou d'ergotherapies traitees: " + this.getNbSoinOrthophonie());*/ 
+        System.out.println("Le nombre de osteopathies traitees: " + this.ostheopathie.getCompteur());
+        System.out.println("Le nombre de kinesitherapies traitees: " + this.kinesitherapie.getCompteur());
+        System.out.println("Le nombre de medecins generalistes prives traitees: " +this.medecine.getCompteur());
+        System.out.println("Le nombre de psychologies individuelles traitees: " + this.psychologie.getCompteur());
+        System.out.println("Le nombre de soins dentaires traitees: " + this.dentaire.getCompteur());
+        System.out.println("Le nombre de naturopathies et/ou acuponctures traitees: " + this.naturopathie.getCompteur());
+        System.out.println("Le nombre de chiropratie traitees: " + this.chiropratie.getCompteur());
+        System.out.println("Le nombre de physiotherapies traitees: " + this.physiotherapie.getCompteur());
+        System.out.println("Le nombre d'orthophonies et/ou d'ergotherapies traitees: " + this.orthophonie.getCompteur());
     }
 }
 
