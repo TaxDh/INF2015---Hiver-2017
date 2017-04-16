@@ -11,12 +11,12 @@ import projetagile.Dollar;
  *
  * @author rene
  */
-public class statsMassotherapie extends MontantSoinStats {
-    public statsMassotherapie(){
+public class StatsMassotherapie extends MontantSoinStats {
+    public StatsMassotherapie(){
         super();
     }
     
-    public statsMassotherapie(int compteur, Dollar somme, Dollar maximum){
+    public StatsMassotherapie(int compteur, Dollar somme, Dollar maximum){
         super(compteur, somme, maximum);
     }
 }

@@ -8,24 +8,24 @@ import java.util.List;
 public class Statistique {
     private int reclamationValide;
     private int reclamationRejete;
-    private statsChiropratie chiropratie;
-    private statsDentaire dentaire;
-    private statsKinesitherapie kinesitherapie;
-    private statsMGP medecine;
-    private statsMassotherapie massotherapie;
-    private statsNaturopathie naturopathie;
-    private statsOrthophonie orthophonie;
-    private statsOstheopathie ostheopathie;
-    private statsPhysiotherapie physiotherapie;
-    private statsPsychologie psychologie;
+    private StatsChiropratie chiropratie;
+    private StatsDentaire dentaire;
+    private StatsKinesitherapie kinesitherapie;
+    private StatsMGP medecine;
+    private StatsMassotherapie massotherapie;
+    private StatsNaturopathie naturopathie;
+    private StatsOrthophonie orthophonie;
+    private StatsOstheopathie ostheopathie;
+    private StatsPhysiotherapie physiotherapie;
+    private StatsPsychologie psychologie;
     
     public Statistique(){
     }
 
-    public Statistique(int reclamationValide, int reclamationRejete, statsChiropratie chiropratie, 
-            statsDentaire dentaire, statsKinesitherapie kinesitherapie, statsMGP medecine, 
-            statsMassotherapie massotherapie, statsNaturopathie naturopathie, statsOrthophonie orthophonie,
-            statsOstheopathie ostheopathie, statsPhysiotherapie physiotherapie, statsPsychologie psychologie) {
+    public Statistique(int reclamationValide, int reclamationRejete, StatsChiropratie chiropratie, 
+            StatsDentaire dentaire, StatsKinesitherapie kinesitherapie, StatsMGP medecine, 
+            StatsMassotherapie massotherapie, StatsNaturopathie naturopathie, StatsOrthophonie orthophonie,
+            StatsOstheopathie ostheopathie, StatsPhysiotherapie physiotherapie, StatsPsychologie psychologie) {
         
         this.reclamationValide = reclamationValide;
         this.reclamationRejete = reclamationRejete;
@@ -57,83 +57,83 @@ public class Statistique {
         this.reclamationRejete = reclamationRejete;
     }
 
-    public statsChiropratie getChiropratie() {
+    public StatsChiropratie getChiropratie() {
         return chiropratie;
     }
 
-    public void setChiropratie(statsChiropratie chiropratie) {
+    public void setChiropratie(StatsChiropratie chiropratie) {
         this.chiropratie = chiropratie;
     }
 
-    public statsDentaire getDentaire() {
+    public StatsDentaire getDentaire() {
         return dentaire;
     }
 
-    public void setDentaire(statsDentaire dentaire) {
+    public void setDentaire(StatsDentaire dentaire) {
         this.dentaire = dentaire;
     }
 
-    public statsKinesitherapie getKinesitherapie() {
+    public StatsKinesitherapie getKinesitherapie() {
         return kinesitherapie;
     }
 
-    public void setKinesitherapie(statsKinesitherapie kinesitherapie) {
+    public void setKinesitherapie(StatsKinesitherapie kinesitherapie) {
         this.kinesitherapie = kinesitherapie;
     }
 
-    public statsMGP getMedecine() {
+    public StatsMGP getMedecine() {
         return medecine;
     }
 
-    public void setMedecine(statsMGP medecine) {
+    public void setMedecine(StatsMGP medecine) {
         this.medecine = medecine;
     }
 
-    public statsMassotherapie getMassotherapie() {
+    public StatsMassotherapie getMassotherapie() {
         return massotherapie;
     }
 
-    public void setMassotherapie(statsMassotherapie massotherapie) {
+    public void setMassotherapie(StatsMassotherapie massotherapie) {
         this.massotherapie = massotherapie;
     }
 
-    public statsNaturopathie getNaturopathie() {
+    public StatsNaturopathie getNaturopathie() {
         return naturopathie;
     }
 
-    public void setNaturopathie(statsNaturopathie naturopathie) {
+    public void setNaturopathie(StatsNaturopathie naturopathie) {
         this.naturopathie = naturopathie;
     }
 
-    public statsOrthophonie getOrthophonie() {
+    public StatsOrthophonie getOrthophonie() {
         return orthophonie;
     }
 
-    public void setOrthophonie(statsOrthophonie orthophonie) {
+    public void setOrthophonie(StatsOrthophonie orthophonie) {
         this.orthophonie = orthophonie;
     }
 
-    public statsOstheopathie getOstheopathie() {
+    public StatsOstheopathie getOstheopathie() {
         return ostheopathie;
     }
 
-    public void setOstheopathie(statsOstheopathie ostheopathie) {
+    public void setOstheopathie(StatsOstheopathie ostheopathie) {
         this.ostheopathie = ostheopathie;
     }
 
-    public statsPhysiotherapie getPhysiotherapie() {
+    public StatsPhysiotherapie getPhysiotherapie() {
         return physiotherapie;
     }
 
-    public void setPhysiotherapie(statsPhysiotherapie physiotherapie) {
+    public void setPhysiotherapie(StatsPhysiotherapie physiotherapie) {
         this.physiotherapie = physiotherapie;
     }
 
-    public statsPsychologie getPsychologie() {
+    public StatsPsychologie getPsychologie() {
         return psychologie;
     }
 
-    public void setPsychologie(statsPsychologie psychologie) {
+    public void setPsychologie(StatsPsychologie psychologie) {
         this.psychologie = psychologie;
     }    
    
@@ -185,17 +185,17 @@ public class Statistique {
     public void reinitialise(){
         this.setReclamationValide(0);
         this.setReclamationRejete(0);
-        this.massotherapie = new statsMassotherapie();
-        this.ostheopathie = new statsOstheopathie();
-        this.kinesitherapie = new statsKinesitherapie();
-        this.medecine = new statsMGP();
-        this.psychologie = new statsPsychologie();
-        this.dentaire = new statsDentaire();
-        this.naturopathie = new statsNaturopathie();
-        this.chiropratie = new statsChiropratie();
-        this.physiotherapie = new statsPhysiotherapie();
-        this.psychologie = new statsPsychologie();
-        this.orthophonie = new statsOrthophonie();
+        this.massotherapie = new StatsMassotherapie();
+        this.ostheopathie = new StatsOstheopathie();
+        this.kinesitherapie = new StatsKinesitherapie();
+        this.medecine = new StatsMGP();
+        this.psychologie = new StatsPsychologie();
+        this.dentaire = new StatsDentaire();
+        this.naturopathie = new StatsNaturopathie();
+        this.chiropratie = new StatsChiropratie();
+        this.physiotherapie = new StatsPhysiotherapie();
+        this.psychologie = new StatsPsychologie();
+        this.orthophonie = new StatsOrthophonie();
     }
     
     public void afficherStatistiques(){

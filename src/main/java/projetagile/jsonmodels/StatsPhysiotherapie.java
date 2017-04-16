@@ -9,6 +9,6 @@ package projetagile.jsonmodels;
  *
  * @author rene
  */
-public class statsPhysiotherapie extends MontantSoinStats{
+public class StatsPhysiotherapie extends MontantSoinStats{
     
 }

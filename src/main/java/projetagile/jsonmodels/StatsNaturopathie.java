@@ -9,6 +9,6 @@ package projetagile.jsonmodels;
  *
  * @author rene
  */
-public class statsMGP extends MontantSoinStats{
+public class StatsNaturopathie extends MontantSoinStats{
     
 }
