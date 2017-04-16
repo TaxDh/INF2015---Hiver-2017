@@ -10,6 +10,16 @@ import projetagile.jsonmodels.Statistique;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import net.sf.json.JSONSerializer;
+import projetagile.jsonmodels.statsChiropratie;
+import projetagile.jsonmodels.statsDentaire;
+import projetagile.jsonmodels.statsKinesitherapie;
+import projetagile.jsonmodels.statsMGP;
+import projetagile.jsonmodels.statsMassotherapie;
+import projetagile.jsonmodels.statsNaturopathie;
+import projetagile.jsonmodels.statsOrthophonie;
+import projetagile.jsonmodels.statsOstheopathie;
+import projetagile.jsonmodels.statsPhysiotherapie;
+import projetagile.jsonmodels.statsPsychologie;
 
 public class JsonFileHandler {
     private static final Dollar dollar0 = new Dollar("0.00$");
@@ -225,7 +235,9 @@ public class JsonFileHandler {
 
         int reclamationValide = creeReclamationStat(racine);
         int reclamationRejete = creeReclamationRejeteStat(racine);
-        int nbSoinMassotheratpie = creeMassotherapieStat(racine);
+        statsMassotherapie massotherapie = creeMassotherapieStat(racine);
+        
+        /*
         int nbSoinOsteopathie = creeOsteopathieStat(racine);
         int nbSoinKinesitherapie = creeKinesitherapieStat(racine);
         int nbSoinMGP = creeMedecinGenPriveStat(racine);
@@ -234,26 +246,31 @@ public class JsonFileHandler {
         int nbSoinNaturo = creeNaturopathieStat(racine);
         int nbSoinChiropratie = creeChiropratieStat(racine);
         int nbSoinPhysiotherapie = creePhysiotherapieStat(racine);
-        int nbSoinOrthophonie = creeOrthophonieStat(racine);
+        int nbSoinOrthophonie = creeOrthophonieStat(racine);*/
 
         ecrisLesStatistiques(stats, reclamationValide, reclamationRejete, nbSoinMassotheratpie, nbSoinOsteopathie, nbSoinKinesitherapie, nbSoinMGP, nbSoinPsychologie, nbSoinDentaire, nbSoinNaturo, nbSoinChiropratie, nbSoinPhysiotherapie, nbSoinOrthophonie);
 
         return stats;
     }
 
-    public static void ecrisLesStatistiques(Statistique stats, int reclamationValide, int reclamationRejete, int nbSoinMassotheratpie, int nbSoinOsteopathie, int nbSoinKinesitherapie, int nbSoinMGP, int nbSoinPsychologie, int nbSoinDentaire, int nbSoinNaturo, int nbSoinChiropratie, int nbSoinPhysiotherapie, int nbSoinOrthophonie) {
+    public static void ecrisLesStatistiques(Statistique stats, int reclamationValide,
+            int reclamationRejete, statsMassotherapie massotherapie, statsOstheopathie osteopathie,
+            statsKinesitherapie kinesitherapie, statsMGP medecin, statsPsychologie psychologie,
+            statsDentaire dentaire, statsNaturopathie naturo, statsChiropratie chiropratie,
+            statsPhysiotherapie physiotherapie, statsOrthophonie orthophonie) {
+        
         stats.setReclamationValide(reclamationValide);
         stats.setReclamationRejete(reclamationRejete);
-        stats.setNbSoinMassotheratpie(nbSoinMassotheratpie);
-        stats.setNbSoinOsteopathie(nbSoinOsteopathie);
-        stats.setNbSoinKinesitherapie(nbSoinKinesitherapie);
-        stats.setNbSoinMGP(nbSoinMGP);
-        stats.setNbSoinPsychologie(nbSoinPsychologie);
-        stats.setNbSoinDentaire(nbSoinDentaire);
-        stats.setNbSoinNaturo(nbSoinNaturo);
-        stats.setNbSoinChiropratie(nbSoinChiropratie);
-        stats.setNbSoinPhysiotherapie(nbSoinPhysiotherapie);
-        stats.setNbSoinOrthophonie(nbSoinOrthophonie);
+        stats.setMassotherapie(massotherapie);
+        stats.setOstheopathie(osteopathie);
+        stats.setKinesitherapie(kinesitherapie);
+        stats.setMedecine(medecin);
+        stats.setPsychologie(psychologie);
+        stats.setDentaire(dentaire);
+        stats.setNaturopathie(naturo);
+        stats.setChiropratie(chiropratie);
+        stats.setPhysiotherapie(physiotherapie);
+        stats.setOrthophonie(orthophonie);        
     }
 
     public static int creeOrthophonieStat(JSONObject racine) throws InvalidArgumentException {
@@ -346,14 +363,19 @@ public class JsonFileHandler {
         return nbSoinOsteopathie;
     }
 
-    public static int creeMassotherapieStat(JSONObject racine) throws InvalidArgumentException {
-        int nbSoinMassotheratpie;
+    public static statsMassotherapie creeMassotherapieStat(JSONObject racine) throws InvalidArgumentException {
+        JSONObject objetMassotherapie;
         try {
-            nbSoinMassotheratpie = racine.getInt("massotherapie");
+            objetMassotherapie = racine.getJSONObject("massotherapie");
         } catch (net.sf.json.JSONException e) {
             throw new InvalidArgumentException("Erreur! Il n'y a pas de massotherapie");
         }
-        return nbSoinMassotheratpie;
+        
+        return new statsMassotherapie(
+                objetMassotherapie.getInt("compteur"), 
+                new Dollar(objetMassotherapie.getString("somme")), 
+                new Dollar(objetMassotherapie.getString("maximum"))
+        );
     }
 
     public static int creeReclamationRejeteStat(JSONObject racine) throws InvalidArgumentException {

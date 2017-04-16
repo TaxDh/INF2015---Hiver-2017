@@ -8,39 +8,39 @@ import java.util.List;
 public class Statistique {
     private int reclamationValide;
     private int reclamationRejete;
-    private int nbSoinMassotheratpie;
-    private int nbSoinOsteopathie;
-    private int nbSoinKinesitherapie;
-    private int nbSoinMGP;
-    private int nbSoinPsychologie;
-    private int nbSoinDentaire;
-    private int nbSoinNaturo;
-    private int nbSoinChiropratie;
-    private int nbSoinPhysiotherapie;
-    private int nbSoinOrthophonie;
-
+    private statsChiropratie chiropratie;
+    private statsDentaire dentaire;
+    private statsKinesitherapie kinesitherapie;
+    private statsMGP medecine;
+    private statsMassotherapie massotherapie;
+    private statsNaturopathie naturopathie;
+    private statsOrthophonie orthophonie;
+    private statsOstheopathie ostheopathie;
+    private statsPhysiotherapie physiotherapie;
+    private statsPsychologie psychologie;
+    
     public Statistique(){
     }
 
-    public Statistique(int reclamationValide, int reclamationRejete, int nbSoinMassotheratpie,
-            int nbSoinOsteopathie, int nbSoinKinesitherapie, int nbSoinMGP, int nbSoinPsychologie,
-            int nbSoinDentaire, int nbSoinNaturo, int nbSoinChiropratie, int nbSoinPhysiotherapie,
-            int nbSoinOrthophonie) {
+    public Statistique(int reclamationValide, int reclamationRejete, statsChiropratie chiropratie, 
+            statsDentaire dentaire, statsKinesitherapie kinesitherapie, statsMGP medecine, 
+            statsMassotherapie massotherapie, statsNaturopathie naturopathie, statsOrthophonie orthophonie,
+            statsOstheopathie ostheopathie, statsPhysiotherapie physiotherapie, statsPsychologie psychologie) {
         
         this.reclamationValide = reclamationValide;
         this.reclamationRejete = reclamationRejete;
-        this.nbSoinMassotheratpie = nbSoinMassotheratpie;
-        this.nbSoinOsteopathie = nbSoinOsteopathie;
-        this.nbSoinKinesitherapie = nbSoinKinesitherapie;
-        this.nbSoinMGP = nbSoinMGP;
-        this.nbSoinPsychologie = nbSoinPsychologie;
-        this.nbSoinDentaire = nbSoinDentaire;
-        this.nbSoinNaturo = nbSoinNaturo;
-        this.nbSoinChiropratie = nbSoinChiropratie;
-        this.nbSoinPhysiotherapie = nbSoinPhysiotherapie;
-        this.nbSoinOrthophonie = nbSoinOrthophonie;
+        this.chiropratie = chiropratie;
+        this.dentaire = dentaire;
+        this.kinesitherapie = kinesitherapie;
+        this.medecine = medecine;
+        this.massotherapie = massotherapie;
+        this.naturopathie = naturopathie;
+        this.orthophonie = orthophonie;
+        this.ostheopathie = ostheopathie;
+        this.physiotherapie = physiotherapie;
+        this.psychologie = psychologie;
     }
-    
+
     public int getReclamationValide() {
         return reclamationValide;
     }
@@ -57,86 +57,86 @@ public class Statistique {
         this.reclamationRejete = reclamationRejete;
     }
 
-    public int getNbSoinMassotheratpie() {
-        return nbSoinMassotheratpie;
+    public statsChiropratie getChiropratie() {
+        return chiropratie;
     }
 
-    public void setNbSoinMassotheratpie(int nbSoinMassotheratpie) {
-        this.nbSoinMassotheratpie = nbSoinMassotheratpie;
+    public void setChiropratie(statsChiropratie chiropratie) {
+        this.chiropratie = chiropratie;
     }
 
-    public int getNbSoinOsteopathie() {
-        return nbSoinOsteopathie;
+    public statsDentaire getDentaire() {
+        return dentaire;
     }
 
-    public void setNbSoinOsteopathie(int nbSoinOsteopathie) {
-        this.nbSoinOsteopathie = nbSoinOsteopathie;
+    public void setDentaire(statsDentaire dentaire) {
+        this.dentaire = dentaire;
     }
 
-    public int getNbSoinKinesitherapie() {
-        return nbSoinKinesitherapie;
+    public statsKinesitherapie getKinesitherapie() {
+        return kinesitherapie;
     }
 
-    public void setNbSoinKinesitherapie(int nbSoinKinesitherapie) {
-        this.nbSoinKinesitherapie = nbSoinKinesitherapie;
+    public void setKinesitherapie(statsKinesitherapie kinesitherapie) {
+        this.kinesitherapie = kinesitherapie;
     }
 
-    public int getNbSoinMGP() {
-        return nbSoinMGP;
+    public statsMGP getMedecine() {
+        return medecine;
     }
 
-    public void setNbSoinMGP(int nbSoinMGP) {
-        this.nbSoinMGP = nbSoinMGP;
+    public void setMedecine(statsMGP medecine) {
+        this.medecine = medecine;
     }
 
-    public int getNbSoinPsychologie() {
-        return nbSoinPsychologie;
+    public statsMassotherapie getMassotherapie() {
+        return massotherapie;
     }
 
-    public void setNbSoinPsychologie(int nbSoinPsychologie) {
-        this.nbSoinPsychologie = nbSoinPsychologie;
+    public void setMassotherapie(statsMassotherapie massotherapie) {
+        this.massotherapie = massotherapie;
     }
 
-    public int getNbSoinDentaire() {
-        return nbSoinDentaire;
+    public statsNaturopathie getNaturopathie() {
+        return naturopathie;
     }
 
-    public void setNbSoinDentaire(int nbSoinDentaire) {
-        this.nbSoinDentaire = nbSoinDentaire;
+    public void setNaturopathie(statsNaturopathie naturopathie) {
+        this.naturopathie = naturopathie;
     }
 
-    public int getNbSoinNaturo() {
-        return nbSoinNaturo;
+    public statsOrthophonie getOrthophonie() {
+        return orthophonie;
     }
 
-    public void setNbSoinNaturo(int nbSoinNaturo) {
-        this.nbSoinNaturo = nbSoinNaturo;
+    public void setOrthophonie(statsOrthophonie orthophonie) {
+        this.orthophonie = orthophonie;
     }
 
-    public int getNbSoinChiropratie() {
-        return nbSoinChiropratie;
+    public statsOstheopathie getOstheopathie() {
+        return ostheopathie;
     }
 
-    public void setNbSoinChiropratie(int nbSoinChiropratie) {
-        this.nbSoinChiropratie = nbSoinChiropratie;
+    public void setOstheopathie(statsOstheopathie ostheopathie) {
+        this.ostheopathie = ostheopathie;
     }
 
-    public int getNbSoinPhysiotherapie() {
-        return nbSoinPhysiotherapie;
+    public statsPhysiotherapie getPhysiotherapie() {
+        return physiotherapie;
     }
 
-    public void setNbSoinPhysiotherapie(int nbSoinPhysiotherapie) {
-        this.nbSoinPhysiotherapie = nbSoinPhysiotherapie;
+    public void setPhysiotherapie(statsPhysiotherapie physiotherapie) {
+        this.physiotherapie = physiotherapie;
     }
 
-    public int getNbSoinOrthophonie() {
-        return nbSoinOrthophonie;
+    public statsPsychologie getPsychologie() {
+        return psychologie;
     }
 
-    public void setNbSoinOrthophonie(int nbSoinOrthophonie) {
-        this.nbSoinOrthophonie = nbSoinOrthophonie;
-    }
-    
+    public void setPsychologie(statsPsychologie psychologie) {
+        this.psychologie = psychologie;
+    }    
+   
     public void compterSoin(ModeleJsonOut sortie){
         List<Remboursement> listeRemboursement = sortie.getRemboursement();
         int soin;
@@ -148,49 +148,61 @@ public class Statistique {
     }
 
     public void choixDuSoin(int soin) {
-        if(soin == 0){
-            this.nbSoinMassotheratpie++;
-        } else if(soin == 100){
-            this.nbSoinOsteopathie++;
-        } else if(soin == 150){
-            this.nbSoinKinesitherapie++;
-        } else if(soin == 175){
-            this.nbSoinMGP++;
-        } else if(soin == 200){
-            this.nbSoinPsychologie++;
-        } else if(soin >= 300 && soin < 400){
-            this.nbSoinDentaire++;
-        } else if(soin == 400){
-            this.nbSoinNaturo++;
-        } else if(soin == 500){
-            this.nbSoinChiropratie++;
-        } else if(soin == 600){
-            this.nbSoinPhysiotherapie++;
-        } else if(soin == 700){
-            this.nbSoinOrthophonie++;
+        switch(soin){
+            case 0:
+                this.massotherapie.incrementerCompteur();
+                break;
+            case 100:
+                this.ostheopathie.incrementerCompteur();
+                break;
+            case 150:
+                this.kinesitherapie.incrementerCompteur();
+                break;
+            case 175:
+                this.medecine.incrementerCompteur();
+                break;
+            case 200:
+                this.psychologie.incrementerCompteur();
+                break;
+            case 400:
+                this.naturopathie.incrementerCompteur();
+                break;
+            case 500:
+                this.chiropratie.incrementerCompteur();
+                break;
+            case 600:
+                this.physiotherapie.incrementerCompteur();
+                break;
+            case 700:
+                this.orthophonie.incrementerCompteur();
+                break;
+            default:
+                this.dentaire.incrementerCompteur();
+                break;
         }
     }
     
     public void reinitialise(){
         this.setReclamationValide(0);
         this.setReclamationRejete(0);
-        this.setNbSoinMassotheratpie(0);
-        this.setNbSoinOsteopathie(0);
-        this.setNbSoinKinesitherapie(0);
-        this.setNbSoinMGP(0);
-        this.setNbSoinPsychologie(0);
-        this.setNbSoinDentaire(0);
-        this.setNbSoinNaturo(0);
-        this.setNbSoinChiropratie(0);
-        this.setNbSoinPhysiotherapie(0);
-        this.setNbSoinOrthophonie(0);
+        this.massotherapie = new statsMassotherapie();
+        this.ostheopathie = new statsOstheopathie();
+        this.kinesitherapie = new statsKinesitherapie();
+        this.medecine = new statsMGP();
+        this.psychologie = new statsPsychologie();
+        this.dentaire = new statsDentaire();
+        this.naturopathie = new statsNaturopathie();
+        this.chiropratie = new statsChiropratie();
+        this.physiotherapie = new statsPhysiotherapie();
+        this.psychologie = new statsPsychologie();
+        this.orthophonie = new statsOrthophonie();
     }
     
     public void afficherStatistiques(){
         System.out.println("Le nombre de reclamations valides: " + this.getReclamationValide());
         System.out.println("Le nombre de reclamations rejetes: " + this.getReclamationRejete());
-        System.out.println("Le nombre de massotherapies traitees: " + this.getNbSoinMassotheratpie());
-        System.out.println("Le nombre de osteopathies traitees: " + this.getNbSoinOsteopathie());
+        System.out.println("Le nombre de massotherapies traitees: " + this.massotherapie.getCompteur());
+        /*System.out.println("Le nombre de osteopathies traitees: " + this.getNbSoinOsteopathie());
         System.out.println("Le nombre de kinesitherapies traitees: " + this.getNbSoinKinesitherapie());
         System.out.println("Le nombre de medecins generalistes prives traitees: " +this.getNbSoinMGP());
         System.out.println("Le nombre de psychologies individuelles traitees: " + this.getNbSoinPsychologie());
@@ -198,7 +210,7 @@ public class Statistique {
         System.out.println("Le nombre de naturopathies et/ou acuponctures traitees: " + this.getNbSoinNaturo());
         System.out.println("Le nombre de chiropratie traitees: " + this.getNbSoinChiropratie());
         System.out.println("Le nombre de physiotherapies traitees: " + this.getNbSoinPhysiotherapie());
-        System.out.println("Le nombre d'orthophonies et/ou d'ergotherapies traitees: " + this.getNbSoinOrthophonie()); 
+        System.out.println("Le nombre d'orthophonies et/ou d'ergotherapies traitees: " + this.getNbSoinOrthophonie());*/ 
     }
 }
 
