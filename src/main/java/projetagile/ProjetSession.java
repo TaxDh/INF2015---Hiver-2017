@@ -80,7 +80,7 @@ public class ProjetSession {
         JsonFileHandler.ecrireFichier(fichierSortie, sortie);
         if(stats != null){
             stats.setReclamationValide(stats.getReclamationValide() + 1);
-            stats.compterSoin(sortie);
+            stats.compterSoin(reclamation);
         }
     }
 

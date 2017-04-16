@@ -4,8 +4,10 @@
 package projetagile.jsonmodels;
 
 import java.util.List;
+import projetagile.Dollar;
 
 public class Statistique {
+
     private int reclamationValide;
     private int reclamationRejete;
     private StatsChiropratie chiropratie;
@@ -18,15 +20,15 @@ public class Statistique {
     private StatsOstheopathie ostheopathie;
     private StatsPhysiotherapie physiotherapie;
     private StatsPsychologie psychologie;
-    
-    public Statistique(){
+
+    public Statistique() {
     }
 
-    public Statistique(int reclamationValide, int reclamationRejete, StatsChiropratie chiropratie, 
-            StatsDentaire dentaire, StatsKinesitherapie kinesitherapie, StatsMGP medecine, 
+    public Statistique(int reclamationValide, int reclamationRejete, StatsChiropratie chiropratie,
+            StatsDentaire dentaire, StatsKinesitherapie kinesitherapie, StatsMGP medecine,
             StatsMassotherapie massotherapie, StatsNaturopathie naturopathie, StatsOrthophonie orthophonie,
             StatsOstheopathie ostheopathie, StatsPhysiotherapie physiotherapie, StatsPsychologie psychologie) {
-        
+
         this.reclamationValide = reclamationValide;
         this.reclamationRejete = reclamationRejete;
         this.chiropratie = chiropratie;
@@ -135,54 +137,96 @@ public class Statistique {
 
     public void setPsychologie(StatsPsychologie psychologie) {
         this.psychologie = psychologie;
-    }    
-   
-    public void compterSoin(ModeleJsonOut sortie){
-        List<Remboursement> listeRemboursement = sortie.getRemboursement();
+    }
+
+    public void compterSoin(ModeleJsonIn entree) {
+        List<Reclamation> listeReclamation = entree.getReclamations();
         int soin;
-        
-        for(Remboursement remboursement: listeRemboursement){
-            soin = remboursement.getSoins();
-            choixDuSoin(soin);
+        Dollar valeurReclamation;
+
+        for (Reclamation reclamation : listeReclamation) {
+            soin = reclamation.getSoins();
+            valeurReclamation = reclamation.getMontant();
+            choixDuSoin(soin, valeurReclamation);
         }
     }
 
-    public void choixDuSoin(int soin) {
-        switch(soin){
+    public void choixDuSoin(int soin, Dollar montant) {
+        switch (soin) {
             case 0:
-                this.massotherapie.incrementerCompteur();
+                massotherapie.incrementerCompteur();
+                massotherapie.ajouterSomme(montant);
+                if (montant.getMontant() > massotherapie.getMaximum().getMontant()) {
+                    massotherapie.setMaximum(montant);
+                }
                 break;
             case 100:
-                this.ostheopathie.incrementerCompteur();
+                ostheopathie.incrementerCompteur();
+                ostheopathie.ajouterSomme(montant);
+                if (montant.getMontant() > ostheopathie.getMaximum().getMontant()) {
+                    ostheopathie.setMaximum(montant);
+                }
                 break;
             case 150:
-                this.kinesitherapie.incrementerCompteur();
+                kinesitherapie.incrementerCompteur();
+                kinesitherapie.ajouterSomme(montant);
+                if (montant.getMontant() > kinesitherapie.getMaximum().getMontant()) {
+                    kinesitherapie.setMaximum(montant);
+                }
                 break;
             case 175:
-                this.medecine.incrementerCompteur();
+                medecine.incrementerCompteur();
+                medecine.ajouterSomme(montant);
+                if (montant.getMontant() > medecine.getMaximum().getMontant()) {
+                    medecine.setMaximum(montant);
+                }
                 break;
             case 200:
-                this.psychologie.incrementerCompteur();
+                psychologie.incrementerCompteur();
+                psychologie.ajouterSomme(montant);
+                if (montant.getMontant() > psychologie.getMaximum().getMontant()) {
+                    psychologie.setMaximum(montant);
+                }
                 break;
             case 400:
-                this.naturopathie.incrementerCompteur();
+                naturopathie.incrementerCompteur();
+                naturopathie.ajouterSomme(montant);
+                if (montant.getMontant() > naturopathie.getMaximum().getMontant()) {
+                    naturopathie.setMaximum(montant);
+                }
                 break;
             case 500:
-                this.chiropratie.incrementerCompteur();
+                chiropratie.incrementerCompteur();
+                chiropratie.ajouterSomme(montant);
+                if (montant.getMontant() > chiropratie.getMaximum().getMontant()) {
+                    chiropratie.setMaximum(montant);
+                }
                 break;
             case 600:
-                this.physiotherapie.incrementerCompteur();
+                physiotherapie.incrementerCompteur();
+                physiotherapie.ajouterSomme(montant);
+                if (montant.getMontant() > physiotherapie.getMaximum().getMontant()) {
+                    physiotherapie.setMaximum(montant);
+                }
                 break;
             case 700:
-                this.orthophonie.incrementerCompteur();
+                orthophonie.incrementerCompteur();
+                orthophonie.ajouterSomme(montant);
+                if (montant.getMontant() > orthophonie.getMaximum().getMontant()) {
+                    orthophonie.setMaximum(montant);
+                }
                 break;
             default:
-                this.dentaire.incrementerCompteur();
+                dentaire.incrementerCompteur();
+                dentaire.ajouterSomme(montant);
+                if (montant.getMontant() > dentaire.getMaximum().getMontant()) {
+                    dentaire.setMaximum(montant);
+                }
                 break;
         }
     }
-    
-    public void reinitialise(){
+
+    public void reinitialise() {
         this.setReclamationValide(0);
         this.setReclamationRejete(0);
         this.massotherapie = new StatsMassotherapie();
@@ -197,24 +241,40 @@ public class Statistique {
         this.psychologie = new StatsPsychologie();
         this.orthophonie = new StatsOrthophonie();
     }
-    
-    public void afficherStatistiques(){
+
+    public void afficherStatistiques() {
         System.out.println("Le nombre de reclamations valides: " + this.getReclamationValide());
         System.out.println("Le nombre de reclamations rejetes: " + this.getReclamationRejete());
-        
-        System.out.println("Le nombre de massotherapies traitees: " + this.massotherapie.getCompteur());
-        System.out.println("Le nombre de osteopathies traitees: " + this.ostheopathie.getCompteur());
-        System.out.println("Le nombre de kinesitherapies traitees: " + this.kinesitherapie.getCompteur());
-        System.out.println("Le nombre de medecins generalistes prives traitees: " +this.medecine.getCompteur());
-        System.out.println("Le nombre de psychologies individuelles traitees: " + this.psychologie.getCompteur());
-        System.out.println("Le nombre de soins dentaires traitees: " + this.dentaire.getCompteur());
-        System.out.println("Le nombre de naturopathies et/ou acuponctures traitees: " + this.naturopathie.getCompteur());
-        System.out.println("Le nombre de chiropratie traitees: " + this.chiropratie.getCompteur());
-        System.out.println("Le nombre de physiotherapies traitees: " + this.physiotherapie.getCompteur());
-        System.out.println("Le nombre d'orthophonies et/ou d'ergotherapies traitees: " + this.orthophonie.getCompteur());
+
+        System.out.println("Le nombre de massotherapies traitees: ");
+        afficherStatsSoin(massotherapie);
+        System.out.println("Le nombre de osteopathies traitees: ");
+        afficherStatsSoin(ostheopathie);
+        System.out.println("Le nombre de kinesitherapies traitees: ");
+        afficherStatsSoin(kinesitherapie);
+        System.out.println("Le nombre de medecins generalistes prives traitees: ");
+        afficherStatsSoin(medecine);
+        System.out.println("Le nombre de psychologies individuelles traitees: ");
+        afficherStatsSoin(psychologie);
+        System.out.println("Le nombre de soins dentaires traitees: ");
+        afficherStatsSoin(dentaire);
+        System.out.println("Le nombre de naturopathies et/ou acuponctures traitees: ");
+        afficherStatsSoin(naturopathie);
+        System.out.println("Le nombre de chiropratie traitees: ");
+        afficherStatsSoin(chiropratie);
+        System.out.println("Le nombre de physiotherapies traitees: ");
+        afficherStatsSoin(physiotherapie);
+        System.out.println("Le nombre d'orthophonies et/ou d'ergotherapies traitees: ");
+        afficherStatsSoin(orthophonie);
+    }
+
+    public void afficherStatsSoin(MontantSoinStats soin) {
+        System.out.println("\tNombre: " + soin.getCompteur());
+        if (soin.compteur == 0) {
+            System.out.println("\tMoyenne: 0");
+        } else {
+            System.out.println("\tMoyenne: " + soin.getSomme().divisionDollarParInt(soin.getCompteur()).convertirEnStringDollar());
+        }
+        System.out.println("\tMontant maximum: " + soin.getMaximum().convertirEnStringDollar());
     }
 }
-
-    
-    
-    
