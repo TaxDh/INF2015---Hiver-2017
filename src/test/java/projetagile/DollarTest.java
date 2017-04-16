@@ -430,8 +430,8 @@ public class DollarTest {
         int entier = 10;
         Dollar dollarTest = new Dollar("100.00$");
         Dollar dollarAttendu = new Dollar("10.00$");
-        dollarTest.divisionDollarParInt(entier);
-        assertEquals(dollarAttendu.getMontant(), dollarTest.getMontant());
+        Dollar resulat = dollarTest.divisionDollarParInt(entier);
+        assertEquals(dollarAttendu.getMontant(), resulat.getMontant());
     }
 
 }

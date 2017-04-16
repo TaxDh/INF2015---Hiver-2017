@@ -66,7 +66,7 @@ public class ProjetSession {
             if(stats != null) {
                 stats.setReclamationRejete(stats.getReclamationRejete() + 1);
             }
-            JsonFileHandler.ecrireFichierErreur(fichierSortie, e);
+            EcrireFichierErreurJson.ecrireFichierErreur(fichierSortie, e);
         } finally {
             if(stats != null)
                 ecrireStatistiques(stats);
@@ -74,10 +74,10 @@ public class ProjetSession {
     }
 
     public static void traiterReclamation(String fichierEntree, String fichierSortie, Statistique stats) throws InvalidArgumentException {
-        ModeleJsonIn reclamation = JsonFileHandler.ouvrireFichier(fichierEntree);
+        ModeleJsonIn reclamation = LireJsonReclamation.ouvrireFichier(fichierEntree);
         InterfaceContrat nouveauContrat = ContratFactory.instancieContrat(reclamation);
         ModeleJsonOut sortie = nouveauContrat.calculRemboursement();
-        JsonFileHandler.ecrireFichier(fichierSortie, sortie);
+        EcrireFichierJsonRemboursement.ecrireFichier(fichierSortie, sortie);
         if(stats != null){
             stats.setReclamationValide(stats.getReclamationValide() + 1);
             stats.compterSoin(reclamation);
@@ -97,7 +97,7 @@ public class ProjetSession {
 
     public static Statistique ouvrirFichierJsonStatistique(Statistique stats) {
         try {
-            stats = JsonFileHandler.ouvrirFichierStatistique("statistique.json");
+            stats = LireStatistiques.ouvrirFichierStatistique("statistique.json");
         } catch (InvalidArgumentException e) {
             System.out.println("Erreur avec l'ouverture du fichier statistique.json" + e.getLocalizedMessage());
         }
