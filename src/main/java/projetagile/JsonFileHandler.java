@@ -390,7 +390,7 @@ public class JsonFileHandler {
         } catch (net.sf.json.JSONException e) {
             throw new InvalidArgumentException("Erreur! Il n'y a pas de massotherapie");
         }
-        
+        System.out.println();
         return new StatsMassotherapie(objetMassotherapie.getInt("compteur"), 
                 new Dollar(objetMassotherapie.getString("somme")), 
                 new Dollar(objetMassotherapie.getString("maximum")));

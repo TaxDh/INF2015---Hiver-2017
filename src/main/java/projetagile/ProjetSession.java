@@ -6,6 +6,7 @@ import projetagile.jsonmodels.ModeleJsonIn;
 import projetagile.jsonmodels.ModeleJsonOut;
 import projetagile.jsonmodels.Statistique;
 import net.sf.json.JSONObject;
+import projetagile.jsonmodels.MontantSoinStats;
 import projetagile.jsonmodels.Reclamation;
 
 public class ProjetSession {
@@ -45,12 +46,15 @@ public class ProjetSession {
     }
 
     public static void argumentReclamation(String[] args, Statistique stats) {
-        String fichierEntree = args[1];
-        String fichierSortie = args[2];
+        String fichierEntree;
+        String fichierSortie;
         
         if(stats != null){
             fichierEntree = args[0];
             fichierSortie = args[1];
+        } else {
+            fichierEntree = args[1];
+            fichierSortie = args[2];
         }
         reclamtionInvalidArgumentException(fichierEntree, fichierSortie, stats);
     }
@@ -105,18 +109,28 @@ public class ProjetSession {
         statJson.accumulate("reclamations valides", stats.getReclamationValide());
         statJson.accumulate("reclamations rejetes", stats.getReclamationRejete());
         
-        statJson.accumulate("massotherapie", stats.getMassotherapie());
-        statJson.accumulate("ostheopathie", stats.getOstheopathie());
-        statJson.accumulate("kinesitherapie", stats.getKinesitherapie());
-        statJson.accumulate("medecin_generaliste_prive", stats.getMedecine());
-        statJson.accumulate("psychologie_individuelle", stats.getPsychologie());
-        statJson.accumulate("soin_dentaire", stats.getDentaire());
-        statJson.accumulate("naturopathie_acuponcture", stats.getNaturopathie());
-        statJson.accumulate("chiropratie", stats.getChiropratie());
-        statJson.accumulate("physiotherapie", stats.getPhysiotherapie());
-        statJson.accumulate("Orthophonie_ergotherapie", stats.getOrthophonie());
+        statJson.accumulate("massotherapie", ecrireStatistiquesSpecifique(stats.getMassotherapie()));
+        statJson.accumulate("ostheopathie", ecrireStatistiquesSpecifique(stats.getOstheopathie()));
+        statJson.accumulate("kinesitherapie", ecrireStatistiquesSpecifique(stats.getKinesitherapie()));
+        statJson.accumulate("medecin_generaliste_prive", ecrireStatistiquesSpecifique(stats.getMedecine()));
+        statJson.accumulate("psychologie_individuelle", ecrireStatistiquesSpecifique(stats.getPsychologie()));
+        statJson.accumulate("soin_dentaire", ecrireStatistiquesSpecifique(stats.getDentaire()));
+        statJson.accumulate("naturopathie_acuponcture", ecrireStatistiquesSpecifique(stats.getNaturopathie()));
+        statJson.accumulate("chiropratie", ecrireStatistiquesSpecifique(stats.getChiropratie()));
+        statJson.accumulate("physiotherapie", ecrireStatistiquesSpecifique(stats.getPhysiotherapie()));
+        statJson.accumulate("Orthophonie_ergotherapie", ecrireStatistiquesSpecifique(stats.getOrthophonie()));
 
         ecrireFichierJsonStats(statJson);
+    }
+    
+    public static JSONObject ecrireStatistiquesSpecifique(MontantSoinStats soins){
+        JSONObject soinsJson = new JSONObject();
+        
+        soinsJson.accumulate("compteur", soins.getCompteur());
+        soinsJson.accumulate("somme", soins.getSomme().convertirEnStringDollar());
+        soinsJson.accumulate("maximum", soins.getMaximum().convertirEnStringDollar());
+        
+        return soinsJson;
     }
 
     public static void ecrireFichierJsonStats(JSONObject statJson) {

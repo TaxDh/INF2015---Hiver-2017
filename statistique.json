@@ -1,14 +1,54 @@
 {
-    "reclamations valides": 7,
-    "reclamations rejetes": 8,
-    "massotherapie": 7,
-    "ostheopathie": 7,
-    "kinesitherapie": 7,
-    "medecin_generaliste_prive": 7,
-    "psychologie_individuelle": 7,
-    "soin_dentaire": 7,
-    "naturopathie_acuponcture": 7,
-    "chiropratie": 7,
-    "physiotherapie": 7,
-    "Orthophonie_ergotherapie": 7
+    "reclamations valides": 2,
+    "reclamations rejetes": 0,
+    "massotherapie":     {
+        "compteur": 0,
+        "somme": "0.00$",
+        "maximum": "0.00$"
+    },
+    "ostheopathie":     {
+        "compteur": 0,
+        "somme": "0.00$",
+        "maximum": "0.00$"
+    },
+    "kinesitherapie":     {
+        "compteur": 0,
+        "somme": "0.00$",
+        "maximum": "0.00$"
+    },
+    "medecin_generaliste_prive":     {
+        "compteur": 0,
+        "somme": "0.00$",
+        "maximum": "0.00$"
+    },
+    "psychologie_individuelle":     {
+        "compteur": 0,
+        "somme": "0.00$",
+        "maximum": "0.00$"
+    },
+    "soin_dentaire":     {
+        "compteur": 2,
+        "somme": "0.00$",
+        "maximum": "0.00$"
+    },
+    "naturopathie_acuponcture":     {
+        "compteur": 2,
+        "somme": "0.00$",
+        "maximum": "0.00$"
+    },
+    "chiropratie":     {
+        "compteur": 2,
+        "somme": "0.00$",
+        "maximum": "0.00$"
+    },
+    "physiotherapie":     {
+        "compteur": 2,
+        "somme": "0.00$",
+        "maximum": "0.00$"
+    },
+    "Orthophonie_ergotherapie":     {
+        "compteur": 0,
+        "somme": "0.00$",
+        "maximum": "0.00$"
+    }
 }
