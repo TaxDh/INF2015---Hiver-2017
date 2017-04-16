@@ -14,9 +14,7 @@ public class ProjetSession {
     private static final String EFFACE_STATS = "-SR";
     private static final String SANS_STATS = "-p";
 
-    /**
-     * @param args the command line arguments
-     */
+ 
     public static void main(String[] args) {
         Statistique stats = new Statistique();
         stats = ouvrirFichierJsonStatistique(stats);
