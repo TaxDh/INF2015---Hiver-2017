@@ -106,16 +106,17 @@ public class ProjetSession {
         JSONObject statJson = new JSONObject();
         statJson.accumulate("reclamations valides", stats.getReclamationValide());
         statJson.accumulate("reclamations rejetes", stats.getReclamationRejete());
-        statJson.accumulate("massotherapie", stats.getNbSoinMassotheratpie());
-        statJson.accumulate("ostheopathie", stats.getNbSoinOsteopathie());
-        statJson.accumulate("kinesitherapie", stats.getNbSoinKinesitherapie());
-        statJson.accumulate("medecin_generaliste_prive", stats.getNbSoinMGP());
-        statJson.accumulate("psychologie_individuelle", stats.getNbSoinPsychologie());
-        statJson.accumulate("soin_dentaire", stats.getNbSoinDentaire());
-        statJson.accumulate("naturopathie_acuponcture", stats.getNbSoinNaturo());
-        statJson.accumulate("chiropratie", stats.getNbSoinChiropratie());
-        statJson.accumulate("physiotherapie", stats.getNbSoinPhysiotherapie());
-        statJson.accumulate("Orthophonie_ergotherapie", stats.getNbSoinOrthophonie());
+        
+        statJson.accumulate("massotherapie", stats.getMassotherapie());
+        statJson.accumulate("ostheopathie", stats.getOstheopathie());
+        statJson.accumulate("kinesitherapie", stats.getKinesitherapie());
+        statJson.accumulate("medecin_generaliste_prive", stats.getMedecine());
+        statJson.accumulate("psychologie_individuelle", stats.getPsychologie());
+        statJson.accumulate("soin_dentaire", stats.getDentaire());
+        statJson.accumulate("naturopathie_acuponcture", stats.getNaturopathie());
+        statJson.accumulate("chiropratie", stats.getChiropratie());
+        statJson.accumulate("physiotherapie", stats.getPhysiotherapie());
+        statJson.accumulate("Orthophonie_ergotherapie", stats.getOrthophonie());
 
         ecrireFichierJsonStats(statJson);
     }
