@@ -298,114 +298,65 @@ public class JsonFileHandler {
                 new Dollar(objetPhysiotherapie.getString("maximum")));
     }
 
-    public static int creeChiropratieStat(JSONObject racine) throws InvalidArgumentException {
-        int nbSoinChiropratie;
+
+    public static StatsChiropratie creeChiropratieStat(JSONObject racine) throws InvalidArgumentException {
+        JSONObject objetChiropratie;
         try {
-            nbSoinChiropratie = racine.getInt("chiropratie");
+            objetChiropratie = racine.getJSONObject("chiropratie");
         } catch (net.sf.json.JSONException e) {
             throw new InvalidArgumentException("Erreur! Il n'y a pas de chiropratie");
         }
-        return nbSoinChiropratie;
+        return new StatsChiropratie(objetChiropratie.getInt("compteur"), 
+                new Dollar(objetChiropratie.getString("somme")), 
+                new Dollar(objetChiropratie.getString("maximum")));
     }
-    public static StatsKinesitherapie creeKinesitherapieStat(JSONObject racine) throws InvalidArgumentException {
-        JSONObject objetKinesitherapie;
+     
+    public static StatsNaturopathie creeNaturopathieStat(JSONObject racine) throws InvalidArgumentException {
+        JSONObject objetNaturopathie;
         try {
-            objetKinesitherapie = racine.getJSONObject("kinesitherapie");
+            objetNaturopathie = racine.getJSONObject("naturopathie_acuponcture");
         } catch (net.sf.json.JSONException e) {
-            throw new InvalidArgumentException("Erreur! Il n'y a pas de kinesitherapie");
+            throw new InvalidArgumentException("Erreur! Il n'y a pas de naturopathie ou d'acuponcture");
         }
-        return new StatsKinesitherapie(objetKinesitherapie.getInt("compteur"), 
-                new Dollar(objetKinesitherapie.getString("somme")), 
-                new Dollar(objetKinesitherapie.getString("maximum")));
+        return new StatsNaturopathie(objetNaturopathie.getInt("compteur"), 
+                new Dollar(objetNaturopathie.getString("somme")), 
+                new Dollar(objetNaturopathie.getString("maximum")));
     }
-    
-
-    public static int creeNaturopathieStat(JSONObject racine) throws InvalidArgumentException {
-        int nbSoinNaturo;
+   
+    public static StatsDentaire creeDentaireStat(JSONObject racine) throws InvalidArgumentException {
+        JSONObject objetSoinDentaire;
         try {
-            nbSoinNaturo = racine.getInt("naturopathie_acuponcture");
-        } catch (net.sf.json.JSONException e) {
-            throw new InvalidArgumentException("Erreur! Il n'y a pas de naturopathie ou acuponcture");
-        }
-        return nbSoinNaturo;
-    }
-    
-    public static StatsKinesitherapie creeKinesitherapieStat(JSONObject racine) throws InvalidArgumentException {
-        JSONObject objetKinesitherapie;
-        try {
-            objetKinesitherapie = racine.getJSONObject("kinesitherapie");
-        } catch (net.sf.json.JSONException e) {
-            throw new InvalidArgumentException("Erreur! Il n'y a pas de kinesitherapie");
-        }
-        return new StatsKinesitherapie(objetKinesitherapie.getInt("compteur"), 
-                new Dollar(objetKinesitherapie.getString("somme")), 
-                new Dollar(objetKinesitherapie.getString("maximum")));
-    }
-
-    public static int creeDentaireStat(JSONObject racine) throws InvalidArgumentException {
-        int nbSoinDentaire;
-        try {
-            nbSoinDentaire = racine.getInt("soin_dentaire");
+            objetSoinDentaire = racine.getJSONObject("soin_dentaire");
         } catch (net.sf.json.JSONException e) {
             throw new InvalidArgumentException("Erreur! Il n'y a pas de soin dentaire");
         }
-        return nbSoinDentaire;
+        return new StatsDentaire(objetSoinDentaire.getInt("compteur"), 
+                new Dollar(objetSoinDentaire.getString("somme")), 
+                new Dollar(objetSoinDentaire.getString("maximum")));
     }
     
-    public static StatsKinesitherapie creeKinesitherapieStat(JSONObject racine) throws InvalidArgumentException {
-        JSONObject objetKinesitherapie;
+    public static StatsPsychologie creePsychologieStat(JSONObject racine) throws InvalidArgumentException {
+        JSONObject objetPsychologie;
         try {
-            objetKinesitherapie = racine.getJSONObject("kinesitherapie");
-        } catch (net.sf.json.JSONException e) {
-            throw new InvalidArgumentException("Erreur! Il n'y a pas de kinesitherapie");
-        }
-        return new StatsKinesitherapie(objetKinesitherapie.getInt("compteur"), 
-                new Dollar(objetKinesitherapie.getString("somme")), 
-                new Dollar(objetKinesitherapie.getString("maximum")));
-    }
-
-    public static int creePsychologieStat(JSONObject racine) throws InvalidArgumentException {
-        int nbSoinPsychologie;
-        try {
-            nbSoinPsychologie = racine.getInt("psychologie_individuelle");
+            objetPsychologie = racine.getJSONObject("psychologie_individuelle");
         } catch (net.sf.json.JSONException e) {
             throw new InvalidArgumentException("Erreur! Il n'y a pas de psychologie individuelle");
         }
-        return nbSoinPsychologie;
+        return new StatsPsychologie(objetPsychologie.getInt("compteur"), 
+                new Dollar(objetPsychologie.getString("somme")), 
+                new Dollar(objetPsychologie.getString("maximum")));
     }
     
-    public static StatsKinesitherapie creeKinesitherapieStat(JSONObject racine) throws InvalidArgumentException {
-        JSONObject objetKinesitherapie;
+    public static StatsMGP creeMedecinGenPriveStat(JSONObject racine) throws InvalidArgumentException {
+        JSONObject objetMedecin;
         try {
-            objetKinesitherapie = racine.getJSONObject("kinesitherapie");
-        } catch (net.sf.json.JSONException e) {
-            throw new InvalidArgumentException("Erreur! Il n'y a pas de kinesitherapie");
-        }
-        return new StatsKinesitherapie(objetKinesitherapie.getInt("compteur"), 
-                new Dollar(objetKinesitherapie.getString("somme")), 
-                new Dollar(objetKinesitherapie.getString("maximum")));
-    }
-
-    public static int creeMedecinGenPriveStat(JSONObject racine) throws InvalidArgumentException {
-        int nbSoinMGP;
-        try {
-            nbSoinMGP = racine.getInt("medecin_generaliste_prive");
+            objetMedecin = racine.getJSONObject("medecin_generaliste_prive");
         } catch (net.sf.json.JSONException e) {
             throw new InvalidArgumentException("Erreur! Il n'y a pas de medecin generaliste prive");
         }
-        return nbSoinMGP;
-    }
-    
-    public static StatsKinesitherapie creeKinesitherapieStat(JSONObject racine) throws InvalidArgumentException {
-        JSONObject objetKinesitherapie;
-        try {
-            objetKinesitherapie = racine.getJSONObject("kinesitherapie");
-        } catch (net.sf.json.JSONException e) {
-            throw new InvalidArgumentException("Erreur! Il n'y a pas de kinesitherapie");
-        }
-        return new StatsKinesitherapie(objetKinesitherapie.getInt("compteur"), 
-                new Dollar(objetKinesitherapie.getString("somme")), 
-                new Dollar(objetKinesitherapie.getString("maximum")));
+        return new StatsMGP(objetMedecin.getInt("compteur"), 
+                new Dollar(objetMedecin.getString("somme")), 
+                new Dollar(objetMedecin.getString("maximum")));
     }
 
     public static StatsKinesitherapie creeKinesitherapieStat(JSONObject racine) throws InvalidArgumentException {
