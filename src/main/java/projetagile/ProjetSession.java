@@ -1,4 +1,6 @@
-/* main du projet*/
+/* 
+ *main du projet
+ */
 package projetagile;
 
 import java.io.IOException;
@@ -7,7 +9,6 @@ import projetagile.jsonmodels.ModeleJsonOut;
 import projetagile.jsonmodels.Statistique;
 import net.sf.json.JSONObject;
 import projetagile.jsonmodels.MontantSoinStats;
-import projetagile.jsonmodels.Reclamation;
 
 public class ProjetSession {
 
@@ -15,7 +16,6 @@ public class ProjetSession {
     private static final String EFFACE_STATS = "-SR";
     private static final String SANS_STATS = "-p";
 
- 
     public static void main(String[] args) {
         Statistique stats = new Statistique();
         stats = ouvrirFichierJsonStatistique(stats);
@@ -36,7 +36,7 @@ public class ProjetSession {
     }
 
     private static void validationModeSansStats(String[] args) {
-        if(args[0].equals(SANS_STATS)){
+        if (args[0].equals(SANS_STATS)) {
             argumentReclamation(args, null);
         } else {
             System.out.println(args[0]);
@@ -48,8 +48,8 @@ public class ProjetSession {
     public static void argumentReclamation(String[] args, Statistique stats) {
         String fichierEntree;
         String fichierSortie;
-        
-        if(stats != null){
+
+        if (stats != null) {
             fichierEntree = args[0];
             fichierSortie = args[1];
         } else {
@@ -63,22 +63,24 @@ public class ProjetSession {
         try {
             traiterReclamation(fichierEntree, fichierSortie, stats);
         } catch (InvalidArgumentException e) {
-            if(stats != null) {
+            if (stats != null) {
                 stats.setReclamationRejete(stats.getReclamationRejete() + 1);
             }
             EcrireFichierErreurJson.ecrireFichierErreur(fichierSortie, e);
         } finally {
-            if(stats != null)
+            if (stats != null) {
                 ecrireStatistiques(stats);
+            }
         }
     }
 
-    public static void traiterReclamation(String fichierEntree, String fichierSortie, Statistique stats) throws InvalidArgumentException {
+    public static void traiterReclamation(String fichierEntree, String fichierSortie,
+            Statistique stats) throws InvalidArgumentException {
         ModeleJsonIn reclamation = LireJsonReclamation.ouvrireFichier(fichierEntree);
         InterfaceContrat nouveauContrat = ContratFactory.instancieContrat(reclamation);
         ModeleJsonOut sortie = nouveauContrat.calculRemboursement();
         EcrireFichierJsonRemboursement.ecrireFichier(fichierSortie, sortie);
-        if(stats != null){
+        if (stats != null) {
             stats.setReclamationValide(stats.getReclamationValide() + 1);
             stats.compterSoin(reclamation);
         }
@@ -108,7 +110,7 @@ public class ProjetSession {
         JSONObject statJson = new JSONObject();
         statJson.accumulate("reclamations valides", stats.getReclamationValide());
         statJson.accumulate("reclamations rejetes", stats.getReclamationRejete());
-        
+
         statJson.accumulate("massotherapie", ecrireStatistiquesSpecifique(stats.getMassotherapie()));
         statJson.accumulate("ostheopathie", ecrireStatistiquesSpecifique(stats.getOstheopathie()));
         statJson.accumulate("kinesitherapie", ecrireStatistiquesSpecifique(stats.getKinesitherapie()));
@@ -122,14 +124,14 @@ public class ProjetSession {
 
         ecrireFichierJsonStats(statJson);
     }
-    
-    public static JSONObject ecrireStatistiquesSpecifique(MontantSoinStats soins){
+
+    public static JSONObject ecrireStatistiquesSpecifique(MontantSoinStats soins) {
         JSONObject soinsJson = new JSONObject();
-        
+
         soinsJson.accumulate("compteur", soins.getCompteur());
         soinsJson.accumulate("somme", soins.getSomme().convertirEnStringDollar());
         soinsJson.accumulate("maximum", soins.getMaximum().convertirEnStringDollar());
-        
+
         return soinsJson;
     }
 

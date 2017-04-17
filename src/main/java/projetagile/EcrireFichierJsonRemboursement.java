@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ *Ecris le fichier de sortie qui contient la liste de remboursement sous format
+ *JSon.
  */
 package projetagile;
 
@@ -44,5 +43,5 @@ public class EcrireFichierJsonRemboursement {
             System.out.println("Erreur avec le fichier de sortie : " + ex.getLocalizedMessage());
         }
     }
-    
+
 }

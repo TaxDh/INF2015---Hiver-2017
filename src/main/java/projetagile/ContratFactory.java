@@ -5,12 +5,12 @@ package projetagile;
 
 import projetagile.jsonmodels.ModeleJsonIn;
 
-
 public class ContratFactory {
-    public static InterfaceContrat instancieContrat(ModeleJsonIn modele){
+
+    public static InterfaceContrat instancieContrat(ModeleJsonIn modele) {
         char typeContrat = modele.getTypeContrat();
         InterfaceContrat contractHolder = null;
-        switch(typeContrat){
+        switch (typeContrat) {
             case 'A':
                 contractHolder = new ContratA(modele);
                 break;
@@ -23,7 +23,7 @@ public class ContratFactory {
             case 'D':
                 contractHolder = new ContratD(modele);
                 break;
-            case 'E' :
+            case 'E':
                 contractHolder = new ContratE(modele);
                 break;
         }

@@ -1,27 +1,22 @@
 {
-    "dossier": "A100323",
+    "dossier": "B100323",
     "mois": "2017-01",
     "remboursements":     [
                 {
-            "soin": 334,
+            "soin": 500,
             "date": "2017-01-23",
-            "montant": "0.00$"
-        },
-                {
-            "soin": 400,
-            "date": "2017-01-23",
-            "montant": "0.00$"
+            "montant": "50.00$"
         },
                 {
             "soin": 500,
             "date": "2017-01-23",
-            "montant": "25.00$"
+            "montant": "50.00$"
         },
                 {
-            "soin": 600,
+            "soin": 500,
             "date": "2017-01-23",
-            "montant": "40.00$"
+            "montant": "50.00$"
         }
     ],
-    "total": "65.00$"
+    "total": "150.00$"
 }
