@@ -1,5 +1,5 @@
 /*
- * L'objet statistique pour le fichier json statistique
+ * L'objet statistique pour le fichier json statistique.
  */
 package projetagile.jsonmodels;
 
@@ -154,75 +154,115 @@ public class Statistique {
     public void choixDuSoin(int soin, Dollar montant) {
         switch (soin) {
             case 0:
-                massotherapie.incrementerCompteur();
-                massotherapie.ajouterSomme(montant);
-                if (montant.getMontant() > massotherapie.getMaximum().getMontant()) {
-                    massotherapie.setMaximum(montant);
-                }
+                miseAJourMassotherapieStats(montant);
                 break;
             case 100:
-                ostheopathie.incrementerCompteur();
-                ostheopathie.ajouterSomme(montant);
-                if (montant.getMontant() > ostheopathie.getMaximum().getMontant()) {
-                    ostheopathie.setMaximum(montant);
-                }
+                miseAJourOstheopathieStats(montant);
                 break;
             case 150:
-                kinesitherapie.incrementerCompteur();
-                kinesitherapie.ajouterSomme(montant);
-                if (montant.getMontant() > kinesitherapie.getMaximum().getMontant()) {
-                    kinesitherapie.setMaximum(montant);
-                }
+                miseAJourKinesitherapieStats(montant);
                 break;
             case 175:
-                medecine.incrementerCompteur();
-                medecine.ajouterSomme(montant);
-                if (montant.getMontant() > medecine.getMaximum().getMontant()) {
-                    medecine.setMaximum(montant);
-                }
+                miseAJourMGPStats(montant);
                 break;
             case 200:
-                psychologie.incrementerCompteur();
-                psychologie.ajouterSomme(montant);
-                if (montant.getMontant() > psychologie.getMaximum().getMontant()) {
-                    psychologie.setMaximum(montant);
-                }
+                miseAJourPsychologieStats(montant);
                 break;
             case 400:
-                naturopathie.incrementerCompteur();
-                naturopathie.ajouterSomme(montant);
-                if (montant.getMontant() > naturopathie.getMaximum().getMontant()) {
-                    naturopathie.setMaximum(montant);
-                }
+                miseAJourNaturopathieStats(montant);
                 break;
             case 500:
-                chiropratie.incrementerCompteur();
-                chiropratie.ajouterSomme(montant);
-                if (montant.getMontant() > chiropratie.getMaximum().getMontant()) {
-                    chiropratie.setMaximum(montant);
-                }
+                miseAJourChiropratieStats(montant);
                 break;
             case 600:
-                physiotherapie.incrementerCompteur();
-                physiotherapie.ajouterSomme(montant);
-                if (montant.getMontant() > physiotherapie.getMaximum().getMontant()) {
-                    physiotherapie.setMaximum(montant);
-                }
+                miseAJourPhysiotherapieStats(montant);
                 break;
             case 700:
-                orthophonie.incrementerCompteur();
-                orthophonie.ajouterSomme(montant);
-                if (montant.getMontant() > orthophonie.getMaximum().getMontant()) {
-                    orthophonie.setMaximum(montant);
-                }
+                miseAJourOrthophonieStats(montant);
                 break;
             default:
-                dentaire.incrementerCompteur();
-                dentaire.ajouterSomme(montant);
-                if (montant.getMontant() > dentaire.getMaximum().getMontant()) {
-                    dentaire.setMaximum(montant);
-                }
+                miseAJourDentaireStats(montant);
                 break;
+        }
+    }
+
+    private void miseAJourDentaireStats(Dollar montant) {
+        dentaire.incrementerCompteur();
+        dentaire.ajouterSomme(montant);
+        if (montant.getMontant() > dentaire.getMaximum().getMontant()) {
+            dentaire.setMaximum(montant);
+        }
+    }
+
+    private void miseAJourOrthophonieStats(Dollar montant) {
+        orthophonie.incrementerCompteur();
+        orthophonie.ajouterSomme(montant);
+        if (montant.getMontant() > orthophonie.getMaximum().getMontant()) {
+            orthophonie.setMaximum(montant);
+        }
+    }
+
+    private void miseAJourPhysiotherapieStats(Dollar montant) {
+        physiotherapie.incrementerCompteur();
+        physiotherapie.ajouterSomme(montant);
+        if (montant.getMontant() > physiotherapie.getMaximum().getMontant()) {
+            physiotherapie.setMaximum(montant);
+        }
+    }
+
+    private void miseAJourChiropratieStats(Dollar montant) {
+        chiropratie.incrementerCompteur();
+        chiropratie.ajouterSomme(montant);
+        if (montant.getMontant() > chiropratie.getMaximum().getMontant()) {
+            chiropratie.setMaximum(montant);
+        }
+    }
+
+    private void miseAJourNaturopathieStats(Dollar montant) {
+        naturopathie.incrementerCompteur();
+        naturopathie.ajouterSomme(montant);
+        if (montant.getMontant() > naturopathie.getMaximum().getMontant()) {
+            naturopathie.setMaximum(montant);
+        }
+    }
+
+    private void miseAJourPsychologieStats(Dollar montant) {
+        psychologie.incrementerCompteur();
+        psychologie.ajouterSomme(montant);
+        if (montant.getMontant() > psychologie.getMaximum().getMontant()) {
+            psychologie.setMaximum(montant);
+        }
+    }
+
+    private void miseAJourMGPStats(Dollar montant) {
+        medecine.incrementerCompteur();
+        medecine.ajouterSomme(montant);
+        if (montant.getMontant() > medecine.getMaximum().getMontant()) {
+            medecine.setMaximum(montant);
+        }
+    }
+
+    private void miseAJourKinesitherapieStats(Dollar montant) {
+        kinesitherapie.incrementerCompteur();
+        kinesitherapie.ajouterSomme(montant);
+        if (montant.getMontant() > kinesitherapie.getMaximum().getMontant()) {
+            kinesitherapie.setMaximum(montant);
+        }
+    }
+
+    private void miseAJourOstheopathieStats(Dollar montant) {
+        ostheopathie.incrementerCompteur();
+        ostheopathie.ajouterSomme(montant);
+        if (montant.getMontant() > ostheopathie.getMaximum().getMontant()) {
+            ostheopathie.setMaximum(montant);
+        }
+    }
+
+    private void miseAJourMassotherapieStats(Dollar montant) {
+        massotherapie.incrementerCompteur();
+        massotherapie.ajouterSomme(montant);
+        if (montant.getMontant() > massotherapie.getMaximum().getMontant()) {
+            massotherapie.setMaximum(montant);
         }
     }
 

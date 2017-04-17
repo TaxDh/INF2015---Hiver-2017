@@ -1,19 +1,18 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * Objet statistique psychologie.
  */
 package projetagile.jsonmodels;
 
 import projetagile.Dollar;
-public class StatsPsychologie extends MontantSoinStats{
-    
-    public StatsPsychologie(){
+
+public class StatsPsychologie extends MontantSoinStats {
+
+    public StatsPsychologie() {
         super();
     }
-    
-    public StatsPsychologie(int compteur, Dollar somme, Dollar maximum){
+
+    public StatsPsychologie(int compteur, Dollar somme, Dollar maximum) {
         super(compteur, somme, maximum);
     }
-    
+
 }

@@ -1,12 +1,13 @@
 /*
- * l'objet json que le programme lit.
-*/
+ * L'objet json que le programme lit.
+ */
 package projetagile.jsonmodels;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class ModeleJsonIn {
+
     private String client;
     private char typeContrat;
     private String mois;
@@ -23,8 +24,6 @@ public class ModeleJsonIn {
         this.reclamations = new ArrayList<>();
     }
 
-    
-    
     public String getClient() {
         return client;
     }
@@ -48,7 +47,7 @@ public class ModeleJsonIn {
     public void setMois(String mois) {
         this.mois = mois;
     }
-    
+
     public List<Reclamation> getReclamations() {
         return reclamations;
     }
@@ -56,9 +55,9 @@ public class ModeleJsonIn {
     public void setReclamations(List<Reclamation> reclamations) {
         this.reclamations = reclamations;
     }
-    
+
     public void ajouterReclamation(Reclamation nouvelleReclamation) {
         reclamations.add(nouvelleReclamation);
     }
-    
+
 }

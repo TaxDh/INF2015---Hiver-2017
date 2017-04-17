@@ -5,9 +5,8 @@ package projetagile.jsonmodels;
 
 import projetagile.Dollar;
 
-
 public class Remboursement {
-      
+
     private int soins;
     private String date;
     private Dollar montant;
@@ -20,9 +19,7 @@ public class Remboursement {
         this.date = date;
         this.montant = montant;
     }
-    
-    
-    
+
     public int getSoins() {
         return soins;
     }
@@ -48,6 +45,3 @@ public class Remboursement {
     }
 
 }
-
-    
-

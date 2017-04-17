@@ -1,12 +1,12 @@
 /*
- * Objet contenant les statistiques pour chaque soin
+ * Objet contenant les statistiques pour chaque soin.
  */
 package projetagile.jsonmodels;
 
-import java.util.List;
 import projetagile.Dollar;
 
 public abstract class MontantSoinStats {
+
     protected int compteur;
     protected Dollar somme;
     protected Dollar maximum;
@@ -46,20 +46,20 @@ public abstract class MontantSoinStats {
     public void setMaximum(Dollar maximum) {
         this.maximum = maximum;
     }
-    
-    public void incrementerCompteur(){
+
+    public void incrementerCompteur() {
         this.compteur++;
     }
-    
-    public void additionnerCompteur(int valeur){
+
+    public void additionnerCompteur(int valeur) {
         this.compteur += valeur;
     }
-    
-    public void ajouterSomme(Dollar montant){
+
+    public void ajouterSomme(Dollar montant) {
         this.somme.additionDollar(montant);
     }
-    
-    public Dollar calculerMoyenne(){
+
+    public Dollar calculerMoyenne() {
         return this.somme.divisionDollarParInt(compteur);
     }
 }

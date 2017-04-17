@@ -2,10 +2,11 @@
  * Objet reclamation, celui qui se trouve dans le tableau reclamation
  */
 package projetagile.jsonmodels;
+
 import projetagile.Dollar;
 
 public class Reclamation {
-    
+
     private int soins;
     private String date;
     private Dollar montant;
@@ -18,9 +19,7 @@ public class Reclamation {
         this.date = date;
         this.montant = montant;
     }
-    
-    
-    
+
     public int getSoins() {
         return soins;
     }

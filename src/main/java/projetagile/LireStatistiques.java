@@ -117,11 +117,11 @@ public class LireStatistiques {
         } catch (JSONException e) {
             throw new InvalidArgumentException("Erreur! Il n'y a pas de physiotherapie");
         }
-        
+
         physiotherapieCompteur = objetPhysiotherapie.getInt("compteur");
         physiotherapieSomme = new Dollar(objetPhysiotherapie.getString("somme"));
         physiotherapieMax = new Dollar(objetPhysiotherapie.getString("maximum"));
-        
+
         return new StatsPhysiotherapie(physiotherapieCompteur, physiotherapieSomme, physiotherapieMax);
     }
 
@@ -136,12 +136,12 @@ public class LireStatistiques {
         } catch (JSONException e) {
             throw new InvalidArgumentException("Erreur! Il n'y a pas de massotherapie");
         }
-        
+
         massotherapieCompteur = objetMassotherapie.getInt("compteur");
         massotherapieSomme = new Dollar(objetMassotherapie.getString("somme"));
         massotherapieMax = new Dollar(objetMassotherapie.getString("maximum"));
 
-        return new StatsMassotherapie();
+        return new StatsMassotherapie(massotherapieCompteur, massotherapieSomme, massotherapieMax);
     }
 
     public static StatsMGP creeMedecinGenPriveStat(JSONObject racine) throws InvalidArgumentException {
@@ -149,28 +149,37 @@ public class LireStatistiques {
         int medecinCompteur;
         Dollar medecinSomme;
         Dollar medecinMax;
-        
+
         try {
             objetMedecin = racine.getJSONObject("medecin_generaliste_prive");
         } catch (JSONException e) {
             throw new InvalidArgumentException("Erreur! Il n'y a pas de medecin generaliste prive");
         }
-        return new StatsMGP(objetMedecin.getInt("compteur"), new Dollar(objetMedecin.getString("somme")),
-                new Dollar(objetMedecin.getString("maximum")));
+
+        medecinCompteur = objetMedecin.getInt("compteur");
+        medecinSomme = new Dollar(objetMedecin.getString("somme"));
+        medecinMax = new Dollar(objetMedecin.getString("maximum"));
+
+        return new StatsMGP(medecinCompteur, medecinSomme, medecinMax);
     }
 
     public static StatsDentaire creeDentaireStat(JSONObject racine) throws InvalidArgumentException {
         JSONObject objetSoinDentaire;
-        int dentaireCompeutr;
+        int dentaireCompteur;
         Dollar dentaireSomme;
         Dollar dentaireMax;
-        
+
         try {
             objetSoinDentaire = racine.getJSONObject("soin_dentaire");
         } catch (JSONException e) {
             throw new InvalidArgumentException("Erreur! Il n'y a pas de soin dentaire");
         }
-        return new StatsDentaire(objetSoinDentaire.getInt("compteur"), new Dollar(objetSoinDentaire.getString("somme")), new Dollar(objetSoinDentaire.getString("maximum")));
+
+        dentaireCompteur = objetSoinDentaire.getInt("compteur");
+        dentaireSomme = new Dollar(objetSoinDentaire.getString("somme"));
+        dentaireMax = new Dollar(objetSoinDentaire.getString("maximum"));
+
+        return new StatsDentaire(dentaireCompteur, dentaireSomme, dentaireMax);
     }
 
     public static StatsPsychologie creePsychologieStat(JSONObject racine) throws InvalidArgumentException {
@@ -178,13 +187,18 @@ public class LireStatistiques {
         int psychologieCompteur;
         Dollar psychologieSomme;
         Dollar psychologieMax;
-        
+
         try {
             objetPsychologie = racine.getJSONObject("psychologie_individuelle");
         } catch (JSONException e) {
             throw new InvalidArgumentException("Erreur! Il n'y a pas de psychologie individuelle");
         }
-        return new StatsPsychologie(objetPsychologie.getInt("compteur"), new Dollar(objetPsychologie.getString("somme")), new Dollar(objetPsychologie.getString("maximum")));
+
+        psychologieCompteur = objetPsychologie.getInt("compteur");
+        psychologieSomme = new Dollar(objetPsychologie.getString("somme"));
+        psychologieMax = new Dollar(objetPsychologie.getString("maximum"));
+
+        return new StatsPsychologie(psychologieCompteur, psychologieSomme, psychologieMax);
     }
 
     public static StatsNaturopathie creeNaturopathieStat(JSONObject racine) throws InvalidArgumentException {
@@ -192,13 +206,18 @@ public class LireStatistiques {
         int naturopathieCompteur;
         Dollar naturopathieSomme;
         Dollar naturopathieMax;
-        
+
         try {
             objetNaturopathie = racine.getJSONObject("naturopathie_acuponcture");
         } catch (JSONException e) {
             throw new InvalidArgumentException("Erreur! Il n'y a pas de naturopathie ou d'acuponcture");
         }
-        return new StatsNaturopathie(objetNaturopathie.getInt("compteur"), new Dollar(objetNaturopathie.getString("somme")), new Dollar(objetNaturopathie.getString("maximum")));
+
+        naturopathieCompteur = objetNaturopathie.getInt("compteur");
+        naturopathieSomme = new Dollar(objetNaturopathie.getString("somme"));
+        naturopathieMax = new Dollar(objetNaturopathie.getString("maximum"));
+
+        return new StatsNaturopathie(naturopathieCompteur, naturopathieSomme, naturopathieMax);
     }
 
     public static StatsKinesitherapie creeKinesitherapieStat(JSONObject racine) throws InvalidArgumentException {
@@ -206,13 +225,18 @@ public class LireStatistiques {
         int kinesitherapieCompteur;
         Dollar kinesitherapieSomme;
         Dollar kinesitherapieMax;
-        
+
         try {
             objetKinesitherapie = racine.getJSONObject("kinesitherapie");
         } catch (JSONException e) {
             throw new InvalidArgumentException("Erreur! Il n'y a pas de kinesitherapie");
         }
-        return new StatsKinesitherapie(objetKinesitherapie.getInt("compteur"), new Dollar(objetKinesitherapie.getString("somme")), new Dollar(objetKinesitherapie.getString("maximum")));
+
+        kinesitherapieCompteur = objetKinesitherapie.getInt("compteur");
+        kinesitherapieSomme = new Dollar(objetKinesitherapie.getString("somme"));
+        kinesitherapieMax = new Dollar(objetKinesitherapie.getString("maximum"));
+
+        return new StatsKinesitherapie(kinesitherapieCompteur, kinesitherapieSomme, kinesitherapieMax);
     }
 
     public static StatsOrthophonie creeOrthophonieStat(JSONObject racine) throws InvalidArgumentException {
@@ -220,13 +244,18 @@ public class LireStatistiques {
         int orthophonieCompteur;
         Dollar orthophonieSomme;
         Dollar orthophonieMax;
-        
+
         try {
             objetOrthophonie = racine.getJSONObject("Orthophonie_ergotherapie");
         } catch (JSONException e) {
             throw new InvalidArgumentException("Erreur! Il n'y a pas dd'orthophonie ou ergotherapie");
         }
-        return new StatsOrthophonie(objetOrthophonie.getInt("compteur"), new Dollar(objetOrthophonie.getString("somme")), new Dollar(objetOrthophonie.getString("maximum")));
+
+        orthophonieCompteur = objetOrthophonie.getInt("compteur");
+        orthophonieSomme = new Dollar(objetOrthophonie.getString("somme"));
+        orthophonieMax = new Dollar(objetOrthophonie.getString("maximum"));
+
+        return new StatsOrthophonie(orthophonieCompteur, orthophonieSomme, orthophonieMax);
     }
 
     public static StatsOstheopathie creeOsteopathieStat(JSONObject racine) throws InvalidArgumentException {
@@ -234,12 +263,17 @@ public class LireStatistiques {
         int ostheopathieCompteur;
         Dollar ostheopathieSomme;
         Dollar ostheopathieMax;
-        
+
         try {
             objetOstheopathie = racine.getJSONObject("ostheopathie");
         } catch (JSONException e) {
             throw new InvalidArgumentException("Erreur! Il n'y a pas de ostheopathie");
         }
-        return new StatsOstheopathie(objetOstheopathie.getInt("compteur"), new Dollar(objetOstheopathie.getString("somme")), new Dollar(objetOstheopathie.getString("maximum")));
+
+        ostheopathieCompteur = objetOstheopathie.getInt("compteur");
+        ostheopathieSomme = new Dollar(objetOstheopathie.getString("somme"));
+        ostheopathieMax = new Dollar(objetOstheopathie.getString("maximum"));
+
+        return new StatsOstheopathie(ostheopathieCompteur, ostheopathieSomme, ostheopathieMax);
     }
 }

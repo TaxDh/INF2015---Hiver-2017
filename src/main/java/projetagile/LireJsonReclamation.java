@@ -93,7 +93,9 @@ public class LireJsonReclamation {
         return date;
     }
 
-    private static Reclamation creeReclamationLire(int soin, String date, Dollar montant, ModeleJsonIn modele) throws InvalidArgumentException {
+    private static Reclamation creeReclamationLire(int soin, String date, Dollar montant, ModeleJsonIn modele)
+            throws InvalidArgumentException {
+
         Reclamation nouvelleReclamation = new Reclamation();
         valideSoin(soin, nouvelleReclamation);
         valideDate(date, modele, nouvelleReclamation);
@@ -132,7 +134,9 @@ public class LireJsonReclamation {
         return jsonText;
     }
 
-    public static void valideDate(String date, ModeleJsonIn modele, Reclamation nouvelleReclamation) throws InvalidArgumentException {
+    public static void valideDate(String date, ModeleJsonIn modele, Reclamation nouvelleReclamation)
+            throws InvalidArgumentException {
+
         if (estDateValide(date, modele.getMois())) {
             nouvelleReclamation.setDate(date);
         } else {
@@ -148,7 +152,9 @@ public class LireJsonReclamation {
         }
     }
 
-    public static void valideMontant(Dollar montant, Reclamation nouvelleReclamation) throws InvalidArgumentException {
+    public static void valideMontant(Dollar montant, Reclamation nouvelleReclamation)
+            throws InvalidArgumentException {
+
         if (montant.getMontant() >= DOLLAR0.getMontant() && montant.getMontant() <= DOLLAR500.getMontant()) {
             nouvelleReclamation.setMontant(montant);
         } else {
@@ -194,5 +200,4 @@ public class LireJsonReclamation {
 
         return resultat;
     }
-
 }
