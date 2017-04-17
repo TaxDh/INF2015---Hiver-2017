@@ -1,48 +1,21 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package projetagile;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import projetagile.jsonmodels.ModeleJsonIn;
 
-/**
- *
- * @author jg891159
- */
 public class ContratETest {
 
     ModeleJsonIn jsonIn;
     ContratE instance;
     Dollar dollar100;
 
-    public ContratETest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
     @Before
     public void setUp() {
         jsonIn = new ModeleJsonIn("100323", 'B', "2017-01");
         instance = new ContratE(jsonIn);
         dollar100 = new Dollar("100.00$");
-    }
-
-    @After
-    public void tearDown() {
     }
 
     @Test

@@ -1,49 +1,21 @@
-
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package projetagile;
 
-import org.junit.After;
-import org.junit.AfterClass;
 import org.junit.Before;
-import org.junit.BeforeClass;
 import org.junit.Test;
 import static org.junit.Assert.*;
 import projetagile.jsonmodels.ModeleJsonIn;
 
-/**
- *
- * @author jg891159
- */
 public class ContratDTest {
 
     ModeleJsonIn jsonIn;
     ContratD instance;
     Dollar dollar100;
 
-    public ContratDTest() {
-    }
-
-    @BeforeClass
-    public static void setUpClass() {
-    }
-
-    @AfterClass
-    public static void tearDownClass() {
-    }
-
     @Before
     public void setUp() {
         jsonIn = new ModeleJsonIn("100323", 'D', "2017-01");
         instance = new ContratD(jsonIn);
         dollar100 = new Dollar("100.00$");
-    }
-
-    @After
-    public void tearDown() {
     }
 
     @Test
@@ -268,15 +240,15 @@ public class ContratDTest {
         assertEquals(expResult.getMontant(), result.getMontant());
 
     }
-    
+
     @Test
     public void testPhysiotherapieMaxMensuelDepasse() {
         Dollar montant = dollar100;
         Dollar expResult = new Dollar("0.00$");
         Dollar result = instance.physiotherapie(montant);
-        for(int i = 0; i < 5; i++){
+        for (int i = 0; i < 5; i++) {
             result = instance.physiotherapie(montant);
-	}
+        }
         assertEquals(expResult.getMontant(), result.getMontant());
     }
 
