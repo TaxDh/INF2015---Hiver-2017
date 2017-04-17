@@ -1,7 +1,5 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ Lit les fichiers sous format json en arguments.
  */
 package projetagile;
 
@@ -15,8 +13,8 @@ import projetagile.jsonmodels.Reclamation;
 
 public class LireJsonReclamation {
 
-    private static final Dollar dollar0 = new Dollar("0.00$");
-    private static final Dollar dollar500 = new Dollar("500.00$");
+    private static final Dollar DOLLAR0 = new Dollar("0.00$");
+    private static final Dollar DOLLAR500 = new Dollar("500.00$");
     private static int compteurSoin = 0;
 
     public static ModeleJsonIn ouvrireFichier(String fichierEntree) throws InvalidArgumentException {
@@ -70,7 +68,7 @@ public class LireJsonReclamation {
         try {
             mois = racine.getString("mois");
         } catch (JSONException e) {
-            throw new InvalidArgumentException("Erreur! Le mois n'est pas pr\u00e9sent.");
+            throw new InvalidArgumentException("Erreur! Le mois n'est pas present.");
         }
         return mois;
     }
@@ -90,7 +88,7 @@ public class LireJsonReclamation {
         try {
             date = reclamationCourrante.getString("date");
         } catch (JSONException e) {
-            throw new InvalidArgumentException("Erreur! La date n'est pas pr\u00e9sent.");
+            throw new InvalidArgumentException("Erreur! La date n'est pas present.");
         }
         return date;
     }
@@ -118,7 +116,7 @@ public class LireJsonReclamation {
         try {
             montant = new Dollar(reclamationCourrante.getString("montant"));
         } catch (JSONException e) {
-            throw new InvalidArgumentException("Erreur! Le montant n'est pas pr\u00e9sent.");
+            throw new InvalidArgumentException("Erreur! Le montant n'est pas present.");
         }
         return montant;
     }
@@ -146,12 +144,12 @@ public class LireJsonReclamation {
         if (estNumeroSoinValide(soin)) {
             nouvelleReclamation.setSoins(soin);
         } else {
-            throw new InvalidArgumentException("Le num\u00e9ro de soin est Invalide");
+            throw new InvalidArgumentException("Le numero de soin est Invalide");
         }
     }
 
     public static void valideMontant(Dollar montant, Reclamation nouvelleReclamation) throws InvalidArgumentException {
-        if (montant.getMontant() >= dollar0.getMontant() && montant.getMontant() <= dollar500.getMontant()) {
+        if (montant.getMontant() >= DOLLAR0.getMontant() && montant.getMontant() <= DOLLAR500.getMontant()) {
             nouvelleReclamation.setMontant(montant);
         } else {
             throw new InvalidArgumentException("Le montant est negatif ou superieur a 500$");
@@ -163,7 +161,7 @@ public class LireJsonReclamation {
         try {
             numeroDossier = racine.getString("dossier");
         } catch (JSONException e) {
-            throw new InvalidArgumentException("Erreur! Le dossier n'est pas pr\u00e9sent.");
+            throw new InvalidArgumentException("Erreur! Le dossier n'est pas present.");
         }
         return numeroDossier;
     }
@@ -173,7 +171,7 @@ public class LireJsonReclamation {
         try {
             reclamations = racine.getJSONArray("reclamations");
         } catch (JSONException e) {
-            throw new InvalidArgumentException("Erreur! Il n'y a pas de r\u00e9clamations.");
+            throw new InvalidArgumentException("Erreur! Il n'y a pas de reclamations.");
         }
         return reclamations;
     }
