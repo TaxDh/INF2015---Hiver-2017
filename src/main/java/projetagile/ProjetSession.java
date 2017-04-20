@@ -69,7 +69,7 @@ public class ProjetSession {
             EcrireFichierErreurJson.ecrireFichierErreur(fichierSortie, e);
         } finally {
             if (stats != null) {
-                ecrireStatistiques(stats);
+                EcrireStatistiques.ecrireStatistiquesJson(stats);
             }
         }
     }
@@ -91,7 +91,7 @@ public class ProjetSession {
             stats.afficherStatistiques();
         } else if (args[0].contentEquals(EFFACE_STATS)) {
             stats.reinitialise();
-            ecrireStatistiques(stats);
+            EcrireStatistiques.ecrireStatistiquesJson(stats);
         } else {
             System.out.println("Erreur! Il faut soit entrer -S, ou -SR ou 2 fichiers");
         }
@@ -105,42 +105,4 @@ public class ProjetSession {
         }
         return stats;
     }
-
-    public static void ecrireStatistiques(Statistique stats) {
-        JSONObject statJson = new JSONObject();
-        statJson.accumulate("reclamations valides", stats.getReclamationValide());
-        statJson.accumulate("reclamations rejetes", stats.getReclamationRejete());
-
-        statJson.accumulate("massotherapie", ecrireStatistiquesSpecifique(stats.getMassotherapie()));
-        statJson.accumulate("ostheopathie", ecrireStatistiquesSpecifique(stats.getOstheopathie()));
-        statJson.accumulate("kinesitherapie", ecrireStatistiquesSpecifique(stats.getKinesitherapie()));
-        statJson.accumulate("medecin_generaliste_prive", ecrireStatistiquesSpecifique(stats.getMedecine()));
-        statJson.accumulate("psychologie_individuelle", ecrireStatistiquesSpecifique(stats.getPsychologie()));
-        statJson.accumulate("soin_dentaire", ecrireStatistiquesSpecifique(stats.getDentaire()));
-        statJson.accumulate("naturopathie_acuponcture", ecrireStatistiquesSpecifique(stats.getNaturopathie()));
-        statJson.accumulate("chiropratie", ecrireStatistiquesSpecifique(stats.getChiropratie()));
-        statJson.accumulate("physiotherapie", ecrireStatistiquesSpecifique(stats.getPhysiotherapie()));
-        statJson.accumulate("Orthophonie_ergotherapie", ecrireStatistiquesSpecifique(stats.getOrthophonie()));
-
-        ecrireFichierJsonStats(statJson);
-    }
-
-    public static JSONObject ecrireStatistiquesSpecifique(MontantSoinStats soins) {
-        JSONObject soinsJson = new JSONObject();
-
-        soinsJson.accumulate("compteur", soins.getCompteur());
-        soinsJson.accumulate("somme", soins.getSomme().convertirEnStringDollar());
-        soinsJson.accumulate("maximum", soins.getMaximum().convertirEnStringDollar());
-
-        return soinsJson;
-    }
-
-    public static void ecrireFichierJsonStats(JSONObject statJson) {
-        try {
-            Utf8File.saveStringIntoFile("statistique.json", statJson.toString(4));
-        } catch (IOException ex) {
-            System.out.println("Erreur avec le fichier de sortie : " + ex.getLocalizedMessage());
-        }
-    }
-
 }

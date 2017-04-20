@@ -1,6 +1,6 @@
 {
-    "reclamations valides": 9,
-    "reclamations rejetes": 2,
+    "reclamations valides": 0,
+    "reclamations rejetes": 0,
     "massotherapie":     {
         "compteur": 0,
         "somme": "0.00$",
@@ -27,24 +27,24 @@
         "maximum": "0.00$"
     },
     "soin_dentaire":     {
-        "compteur": 7,
-        "somme": "1000.00$",
-        "maximum": "300.00$"
+        "compteur": 0,
+        "somme": "0.00$",
+        "maximum": "0.00$"
     },
     "naturopathie_acuponcture":     {
-        "compteur": 7,
-        "somme": "400.00$",
-        "maximum": "100.00$"
+        "compteur": 0,
+        "somme": "0.00$",
+        "maximum": "0.00$"
     },
     "chiropratie":     {
-        "compteur": 13,
-        "somme": "2825.00$",
-        "maximum": "500.00$"
+        "compteur": 0,
+        "somme": "0.00$",
+        "maximum": "0.00$"
     },
     "physiotherapie":     {
-        "compteur": 7,
-        "somme": "440.00$",
-        "maximum": "100.00$"
+        "compteur": 0,
+        "somme": "0.00$",
+        "maximum": "0.00$"
     },
     "Orthophonie_ergotherapie":     {
         "compteur": 0,
